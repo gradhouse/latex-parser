@@ -1,0 +1,76 @@
+{
+  "metadata": {
+    "registry_name": "LaTeX Standard Command Registry",
+    "version": "0.1.0",
+    "description": "Contains standard LaTeX commands with syntax, arguments, examples, and references.",
+    "maintainer": "Jason Stuber",
+    "last_updated": "2025-09-26",
+    "source": "See the references [latex_1994] and [latex_companion_2004]"
+  },
+  "references": {
+    "latex_1994": {
+      "type": "book",
+      "authors": [
+        "Leslie Lamport"
+      ],
+      "title": "LaTeX: A Document Preparation System",
+      "edition": "2nd",
+      "publisher": "Addison-Wesley",
+      "year": 1994,
+      "isbn": "978-0201529838",
+      "notes": "Documents LaTeX2e and serves as both a user's guide and reference manual."
+    },
+    "latex_companion_2004": {
+      "type": "book",
+      "authors": [
+        "Frank Mittelbach",
+        "Michel Goossens",
+        "Johannes Braams",
+        "David Carlisle",
+        "Chris Rowley"
+      ],
+      "title": "The LaTeX Companion",
+      "edition": "2nd",
+      "publisher": "Addison-Wesley Professional",
+      "year": 2004,
+      "isbn": "0-201-36299-6",
+      "notes": "Comprehensive guide to LaTeX packages, commands, and best practices."
+    }
+  },
+  "commands": {
+    "section": {
+      "command": "\\section",
+      "description": "Start a new section.",
+      "syntax": "\\section[short_title]{title}",
+      "arguments": [
+        {
+          "name": "short_title",
+          "type": "optional",
+          "form": "[]",
+          "fallback_to": "#2",
+          "note": "Used in TOC and headers. Uses the second argument 'title' if omitted"
+        },
+        {
+          "name": "title",
+          "type": "required",
+          "form": "{}"
+        }
+      ],
+      "implementation": null,
+      "examples": [
+        "\\section[Intro]{Introduction}"
+      ],
+      "notes": [],
+      "references": [
+        {
+          "ref_id": "latex_1994",
+          "pages": "174"
+        },
+        {
+          "ref_id": "latex_companion_2004",
+          "pages": "22-23"
+        }
+      ]
+    }
+  }
+}
