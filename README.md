@@ -25,9 +25,3 @@ pip install -e ".[test]"
 ## 3. License
 
 Licensed under the MIT License. See the LICENSE file for more details.
-
-## 4. References
-
-**[lamport_1994]** Lamport, Leslie (1994), *LaTeX: A Document Preparation System*, 2nd ed., Addison-Wesley.
-
-**[latex_companion_2004]** Mittelbach, Frank; Goossens, Michel; Braams, Johannes; Carlisle, David; Rowley, Chris (2004), *The LaTeX Companion*, 2nd ed., Addison-Wesley Professional.
