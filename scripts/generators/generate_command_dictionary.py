@@ -6,9 +6,97 @@
 
 from typing import Dict, Any
 
+def generate_222_command_dictionary() -> Dict[str, Any]:
+    """
+    Generate the LaTeX command dictionary for sections 2.2.2, C.5.1, C.5.2, C.5.4 of [lamport_1994].
+
+    :return: Dict[str, Any], the LaTeX command dictionary
+    """
+
+    common_references = [
+        {
+            'ref_id': 'lamport_1994',
+            'sections': '2.2.2, C.5.1, C.5.2, C.5.4',
+            'pages': '19-21, 176-179, 181-183'
+        }
+    ]
+
+    # this is missing the \bibindent, \columnsep, \columnseprule and \mathindent from page 178
+    # this is missing section C.5.3 on page 179
+
+    document_dictionary = {
+        '\\documentclass': {
+            'syntax': '\\documentclass[options]{class}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'specifies the overall layout of the document by selecting a document class and optional parameters',
+            'references': common_references
+        },
+        '\\documentstyle': {
+            'syntax': '\\documentstyle[options]{style}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'specifies the overall layout of the document by selecting a document style and optional parameters. This command is for LaTeX 2.09 and deprecated in favor of \\documentclass.',
+            'references': common_references
+        },
+        '\\usepackage': {
+            'syntax': '\\usepackage[options]{packages}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'loads a LaTeX package with optional parameters',
+            'references': common_references
+        },
+        '\\maketitle': {
+            'syntax': '\\maketitle',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'generates the title block using information from \\title, \\author, \\date, and \\thanks',
+            'references': common_references
+        },
+        '\\title': {
+            'syntax': '\\title{title}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'defines the document title to be typeset by \\maketitle',
+            'references': common_references
+        },
+        '\\author': {
+            'syntax': '\\author{author}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'defines the document author(s) to be typeset by \\maketitle',
+            'references': common_references
+        },
+        '\\date': {
+            'syntax': '\\date{date}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'defines the document date to be typeset by \\maketitle',
+            'references': common_references
+        },
+        '\\thanks': {
+            'syntax': '\\thanks{text}',
+            'command_type': 'document',
+            'robustness': 'robust',
+            'modes': ['preamble'],
+            'description': 'provides a footnote for the title, author, or date in the title block',
+            'references': common_references
+        },
+    }
+
+    # this is missing the environments for abstract and titlepage
+    return document_dictionary
+
 def generate_223_command_dictionary() -> Dict[str, Any]:
     """
-    Generate the LaTeX command dictionary for section 2.2.3 and C.4.1 of [lamport_1994].
+    Generate the LaTeX command dictionary for sections 2.2.3 and C.4.1 of [lamport_1994].
 
     :return: Dict[str, Any], the LaTeX command dictionary
     """
@@ -1982,7 +2070,7 @@ def generate_332_command_dictionary() -> Dict[str, Any]:
 
 def generate_336_command_dictionary() -> Dict[str, Any]:
     """
-    Generate the LaTeX command dictionary for section 3.3.6 and C.7.6 of [lamport_1994].
+    Generate the LaTeX command dictionary for sections 3.3.6 and C.7.6 of [lamport_1994].
     
     :return: Dict[str, Any], the LaTeX command dictionary
     """
@@ -2219,9 +2307,10 @@ def generate_command_dictionary() -> Dict[str, Any]:
     """
 
     command_dictionary = dict()
-    command_dictionary.update(generate_223_command_dictionary())  # section 2.2.3 and C.4.1
-    command_dictionary.update(generate_332_command_dictionary())  # section 3.3.2 and C.7.3
-    command_dictionary.update(generate_336_command_dictionary())  # section 3.3.6 and C.7.6
-    command_dictionary.update(generate_337_command_dictionary())  # section 3.3.7 and C.7.7
+    command_dictionary.update(generate_222_command_dictionary())  # sections 2.2.2, C.5.1, C.5.2, C.5.4
+    command_dictionary.update(generate_223_command_dictionary())  # sections 2.2.3 and C.4.1
+    command_dictionary.update(generate_332_command_dictionary())  # sections 3.3.2 and C.7.3
+    command_dictionary.update(generate_336_command_dictionary())  # sections 3.3.6 and C.7.6
+    command_dictionary.update(generate_337_command_dictionary())  # sections 3.3.7 and C.7.7
 
     return command_dictionary
