@@ -33,9 +33,16 @@ class CommandType(Enum):
     """
     Enumeration for LaTeX command type categories.
     """
-    UNKNOWN = 'unknown'             # Type is not specified or not applicable
-    DOCUMENT = 'document'           # Document-level commands (e.g., \documentclass)
-    SECTIONING = 'sectioning'       # Sectioning commands (e.g., \section, \chapter)
+    UNKNOWN = 'unknown'                                       # Type is not specified or not applicable
+    DOCUMENT = 'document'                                     # Document-level commands (e.g., \documentclass)
+    SECTIONING = 'sectioning'                                 # Sectioning commands (e.g., \section, \chapter)
+    MATH_SYMBOL_GREEK_LETTER = 'math_symbol_greek_letter'     # Greek letters for math mode (e.g., \alpha, \beta)
+    MATH_SYMBOL_BINARY_OP = 'math_symbol_binary_op'           # Binary operation symbols (e.g., \times, \pm)
+    MATH_SYMBOL_RELATION = 'math_symbol_relation'             # Relation symbols (e.g., \leq, \equiv)
+    MATH_SYMBOL_ARROW = 'math_symbol_arrow'                   # Arrow symbols (e.g., \rightarrow, \Leftarrow)
+    MATH_SYMBOL_MISC = 'math_symbol_misc'                     # Miscellaneous math symbols (e.g., \aleph, \partial)
+    MATH_SYMBOL_VARIABLE_SIZED = 'math_symbol_variable_sized' # Variable-sized symbols (e.g., \sum, \int)
+    MATH_FUNCTION_LOG_LIKE = 'math_function_log_like'         # Log-like functions (e.g., \sin, \cos, \log, \det)
     
 
 class CommandDefinition:

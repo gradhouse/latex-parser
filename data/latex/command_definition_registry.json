@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-09-30T09:18:27.842569+00:00"
+    "generated_at": "2025-09-30T09:53:05.795033+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -376,6 +376,3814 @@
           "ref_id": "lamport_1994",
           "sections": "2.2.3, C.4.1",
           "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\alpha": {
+      "name": "\\alpha",
+      "syntax": "\\alpha",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter alpha",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\beta": {
+      "name": "\\beta",
+      "syntax": "\\beta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter beta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\gamma": {
+      "name": "\\gamma",
+      "syntax": "\\gamma",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter gamma",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\delta": {
+      "name": "\\delta",
+      "syntax": "\\delta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter delta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\epsilon": {
+      "name": "\\epsilon",
+      "syntax": "\\epsilon",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter epsilon",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\varepsilon": {
+      "name": "\\varepsilon",
+      "syntax": "\\varepsilon",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "variant Greek letter epsilon",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\zeta": {
+      "name": "\\zeta",
+      "syntax": "\\zeta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter zeta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\eta": {
+      "name": "\\eta",
+      "syntax": "\\eta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter eta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\theta": {
+      "name": "\\theta",
+      "syntax": "\\theta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter theta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\vartheta": {
+      "name": "\\vartheta",
+      "syntax": "\\vartheta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "variant Greek letter theta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\iota": {
+      "name": "\\iota",
+      "syntax": "\\iota",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter iota",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\kappa": {
+      "name": "\\kappa",
+      "syntax": "\\kappa",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter kappa",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\lambda": {
+      "name": "\\lambda",
+      "syntax": "\\lambda",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter lambda",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\mu": {
+      "name": "\\mu",
+      "syntax": "\\mu",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter mu",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\nu": {
+      "name": "\\nu",
+      "syntax": "\\nu",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter nu",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\xi": {
+      "name": "\\xi",
+      "syntax": "\\xi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter xi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\pi": {
+      "name": "\\pi",
+      "syntax": "\\pi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter pi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\varpi": {
+      "name": "\\varpi",
+      "syntax": "\\varpi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "variant Greek letter pi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\rho": {
+      "name": "\\rho",
+      "syntax": "\\rho",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter rho",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\varrho": {
+      "name": "\\varrho",
+      "syntax": "\\varrho",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "variant Greek letter rho",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sigma": {
+      "name": "\\sigma",
+      "syntax": "\\sigma",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter sigma",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\varsigma": {
+      "name": "\\varsigma",
+      "syntax": "\\varsigma",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "variant Greek letter sigma",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\tau": {
+      "name": "\\tau",
+      "syntax": "\\tau",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter tau",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\upsilon": {
+      "name": "\\upsilon",
+      "syntax": "\\upsilon",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter upsilon",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\phi": {
+      "name": "\\phi",
+      "syntax": "\\phi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter phi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\varphi": {
+      "name": "\\varphi",
+      "syntax": "\\varphi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "variant Greek letter phi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\chi": {
+      "name": "\\chi",
+      "syntax": "\\chi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter chi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\psi": {
+      "name": "\\psi",
+      "syntax": "\\psi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter psi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\omega": {
+      "name": "\\omega",
+      "syntax": "\\omega",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Greek letter omega",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Gamma": {
+      "name": "\\Gamma",
+      "syntax": "\\Gamma",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Gamma",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Delta": {
+      "name": "\\Delta",
+      "syntax": "\\Delta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Delta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Theta": {
+      "name": "\\Theta",
+      "syntax": "\\Theta",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Theta",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Lambda": {
+      "name": "\\Lambda",
+      "syntax": "\\Lambda",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Lambda",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Xi": {
+      "name": "\\Xi",
+      "syntax": "\\Xi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Xi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Pi": {
+      "name": "\\Pi",
+      "syntax": "\\Pi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Pi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Sigma": {
+      "name": "\\Sigma",
+      "syntax": "\\Sigma",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Sigma",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Upsilon": {
+      "name": "\\Upsilon",
+      "syntax": "\\Upsilon",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Upsilon",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Phi": {
+      "name": "\\Phi",
+      "syntax": "\\Phi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Phi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Psi": {
+      "name": "\\Psi",
+      "syntax": "\\Psi",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Psi",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Omega": {
+      "name": "\\Omega",
+      "syntax": "\\Omega",
+      "command_type": "math_symbol_greek_letter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "uppercase Greek letter Omega",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\pm": {
+      "name": "\\pm",
+      "syntax": "\\pm",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "plus-minus sign",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\mp": {
+      "name": "\\mp",
+      "syntax": "\\mp",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "minus-plus sign",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\times": {
+      "name": "\\times",
+      "syntax": "\\times",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "multiplication sign",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\div": {
+      "name": "\\div",
+      "syntax": "\\div",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "division sign",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ast": {
+      "name": "\\ast",
+      "syntax": "\\ast",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "asterisk operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\star": {
+      "name": "\\star",
+      "syntax": "\\star",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "star operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\circ": {
+      "name": "\\circ",
+      "syntax": "\\circ",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "circle operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bullet": {
+      "name": "\\bullet",
+      "syntax": "\\bullet",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "bullet operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cdot": {
+      "name": "\\cdot",
+      "syntax": "\\cdot",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "centered dot operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cap": {
+      "name": "\\cap",
+      "syntax": "\\cap",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "intersection operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cup": {
+      "name": "\\cup",
+      "syntax": "\\cup",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "union operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\uplus": {
+      "name": "\\uplus",
+      "syntax": "\\uplus",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "disjoint union operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sqcap": {
+      "name": "\\sqcap",
+      "syntax": "\\sqcap",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square intersection operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sqcup": {
+      "name": "\\sqcup",
+      "syntax": "\\sqcup",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square union operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\vee": {
+      "name": "\\vee",
+      "syntax": "\\vee",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "logical or operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\wedge": {
+      "name": "\\wedge",
+      "syntax": "\\wedge",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "logical and operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\setminus": {
+      "name": "\\setminus",
+      "syntax": "\\setminus",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "set difference operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\wr": {
+      "name": "\\wr",
+      "syntax": "\\wr",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "wreath product operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\diamond": {
+      "name": "\\diamond",
+      "syntax": "\\diamond",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "diamond operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigtriangleup": {
+      "name": "\\bigtriangleup",
+      "syntax": "\\bigtriangleup",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big triangle up operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigtriangledown": {
+      "name": "\\bigtriangledown",
+      "syntax": "\\bigtriangledown",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big triangle down operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\triangleleft": {
+      "name": "\\triangleleft",
+      "syntax": "\\triangleleft",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "triangle left operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\triangleright": {
+      "name": "\\triangleright",
+      "syntax": "\\triangleright",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "triangle right operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\lhd": {
+      "name": "\\lhd",
+      "syntax": "\\lhd",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left harpoon down operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\rhd": {
+      "name": "\\rhd",
+      "syntax": "\\rhd",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right harpoon down operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\unlhd": {
+      "name": "\\unlhd",
+      "syntax": "\\unlhd",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "underlined left harpoon down operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\unrhd": {
+      "name": "\\unrhd",
+      "syntax": "\\unrhd",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "underlined right harpoon down operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\oplus": {
+      "name": "\\oplus",
+      "syntax": "\\oplus",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "circled plus operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ominus": {
+      "name": "\\ominus",
+      "syntax": "\\ominus",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "circled minus operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\otimes": {
+      "name": "\\otimes",
+      "syntax": "\\otimes",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "circled times operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\oslash": {
+      "name": "\\oslash",
+      "syntax": "\\oslash",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "circled slash operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\odot": {
+      "name": "\\odot",
+      "syntax": "\\odot",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "circled dot operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigcirc": {
+      "name": "\\bigcirc",
+      "syntax": "\\bigcirc",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big circle operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\dagger": {
+      "name": "\\dagger",
+      "syntax": "\\dagger",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "dagger operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ddagger": {
+      "name": "\\ddagger",
+      "syntax": "\\ddagger",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double dagger operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\amalg": {
+      "name": "\\amalg",
+      "syntax": "\\amalg",
+      "command_type": "math_symbol_binary_op",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "amalgamation operator",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\leq": {
+      "name": "\\leq",
+      "syntax": "\\leq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "less than or equal to sign",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\prec": {
+      "name": "\\prec",
+      "syntax": "\\prec",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "precedes",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\preceq": {
+      "name": "\\preceq",
+      "syntax": "\\preceq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "precedes or equals",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ll": {
+      "name": "\\ll",
+      "syntax": "\\ll",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "much less than",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\subset": {
+      "name": "\\subset",
+      "syntax": "\\subset",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "subset of",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\subseteq": {
+      "name": "\\subseteq",
+      "syntax": "\\subseteq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "subset of or equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sqsubset": {
+      "name": "\\sqsubset",
+      "syntax": "\\sqsubset",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square subset of",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sqsubseteq": {
+      "name": "\\sqsubseteq",
+      "syntax": "\\sqsubseteq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square subset of or equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\in": {
+      "name": "\\in",
+      "syntax": "\\in",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "element of",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\vdash": {
+      "name": "\\vdash",
+      "syntax": "\\vdash",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "entails (turnstile)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\geq": {
+      "name": "\\geq",
+      "syntax": "\\geq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "greater than or equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\succ": {
+      "name": "\\succ",
+      "syntax": "\\succ",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "succeeds",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\succeq": {
+      "name": "\\succeq",
+      "syntax": "\\succeq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "succeeds or equals",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\gg": {
+      "name": "\\gg",
+      "syntax": "\\gg",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "much greater than",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sqsupset": {
+      "name": "\\sqsupset",
+      "syntax": "\\sqsupset",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square superset of",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sqsupseteq": {
+      "name": "\\sqsupseteq",
+      "syntax": "\\sqsupseteq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square superset of or equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ni": {
+      "name": "\\ni",
+      "syntax": "\\ni",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "contains as member",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\dashv": {
+      "name": "\\dashv",
+      "syntax": "\\dashv",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "dash with vertical bar",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\equiv": {
+      "name": "\\equiv",
+      "syntax": "\\equiv",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "identically equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sim": {
+      "name": "\\sim",
+      "syntax": "\\sim",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "similar to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\simeq": {
+      "name": "\\simeq",
+      "syntax": "\\simeq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "asymptotically equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\asymp": {
+      "name": "\\asymp",
+      "syntax": "\\asymp",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "asymptotically equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\approx": {
+      "name": "\\approx",
+      "syntax": "\\approx",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "approximately equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cong": {
+      "name": "\\cong",
+      "syntax": "\\cong",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "congruent to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\neq": {
+      "name": "\\neq",
+      "syntax": "\\neq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "not equal to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\doteq": {
+      "name": "\\doteq",
+      "syntax": "\\doteq",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "approaches the value",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\notin": {
+      "name": "\\notin",
+      "syntax": "\\notin",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "not an element of",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\models": {
+      "name": "\\models",
+      "syntax": "\\models",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "models (double turnstile)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\perp": {
+      "name": "\\perp",
+      "syntax": "\\perp",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "perpendicular to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\mid": {
+      "name": "\\mid",
+      "syntax": "\\mid",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "such that (vertical bar)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\parallel": {
+      "name": "\\parallel",
+      "syntax": "\\parallel",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "parallel to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bowtie": {
+      "name": "\\bowtie",
+      "syntax": "\\bowtie",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "bowtie relation",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Join": {
+      "name": "\\Join",
+      "syntax": "\\Join",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "join relation",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\smile": {
+      "name": "\\smile",
+      "syntax": "\\smile",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "smile relation",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\frown": {
+      "name": "\\frown",
+      "syntax": "\\frown",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "frown relation",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\propto": {
+      "name": "\\propto",
+      "syntax": "\\propto",
+      "command_type": "math_symbol_relation",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "proportional to",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\leftarrow": {
+      "name": "\\leftarrow",
+      "syntax": "\\leftarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Leftarrow": {
+      "name": "\\Leftarrow",
+      "syntax": "\\Leftarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double left arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\rightarrow": {
+      "name": "\\rightarrow",
+      "syntax": "\\rightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Rightarrow": {
+      "name": "\\Rightarrow",
+      "syntax": "\\Rightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\leftrightarrow": {
+      "name": "\\leftrightarrow",
+      "syntax": "\\leftrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left-right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Leftrightarrow": {
+      "name": "\\Leftrightarrow",
+      "syntax": "\\Leftrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double left-right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\mapsto": {
+      "name": "\\mapsto",
+      "syntax": "\\mapsto",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "mapsto arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\hookleftarrow": {
+      "name": "\\hookleftarrow",
+      "syntax": "\\hookleftarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "hook left arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\leftharpoonup": {
+      "name": "\\leftharpoonup",
+      "syntax": "\\leftharpoonup",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left harpoon up",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\leftharpoondown": {
+      "name": "\\leftharpoondown",
+      "syntax": "\\leftharpoondown",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left harpoon down",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\rightleftharpoons": {
+      "name": "\\rightleftharpoons",
+      "syntax": "\\rightleftharpoons",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right and left harpoons",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\longleftarrow": {
+      "name": "\\longleftarrow",
+      "syntax": "\\longleftarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long left arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Longleftarrow": {
+      "name": "\\Longleftarrow",
+      "syntax": "\\Longleftarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long double left arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\longrightarrow": {
+      "name": "\\longrightarrow",
+      "syntax": "\\longrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Longrightarrow": {
+      "name": "\\Longrightarrow",
+      "syntax": "\\Longrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long double right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\longleftrightarrow": {
+      "name": "\\longleftrightarrow",
+      "syntax": "\\longleftrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long left-right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Longleftrightarrow": {
+      "name": "\\Longleftrightarrow",
+      "syntax": "\\Longleftrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long double left-right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\longmapsto": {
+      "name": "\\longmapsto",
+      "syntax": "\\longmapsto",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "long mapsto arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\hookrightarrow": {
+      "name": "\\hookrightarrow",
+      "syntax": "\\hookrightarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "hook right arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\rightharpoonup": {
+      "name": "\\rightharpoonup",
+      "syntax": "\\rightharpoonup",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right harpoon up",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\rightharpoondown": {
+      "name": "\\rightharpoondown",
+      "syntax": "\\rightharpoondown",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right harpoon down",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\leadsto": {
+      "name": "\\leadsto",
+      "syntax": "\\leadsto",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "leads to arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\uparrow": {
+      "name": "\\uparrow",
+      "syntax": "\\uparrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "up arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Uparrow": {
+      "name": "\\Uparrow",
+      "syntax": "\\Uparrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double up arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\downarrow": {
+      "name": "\\downarrow",
+      "syntax": "\\downarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "down arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Downarrow": {
+      "name": "\\Downarrow",
+      "syntax": "\\Downarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double down arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\updownarrow": {
+      "name": "\\updownarrow",
+      "syntax": "\\updownarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "up-down arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Updownarrow": {
+      "name": "\\Updownarrow",
+      "syntax": "\\Updownarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double up-down arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\nearrow": {
+      "name": "\\nearrow",
+      "syntax": "\\nearrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "north-east arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\searrow": {
+      "name": "\\searrow",
+      "syntax": "\\searrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "south-east arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\swarrow": {
+      "name": "\\swarrow",
+      "syntax": "\\swarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "south-west arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\nwarrow": {
+      "name": "\\nwarrow",
+      "syntax": "\\nwarrow",
+      "command_type": "math_symbol_arrow",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "north-west arrow",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\aleph": {
+      "name": "\\aleph",
+      "syntax": "\\aleph",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "aleph symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\hbar": {
+      "name": "\\hbar",
+      "syntax": "\\hbar",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "h-bar (Planck constant over 2\u03c0)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\imath": {
+      "name": "\\imath",
+      "syntax": "\\imath",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "dotless i",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\jmath": {
+      "name": "\\jmath",
+      "syntax": "\\jmath",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "dotless j",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ell": {
+      "name": "\\ell",
+      "syntax": "\\ell",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "script letter l",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\wp": {
+      "name": "\\wp",
+      "syntax": "\\wp",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "Weierstrass p",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Re": {
+      "name": "\\Re",
+      "syntax": "\\Re",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "real part",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Im": {
+      "name": "\\Im",
+      "syntax": "\\Im",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "imaginary part",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\mho": {
+      "name": "\\mho",
+      "syntax": "\\mho",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "mho (conductance)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\prime": {
+      "name": "\\prime",
+      "syntax": "\\prime",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "prime symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\emptyset": {
+      "name": "\\emptyset",
+      "syntax": "\\emptyset",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "empty set",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\nabla": {
+      "name": "\\nabla",
+      "syntax": "\\nabla",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "nabla (del operator)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\surd": {
+      "name": "\\surd",
+      "syntax": "\\surd",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "square root sign",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\top": {
+      "name": "\\top",
+      "syntax": "\\top",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "top (truth)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bot": {
+      "name": "\\bot",
+      "syntax": "\\bot",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "bottom (falsity)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\|": {
+      "name": "\\|",
+      "syntax": "\\|",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "vertical double bar",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\angle": {
+      "name": "\\angle",
+      "syntax": "\\angle",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "angle symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\forall": {
+      "name": "\\forall",
+      "syntax": "\\forall",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "for all",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\exists": {
+      "name": "\\exists",
+      "syntax": "\\exists",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "there exists",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\neg": {
+      "name": "\\neg",
+      "syntax": "\\neg",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "negation",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\flat": {
+      "name": "\\flat",
+      "syntax": "\\flat",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "flat (music)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\natural": {
+      "name": "\\natural",
+      "syntax": "\\natural",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "natural (music)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sharp": {
+      "name": "\\sharp",
+      "syntax": "\\sharp",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "sharp (music)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\backslash": {
+      "name": "\\backslash",
+      "syntax": "\\backslash",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "backslash",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\partial": {
+      "name": "\\partial",
+      "syntax": "\\partial",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "partial derivative symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\infty": {
+      "name": "\\infty",
+      "syntax": "\\infty",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "infinity symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Box": {
+      "name": "\\Box",
+      "syntax": "\\Box",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "box symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Diamond": {
+      "name": "\\Diamond",
+      "syntax": "\\Diamond",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "diamond symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\triangle": {
+      "name": "\\triangle",
+      "syntax": "\\triangle",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "triangle symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\clubsuit": {
+      "name": "\\clubsuit",
+      "syntax": "\\clubsuit",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "club suit",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\diamondsuit": {
+      "name": "\\diamondsuit",
+      "syntax": "\\diamondsuit",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "diamond suit",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\heartsuit": {
+      "name": "\\heartsuit",
+      "syntax": "\\heartsuit",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "heart suit",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\spadesuit": {
+      "name": "\\spadesuit",
+      "syntax": "\\spadesuit",
+      "command_type": "math_symbol_misc",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "spade suit",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sum": {
+      "name": "\\sum",
+      "syntax": "\\sum",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "summation symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\prod": {
+      "name": "\\prod",
+      "syntax": "\\prod",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "product symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\coprod": {
+      "name": "\\coprod",
+      "syntax": "\\coprod",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "coproduct symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\int": {
+      "name": "\\int",
+      "syntax": "\\int",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "integral symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\oint": {
+      "name": "\\oint",
+      "syntax": "\\oint",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "contour integral symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigcap": {
+      "name": "\\bigcap",
+      "syntax": "\\bigcap",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big intersection symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigcup": {
+      "name": "\\bigcup",
+      "syntax": "\\bigcup",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big union symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigvee": {
+      "name": "\\bigvee",
+      "syntax": "\\bigvee",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big logical or symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigwedge": {
+      "name": "\\bigwedge",
+      "syntax": "\\bigwedge",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big logical and symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigodot": {
+      "name": "\\bigodot",
+      "syntax": "\\bigodot",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big circled dot symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigotimes": {
+      "name": "\\bigotimes",
+      "syntax": "\\bigotimes",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big circled times symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bigoplus": {
+      "name": "\\bigoplus",
+      "syntax": "\\bigoplus",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big circled plus symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\biguplus": {
+      "name": "\\biguplus",
+      "syntax": "\\biguplus",
+      "command_type": "math_symbol_variable_sized",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "big disjoint union symbol",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\arccos": {
+      "name": "\\arccos",
+      "syntax": "\\arccos",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "inverse cosine function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\arcsin": {
+      "name": "\\arcsin",
+      "syntax": "\\arcsin",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "inverse sine function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\arctan": {
+      "name": "\\arctan",
+      "syntax": "\\arctan",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "inverse tangent function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\arg": {
+      "name": "\\arg",
+      "syntax": "\\arg",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "argument of a complex number",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cos": {
+      "name": "\\cos",
+      "syntax": "\\cos",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "cosine function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cosh": {
+      "name": "\\cosh",
+      "syntax": "\\cosh",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "hyperbolic cosine function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\cot": {
+      "name": "\\cot",
+      "syntax": "\\cot",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "cotangent function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\coth": {
+      "name": "\\coth",
+      "syntax": "\\coth",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "hyperbolic cotangent function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\csc": {
+      "name": "\\csc",
+      "syntax": "\\csc",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "cosecant function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\deg": {
+      "name": "\\deg",
+      "syntax": "\\deg",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "degree of a polynomial or vertex",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\det": {
+      "name": "\\det",
+      "syntax": "\\det",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "determinant",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\dim": {
+      "name": "\\dim",
+      "syntax": "\\dim",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "dimension",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\exp": {
+      "name": "\\exp",
+      "syntax": "\\exp",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "exponential function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\gcd": {
+      "name": "\\gcd",
+      "syntax": "\\gcd",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "greatest common divisor",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\hom": {
+      "name": "\\hom",
+      "syntax": "\\hom",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "homomorphism set",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\inf": {
+      "name": "\\inf",
+      "syntax": "\\inf",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "infimum",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ker": {
+      "name": "\\ker",
+      "syntax": "\\ker",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "kernel",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\lg": {
+      "name": "\\lg",
+      "syntax": "\\lg",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "base-10 logarithm",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\lim": {
+      "name": "\\lim",
+      "syntax": "\\lim",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "limit",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\liminf": {
+      "name": "\\liminf",
+      "syntax": "\\liminf",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "limit inferior",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\limsup": {
+      "name": "\\limsup",
+      "syntax": "\\limsup",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "limit superior",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\ln": {
+      "name": "\\ln",
+      "syntax": "\\ln",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "natural logarithm",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\log": {
+      "name": "\\log",
+      "syntax": "\\log",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "logarithm",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\max": {
+      "name": "\\max",
+      "syntax": "\\max",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "maximum",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\min": {
+      "name": "\\min",
+      "syntax": "\\min",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "minimum",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\Pr": {
+      "name": "\\Pr",
+      "syntax": "\\Pr",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "probability",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sec": {
+      "name": "\\sec",
+      "syntax": "\\sec",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "secant function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sin": {
+      "name": "\\sin",
+      "syntax": "\\sin",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "sine function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sinh": {
+      "name": "\\sinh",
+      "syntax": "\\sinh",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "hyperbolic sine function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\sup": {
+      "name": "\\sup",
+      "syntax": "\\sup",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "supremum",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\tan": {
+      "name": "\\tan",
+      "syntax": "\\tan",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "tangent function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\tanh": {
+      "name": "\\tanh",
+      "syntax": "\\tanh",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "hyperbolic tangent function",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\bmod": {
+      "name": "\\bmod",
+      "syntax": "\\bmod",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "modulus operation",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\pmod": {
+      "name": "\\pmod",
+      "syntax": "\\pmod{n}",
+      "command_type": "math_function_log_like",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "typesets the modulus in congruence relations, displaying (mod n) in math mode",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.2, C.7.3",
+          "pages": "41-45, 189-190"
         }
       ]
     }
