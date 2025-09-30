@@ -1,0 +1,383 @@
+{
+  "metadata": {
+    "registry_type": "CommandDefinition",
+    "registry_module": "latex_parser.latex.definitions.command_definition",
+    "generated_at": "2025-09-30T09:18:27.842569+00:00"
+  },
+  "entries": {
+    "\\documentclass": {
+      "name": "\\documentclass",
+      "syntax": "\\documentclass[options]{class}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Specifies the overall layout of the document by selecting a document class and optional parameters",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\documentstyle": {
+      "name": "\\documentstyle",
+      "syntax": "\\documentstyle[options]{style}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Specifies the overall layout of the document by selecting a document style and optional parameters. This command is for LaTeX 2.09 and deprecated in favor of \\documentclass.",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\usepackage": {
+      "name": "\\usepackage",
+      "syntax": "\\usepackage[options]{packages}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Loads a LaTeX package with optional parameters",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\maketitle": {
+      "name": "\\maketitle",
+      "syntax": "\\maketitle",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Generates the title block using information from \\title, \\author, \\date, and \\thanks",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\title": {
+      "name": "\\title",
+      "syntax": "\\title{title}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Defines the document title to be typeset by \\maketitle",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\author": {
+      "name": "\\author",
+      "syntax": "\\author{authors}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Defines the document author(s) to be typeset by \\maketitle",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\date": {
+      "name": "\\date",
+      "syntax": "\\date{date}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Defines the document date to be typeset by \\maketitle",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\thanks": {
+      "name": "\\thanks",
+      "syntax": "\\thanks{text}",
+      "command_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "preamble"
+      ],
+      "description": "Provides a footnote for the title, author, or date in the title block",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2, C.5.1, C.5.2, C.5.4",
+          "pages": "19-21, 176-179, 181-183"
+        }
+      ]
+    },
+    "\\part": {
+      "name": "\\part",
+      "syntax": "\\part[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a major sectional division at the part level; typically used in book classes; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\part*": {
+      "name": "\\part*",
+      "syntax": "\\part*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a major sectional division at the part level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\chapter": {
+      "name": "\\chapter",
+      "syntax": "\\chapter[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a major sectional division at the chapter level; typically used in book and report classes; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\chapter*": {
+      "name": "\\chapter*",
+      "syntax": "\\chapter*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a major sectional division at the chapter level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\section": {
+      "name": "\\section",
+      "syntax": "\\section[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a major sectional division at the section level; typically used in articles, books, and reports; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\section*": {
+      "name": "\\section*",
+      "syntax": "\\section*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a major sectional division at the section level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\subsection": {
+      "name": "\\subsection",
+      "syntax": "\\subsection[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the subsection level; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\subsection*": {
+      "name": "\\subsection*",
+      "syntax": "\\subsection*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the subsection level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\subsubsection": {
+      "name": "\\subsubsection",
+      "syntax": "\\subsubsection[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the subsubsection level; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\subsubsection*": {
+      "name": "\\subsubsection*",
+      "syntax": "\\subsubsection*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the subsubsection level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\paragraph": {
+      "name": "\\paragraph",
+      "syntax": "\\paragraph[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the paragraph level; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\paragraph*": {
+      "name": "\\paragraph*",
+      "syntax": "\\paragraph*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the paragraph level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\subparagraph": {
+      "name": "\\subparagraph",
+      "syntax": "\\subparagraph[toc_entry]{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the subparagraph level; optionally adds an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    },
+    "\\subparagraph*": {
+      "name": "\\subparagraph*",
+      "syntax": "\\subparagraph*{heading}",
+      "command_type": "sectioning",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "Starts a sectional division at the subparagraph level without adding an entry to the table of contents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.3, C.4.1",
+          "pages": "21-22, 174"
+        }
+      ]
+    }
+  }
+}

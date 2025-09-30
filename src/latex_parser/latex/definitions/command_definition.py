@@ -34,8 +34,9 @@ class CommandType(Enum):
     Enumeration for LaTeX command type categories.
     """
     UNKNOWN = 'unknown'             # Type is not specified or not applicable
+    DOCUMENT = 'document'           # Document-level commands (e.g., \documentclass)
     SECTIONING = 'sectioning'       # Sectioning commands (e.g., \section, \chapter)
-
+    
 
 class CommandDefinition:
     """
