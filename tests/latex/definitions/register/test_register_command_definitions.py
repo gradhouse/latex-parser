@@ -16,6 +16,11 @@ from latex_parser.latex.definitions.register.register_command_definitions import
     register_misc_symbol_commands,
     register_variable_sized_symbol_commands,
     register_log_like_function_commands,
+    register_math_accent_commands,
+    register_math_enclosure_commands,
+    register_text_accent_commands,
+    register_text_symbol_commands,
+    register_text_spacing_commands,
     register_latex_commands
 )
 
@@ -208,7 +213,98 @@ class TestRegisterLogLikeFunctionCommands:
         assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
 
 
-    """Test register_latex_commands function."""
+class TestRegisterMathAccentCommands:
+    """Test register_math_accent_commands function."""
+
+    def test_registers_expected_math_accent_commands(self):
+        """Test that all expected math accent commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_math_accent_commands(registry)
+        
+        expected_commands = {
+            '\\acute', '\\bar', '\\breve', '\\check', '\\ddot', '\\dot', '\\grave', 
+            '\\hat', '\\tilde', '\\vec', '\\widehat', '\\widetilde'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+
+class TestRegisterMathEnclosureCommands:
+    """Test register_math_enclosure_commands function."""
+
+    def test_registers_expected_math_enclosure_commands(self):
+        """Test that all expected math enclosure commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_math_enclosure_commands(registry)
+        
+        expected_commands = {
+            '\\overbrace', '\\overline', '\\underbrace', '\\underline'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+
+class TestRegisterTextAccentCommands:
+    """Test register_text_accent_commands function."""
+
+    def test_registers_expected_text_accent_commands(self):
+        """Test that all expected text accent commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_text_accent_commands(registry)
+        
+        expected_commands = {
+            '\\"', "\\'", '\\.', '\\=', '\\H', '\\^', '\\`', '\\b', '\\c', '\\d', '\\t', '\\u', '\\v', '\\~'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+
+class TestRegisterTextSymbolCommands:
+    """Test register_text_symbol_commands function."""
+
+    def test_registers_expected_text_symbol_commands(self):
+        """Test that all expected text symbol commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_text_symbol_commands(registry)
+        
+        expected_commands = {
+            '!`', '?`', '\\AA', '\\AE', '\\L', '\\O', '\\OE', '\\P', '\\S', '\\aa', '\\ae', 
+            '\\copyright', '\\dag', '\\ddag', '\\l', '\\o', '\\oe', '\\pounds', '\\ss',
+            '\\#', '\\$', '\\%', '\\&', '\\_', '\\{', '\\}'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+
+class TestRegisterTextSpacingCommands:
+    """Test register_text_spacing_commands function."""
+
+    def test_registers_expected_text_spacing_commands(self):
+        """Test that all expected text spacing commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_text_spacing_commands(registry)
+        
+        expected_commands = {
+            '\\ ', '\\!', '\\,', '\\:', '\\;'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
 
 class TestRegisterLatexCommands:
     """Test register_latex_commands function."""
@@ -263,7 +359,20 @@ class TestRegisterLatexCommands:
             '\\Pr', '\\arccos', '\\arcsin', '\\arctan', '\\arg', '\\bmod', '\\cos', '\\cosh', '\\cot', '\\coth', 
             '\\csc', '\\deg', '\\det', '\\dim', '\\exp', '\\gcd', '\\hom', '\\inf', '\\ker', '\\lg', '\\lim', 
             '\\liminf', '\\limsup', '\\ln', '\\log', '\\max', '\\min', '\\pmod', '\\sec', '\\sin', '\\sinh', 
-            '\\sup', '\\tan', '\\tanh'
+            '\\sup', '\\tan', '\\tanh',
+            # Math accent commands
+            '\\acute', '\\bar', '\\breve', '\\check', '\\ddot', '\\dot', '\\grave', 
+            '\\hat', '\\tilde', '\\vec', '\\widehat', '\\widetilde',
+            # Math enclosure commands
+            '\\overbrace', '\\overline', '\\underbrace', '\\underline',
+            # Text accent commands
+            '\\"', "\\'", '\\.', '\\=', '\\H', '\\^', '\\`', '\\b', '\\c', '\\d', '\\t', '\\u', '\\v', '\\~',
+            # Text symbol commands
+            '!`', '?`', '\\AA', '\\AE', '\\L', '\\O', '\\OE', '\\P', '\\S', '\\aa', '\\ae', 
+            '\\copyright', '\\dag', '\\ddag', '\\l', '\\o', '\\oe', '\\pounds', '\\ss',
+            '\\#', '\\$', '\\%', '\\&', '\\_', '\\{', '\\}',
+            # Text spacing commands
+            '\\ ', '\\!', '\\,', '\\:', '\\;'
         }
         
         registered_keys = set(registry.list_keys())
@@ -293,8 +402,8 @@ class TestRegisterLatexCommands:
         
         # Expected counts based on individual function tests:
         # Document: 8, Sectioning: 14, Greek: 40, Binary: 36, Relation: 36, 
-        # Arrow: 32, Misc: 33, Variable-sized: 13, Log-like: 34
-        expected_total = 8 + 14 + 40 + 36 + 36 + 32 + 33 + 13 + 34
+        # Arrow: 32, Misc: 33, Variable-sized: 13, Log-like: 34, Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 26, Text spacing: 5
+        expected_total = 8 + 14 + 40 + 36 + 36 + 32 + 33 + 13 + 34 + 12 + 4 + 14 + 26 + 5
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total, f"Expected {expected_total} total commands, got {actual_total}"

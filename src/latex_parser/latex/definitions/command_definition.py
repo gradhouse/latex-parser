@@ -43,6 +43,11 @@ class CommandType(Enum):
     MATH_SYMBOL_MISC = 'math_symbol_misc'                     # Miscellaneous math symbols (e.g., \aleph, \partial)
     MATH_SYMBOL_VARIABLE_SIZED = 'math_symbol_variable_sized' # Variable-sized symbols (e.g., \sum, \int)
     MATH_FUNCTION_LOG_LIKE = 'math_function_log_like'         # Log-like functions (e.g., \sin, \cos, \log, \det)
+    MATH_ACCENT = 'math_accent'                               # Math accent commands (e.g., \hat, \tilde, \vec)
+    MATH_ENCLOSURE = 'math_enclosure'                         # Math enclosure commands (e.g., \overline, \overbrace)
+    TEXT_ACCENT = 'text_accent'                               # Text accent commands (e.g., \', \`, \^, \", \~)
+    TEXT_SYMBOL = 'text_symbol'                               # Text symbol commands (e.g., \oe, \ae, \ss, \dag, \S)
+    TEXT_SPACING = 'text_spacing'                             # Text spacing commands (e.g., \,, \!, \:, \;, \ )
     
 
 class CommandDefinition:
