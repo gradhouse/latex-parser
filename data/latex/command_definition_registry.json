@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-09-30T09:53:05.795033+00:00"
+    "generated_at": "2025-09-30T21:41:05.290383+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -4184,6 +4184,1106 @@
           "ref_id": "lamport_1994",
           "sections": "3.3.2, C.7.3",
           "pages": "41-45, 189-190"
+        }
+      ]
+    },
+    "\\hat": {
+      "name": "\\hat",
+      "syntax": "\\hat{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw hat over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\check": {
+      "name": "\\check",
+      "syntax": "\\check{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw check accent over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\breve": {
+      "name": "\\breve",
+      "syntax": "\\breve{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw breve accent over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\acute": {
+      "name": "\\acute",
+      "syntax": "\\acute{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw acute accent over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\grave": {
+      "name": "\\grave",
+      "syntax": "\\grave{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw grave accent over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\tilde": {
+      "name": "\\tilde",
+      "syntax": "\\tilde{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw tilde over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\bar": {
+      "name": "\\bar",
+      "syntax": "\\bar{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw bar over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\vec": {
+      "name": "\\vec",
+      "syntax": "\\vec{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw vector arrow over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\dot": {
+      "name": "\\dot",
+      "syntax": "\\dot{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw single dot over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\ddot": {
+      "name": "\\ddot",
+      "syntax": "\\ddot{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw double dot over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\widehat": {
+      "name": "\\widehat",
+      "syntax": "\\widehat{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw wide hat over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\widetilde": {
+      "name": "\\widetilde",
+      "syntax": "\\widetilde{text}",
+      "command_type": "math_accent",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw wide tilde over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\overline": {
+      "name": "\\overline",
+      "syntax": "\\overline{text}",
+      "command_type": "math_enclosure",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw horizontal line over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\underline": {
+      "name": "\\underline",
+      "syntax": "\\underline{text}",
+      "command_type": "math_enclosure",
+      "robustness": "fragile",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "draw horizontal line under text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\overbrace": {
+      "name": "\\overbrace",
+      "syntax": "\\overbrace{text}",
+      "command_type": "math_enclosure",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw horizontal brace over text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\underbrace": {
+      "name": "\\underbrace",
+      "syntax": "\\underbrace{text}",
+      "command_type": "math_enclosure",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "draw horizontal brace under text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.6, C.7.6",
+          "pages": "49-50, 190-191"
+        }
+      ]
+    },
+    "\\'": {
+      "name": "\\'",
+      "syntax": "\\'{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "acute accent (e.g., \u00e9)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\`": {
+      "name": "\\`",
+      "syntax": "\\`{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "grave accent (e.g., \u00e8)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\^": {
+      "name": "\\^",
+      "syntax": "\\^{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "circumflex accent (e.g., \u00ea)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\\"": {
+      "name": "\\\"",
+      "syntax": "\\\"{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "diaeresis/umlaut accent (e.g., \u00eb)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\~": {
+      "name": "\\~",
+      "syntax": "\\~{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "tilde accent (e.g., \u00f1)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\=": {
+      "name": "\\=",
+      "syntax": "\\={character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "macron accent (e.g., \u014d)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\.": {
+      "name": "\\.",
+      "syntax": "\\.{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "dot accent (e.g., \u1e45)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\u": {
+      "name": "\\u",
+      "syntax": "\\u{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "breve accent (e.g., \u0103)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\v": {
+      "name": "\\v",
+      "syntax": "\\v{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "caron/h\u00e1\u010dek accent (e.g., \u010d)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\H": {
+      "name": "\\H",
+      "syntax": "\\H{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "double acute accent (e.g., \u0151)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\t": {
+      "name": "\\t",
+      "syntax": "\\t{characters}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "tie accent (connects two characters)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\c": {
+      "name": "\\c",
+      "syntax": "\\c{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "cedilla accent (e.g., \u00e7)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\d": {
+      "name": "\\d",
+      "syntax": "\\d{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "dot-under accent (e.g., \u1e0d)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\b": {
+      "name": "\\b",
+      "syntax": "\\b{character}",
+      "command_type": "text_accent",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "bar-under accent (e.g., \u1e6f)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.1, C.3.4",
+          "pages": "38, 173"
+        }
+      ]
+    },
+    "\\oe": {
+      "name": "\\oe",
+      "syntax": "\\oe",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "lowercase oe ligature (\u0153)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\OE": {
+      "name": "\\OE",
+      "syntax": "\\OE",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "uppercase OE ligature (\u0152)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\ae": {
+      "name": "\\ae",
+      "syntax": "\\ae",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "lowercase ae ligature (\u00e6)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\AE": {
+      "name": "\\AE",
+      "syntax": "\\AE",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "uppercase AE ligature (\u00c6)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\aa": {
+      "name": "\\aa",
+      "syntax": "\\aa",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "lowercase a with ring (\u00e5)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\AA": {
+      "name": "\\AA",
+      "syntax": "\\AA",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "uppercase A with ring (\u00c5)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\o": {
+      "name": "\\o",
+      "syntax": "\\o",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "lowercase o with slash (\u00f8)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\O": {
+      "name": "\\O",
+      "syntax": "\\O",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "uppercase O with slash (\u00d8)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\l": {
+      "name": "\\l",
+      "syntax": "\\l",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "lowercase l with slash (\u0142)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\L": {
+      "name": "\\L",
+      "syntax": "\\L",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "uppercase L with slash (\u0141)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\ss": {
+      "name": "\\ss",
+      "syntax": "\\ss",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "German sharp s (\u00df)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "?`": {
+      "name": "?`",
+      "syntax": "?`",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "inverted question mark (\u00bf)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "!`": {
+      "name": "!`",
+      "syntax": "!`",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "inverted exclamation mark (\u00a1)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\dag": {
+      "name": "\\dag",
+      "syntax": "\\dag",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "dagger symbol (\u2020)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\ddag": {
+      "name": "\\ddag",
+      "syntax": "\\ddag",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "double dagger symbol (\u2021)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\S": {
+      "name": "\\S",
+      "syntax": "\\S",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "section symbol (\u00a7)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\P": {
+      "name": "\\P",
+      "syntax": "\\P",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "paragraph symbol (\u00b6)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\copyright": {
+      "name": "\\copyright",
+      "syntax": "\\copyright",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "copyright symbol (\u00a9)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\pounds": {
+      "name": "\\pounds",
+      "syntax": "\\pounds",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "pound sterling symbol (\u00a3)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\#": {
+      "name": "\\#",
+      "syntax": "\\#",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "hash/number sign (#)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\$": {
+      "name": "\\$",
+      "syntax": "\\$",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "dollar sign ($)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\%": {
+      "name": "\\%",
+      "syntax": "\\%",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "percent sign (%)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\&": {
+      "name": "\\&",
+      "syntax": "\\&",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "ampersand (&)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\_": {
+      "name": "\\_",
+      "syntax": "\\_",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "underscore (_)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\{": {
+      "name": "\\{",
+      "syntax": "\\{",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "left brace ({)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\}": {
+      "name": "\\}",
+      "syntax": "\\}",
+      "command_type": "text_symbol",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "right brace (})",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.2.2, C.3.4",
+          "pages": "38-39, 173"
+        }
+      ]
+    },
+    "\\,": {
+      "name": "\\,",
+      "syntax": "\\,",
+      "command_type": "text_spacing",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "thin space",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.7, C.7.7",
+          "pages": "50-51, 191"
+        }
+      ]
+    },
+    "\\!": {
+      "name": "\\!",
+      "syntax": "\\!",
+      "command_type": "text_spacing",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "negative thin space",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.7, C.7.7",
+          "pages": "50-51, 191"
+        }
+      ]
+    },
+    "\\:": {
+      "name": "\\:",
+      "syntax": "\\:",
+      "command_type": "text_spacing",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "medium space",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.7, C.7.7",
+          "pages": "50-51, 191"
+        }
+      ]
+    },
+    "\\;": {
+      "name": "\\;",
+      "syntax": "\\;",
+      "command_type": "text_spacing",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "thick space",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.7, C.7.7",
+          "pages": "50-51, 191"
+        }
+      ]
+    },
+    "\\ ": {
+      "name": "\\ ",
+      "syntax": "\\ ",
+      "command_type": "text_spacing",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "interword space",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.7, C.7.7",
+          "pages": "50-51, 191"
         }
       ]
     }

@@ -4,6 +4,7 @@
 # Copyright (c) 2025 Jason Stuber
 # Licensed under the MIT License. See the LICENSE file for more details.
 
+from typing import List
 from latex_parser.latex.definitions.command_definition import CommandDefinition, CommandType, CommandRobustness, CommandMode
 from latex_parser.latex.definitions.command_definition_registry import CommandDefinitionRegistry
 
@@ -452,6 +453,176 @@ def register_log_like_function_commands(registry: CommandDefinitionRegistry) -> 
     add_loglike_cmd('\\tanh', '\\tanh', 'hyperbolic tangent function')
     add_loglike_cmd('\\bmod', '\\bmod', 'modulus operation')
     add_loglike_cmd('\\pmod', '\\pmod{n}', 'typesets the modulus in congruence relations, displaying (mod n) in math mode')
+
+
+def register_math_accent_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register math accent commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for math accent commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.3.6, C.7.6', 'pages': '49-50, 190-191'}]
+    
+    def add_accent_cmd(name: str, syntax: str, description: str) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.MATH_ACCENT,
+            robustness=CommandRobustness.ROBUST, modes=[CommandMode.MATH],
+            description=description, references=references
+        ))
+    
+    # Register math accent commands
+    add_accent_cmd('\\hat', '\\hat{text}', 'draw hat over text')
+    add_accent_cmd('\\check', '\\check{text}', 'draw check accent over text')
+    add_accent_cmd('\\breve', '\\breve{text}', 'draw breve accent over text')
+    add_accent_cmd('\\acute', '\\acute{text}', 'draw acute accent over text')
+    add_accent_cmd('\\grave', '\\grave{text}', 'draw grave accent over text')
+    add_accent_cmd('\\tilde', '\\tilde{text}', 'draw tilde over text')
+    add_accent_cmd('\\bar', '\\bar{text}', 'draw bar over text')
+    add_accent_cmd('\\vec', '\\vec{text}', 'draw vector arrow over text')
+    add_accent_cmd('\\dot', '\\dot{text}', 'draw single dot over text')
+    add_accent_cmd('\\ddot', '\\ddot{text}', 'draw double dot over text')
+    add_accent_cmd('\\widehat', '\\widehat{text}', 'draw wide hat over text')
+    add_accent_cmd('\\widetilde', '\\widetilde{text}', 'draw wide tilde over text')
+
+
+def register_math_enclosure_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register math enclosure commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for math enclosure commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.3.6, C.7.6', 'pages': '49-50, 190-191'}]
+    
+    def add_enclosure_cmd(name: str, syntax: str, description: str, robustness: CommandRobustness, modes: List[CommandMode]) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.MATH_ENCLOSURE,
+            robustness=robustness, modes=modes,
+            description=description, references=references
+        ))
+    
+    # Register math enclosure commands
+    add_enclosure_cmd('\\overline', '\\overline{text}', 'draw horizontal line over text', 
+                     CommandRobustness.ROBUST, [CommandMode.MATH])
+    add_enclosure_cmd('\\underline', '\\underline{text}', 'draw horizontal line under text', 
+                     CommandRobustness.FRAGILE, [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_enclosure_cmd('\\overbrace', '\\overbrace{text}', 'draw horizontal brace over text', 
+                     CommandRobustness.ROBUST, [CommandMode.MATH])
+    add_enclosure_cmd('\\underbrace', '\\underbrace{text}', 'draw horizontal brace under text', 
+                     CommandRobustness.ROBUST, [CommandMode.MATH])
+
+
+def register_text_accent_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register text accent commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for text accent commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.2.1, C.3.4', 'pages': '38, 173'}]
+    
+    def add_text_accent_cmd(name: str, syntax: str, description: str) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.TEXT_ACCENT,
+            robustness=CommandRobustness.ROBUST, modes=[CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT],
+            description=description, references=references
+        ))
+    
+    # Register text accent commands
+    add_text_accent_cmd("\\'", "\\'{character}", 'acute accent (e.g., é)')
+    add_text_accent_cmd('\\`', '\\`{character}', 'grave accent (e.g., è)')
+    add_text_accent_cmd('\\^', '\\^{character}', 'circumflex accent (e.g., ê)')
+    add_text_accent_cmd('\\"', '\\"{character}', 'diaeresis/umlaut accent (e.g., ë)')
+    add_text_accent_cmd('\\~', '\\~{character}', 'tilde accent (e.g., ñ)')
+    add_text_accent_cmd('\\=', '\\={character}', 'macron accent (e.g., ō)')
+    add_text_accent_cmd('\\.', '\\.{character}', 'dot accent (e.g., ṅ)')
+    add_text_accent_cmd('\\u', '\\u{character}', 'breve accent (e.g., ă)')
+    add_text_accent_cmd('\\v', '\\v{character}', 'caron/háček accent (e.g., č)')
+    add_text_accent_cmd('\\H', '\\H{character}', 'double acute accent (e.g., ő)')
+    add_text_accent_cmd('\\t', '\\t{characters}', 'tie accent (connects two characters)')
+    add_text_accent_cmd('\\c', '\\c{character}', 'cedilla accent (e.g., ç)')
+    add_text_accent_cmd('\\d', '\\d{character}', 'dot-under accent (e.g., ḍ)')
+    add_text_accent_cmd('\\b', '\\b{character}', 'bar-under accent (e.g., ṯ)')
+
+
+def register_text_symbol_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register text symbol commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for text symbol commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.2.2, C.3.4', 'pages': '38-39, 173'}]
+    
+    def add_text_symbol_cmd(name: str, syntax: str, description: str, modes: List[CommandMode]) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.TEXT_SYMBOL,
+            robustness=CommandRobustness.ROBUST, modes=modes,
+            description=description, references=references
+        ))
+    
+    # Register non-English text symbols (paragraph and left-right modes only)
+    add_text_symbol_cmd('\\oe', '\\oe', 'lowercase oe ligature (œ)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\OE', '\\OE', 'uppercase OE ligature (Œ)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\ae', '\\ae', 'lowercase ae ligature (æ)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\AE', '\\AE', 'uppercase AE ligature (Æ)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\aa', '\\aa', 'lowercase a with ring (å)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\AA', '\\AA', 'uppercase A with ring (Å)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\o', '\\o', 'lowercase o with slash (ø)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\O', '\\O', 'uppercase O with slash (Ø)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\l', '\\l', 'lowercase l with slash (ł)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\L', '\\L', 'uppercase L with slash (Ł)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\ss', '\\ss', 'German sharp s (ß)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('?`', '?`', 'inverted question mark (¿)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('!`', '!`', 'inverted exclamation mark (¡)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Register special punctuation symbols
+    add_text_symbol_cmd('\\dag', '\\dag', 'dagger symbol (†)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\ddag', '\\ddag', 'double dagger symbol (‡)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\S', '\\S', 'section symbol (§)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\P', '\\P', 'paragraph symbol (¶)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\copyright', '\\copyright', 'copyright symbol (©)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_text_symbol_cmd('\\pounds', '\\pounds', 'pound sterling symbol (£)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Register special character escape commands
+    add_text_symbol_cmd('\\#', '\\#', 'hash/number sign (#)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\$', '\\$', 'dollar sign ($)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\%', '\\%', 'percent sign (%)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\&', '\\&', 'ampersand (&)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\_', '\\_', 'underscore (_)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\{', '\\{', 'left brace ({)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_text_symbol_cmd('\\}', '\\}', 'right brace (})', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+
+
+def register_text_spacing_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register text spacing commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for text spacing commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.3.7, C.7.7', 'pages': '50-51, 191'}]
+    
+    def add_spacing_cmd(name: str, syntax: str, description: str) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.TEXT_SPACING,
+            robustness=CommandRobustness.ROBUST, modes=[CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT],
+            description=description, references=references
+        ))
+    
+    # Register text spacing commands
+    add_spacing_cmd('\\,', '\\,', 'thin space')
+    add_spacing_cmd('\\!', '\\!', 'negative thin space')
+    add_spacing_cmd('\\:', '\\:', 'medium space')
+    add_spacing_cmd('\\;', '\\;', 'thick space')
+    add_spacing_cmd('\\ ', '\\ ', 'interword space')
+
         
 def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     """
@@ -469,3 +640,8 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_misc_symbol_commands(registry)
     register_variable_sized_symbol_commands(registry)
     register_log_like_function_commands(registry)
+    register_math_accent_commands(registry)
+    register_math_enclosure_commands(registry)
+    register_text_accent_commands(registry)
+    register_text_symbol_commands(registry)
+    register_text_spacing_commands(registry)
