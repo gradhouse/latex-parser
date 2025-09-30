@@ -8,6 +8,7 @@ import copy
 import json
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic, Optional, Union, Type, Any
+from datetime import datetime, timezone
 
 T = TypeVar('T')
 
@@ -268,7 +269,8 @@ class Registry(Generic[T], ABC):
         serializable_registry = {
             "metadata": {
                 "registry_type": entry_type.__name__,
-                "registry_module": entry_type.__module__
+                "registry_module": entry_type.__module__,
+                "generated_at": datetime.now(timezone.utc).isoformat()
             },
             "entries": {}
         }
