@@ -22,6 +22,7 @@ from latex_parser.latex.definitions.register.register_command_definitions import
     register_text_symbol_commands,
     register_text_spacing_commands,
     register_delimiter_commands,
+    register_bibliography_citation_commands,
     register_latex_commands
 )
 
@@ -378,7 +379,17 @@ class TestRegisterLatexCommands:
             '(', ')', '[', ']', '|', '\\{', '\\}', '\\bigl', '\\bigr', '\\Bigl', '\\Bigr', '\\biggl', '\\biggr', 
             '\\Biggl', '\\Biggr', '\\left', '\\right', '\\langle', '\\rangle', '\\lceil', '\\rceil', 
             '\\lfloor', '\\rfloor', '/', '\\backslash', '\\|',
-            '\\uparrow', '\\downarrow', '\\updownarrow', '\\Uparrow', '\\Downarrow', '\\Updownarrow'
+            '\\uparrow', '\\downarrow', '\\updownarrow', '\\Uparrow', '\\Downarrow', '\\Updownarrow',
+            # Bibliography and citation commands
+            '\\bibliography', '\\bibliographystyle', '\\bibitem', '\\cite', '\\nocite',
+            # Font declaration commands (robust)
+            '\\bf', '\\bfseries', '\\cal', '\\em', '\\it', '\\itshape', '\\mdseries', '\\mit', 
+            '\\normalfont', '\\rm', '\\rmfamily', '\\sc', '\\scshape', '\\sf', '\\sffamily', 
+            '\\sl', '\\slshape', '\\textbf', '\\textit', '\\textmd', '\\textnormal', '\\textrm', 
+            '\\textsc', '\\textsf', '\\textsl', '\\texttt', '\\textup', '\\tt', '\\ttfamily', '\\upshape',
+            # Font size commands (fragile)
+            '\\tiny', '\\scriptsize', '\\footnotesize', '\\small', '\\normalsize', 
+            '\\large', '\\Large', '\\LARGE', '\\huge', '\\Huge'
         }
         
         registered_keys = set(registry.list_keys())
@@ -409,8 +420,8 @@ class TestRegisterLatexCommands:
         # Expected counts based on individual function tests:
         # Document: 8, Sectioning: 14, Greek: 40, Binary: 36, Relation: 36, 
         # Arrow: 26 (removed 6 arrows), Misc: 31 (removed 2), Variable-sized: 13, Log-like: 34, 
-        # Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 24 (removed 2), Text spacing: 5, Delimiter: 32
-        expected_total = 8 + 14 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32
+        # Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 24 (removed 2), Text spacing: 5, Delimiter: 32, Bibliography: 5, Font: 40
+        expected_total = 8 + 14 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32 + 5 + 40
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total, f"Expected {expected_total} total commands, got {actual_total}"
@@ -495,3 +506,51 @@ class TestRegisterDelimiterCommands:
             entry = registry.get_entry(cmd)
             data = entry.as_dict()
             assert '⟨delimiter⟩' in data['syntax'], f"Command {cmd} should have delimiter syntax"
+
+
+class TestRegisterBibliographyCitationCommands:
+    """Test register_bibliography_citation_commands function."""
+
+    def test_registers_expected_bibliography_citation_commands(self):
+        """Test that all expected bibliography and citation commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_bibliography_citation_commands(registry)
+        
+        expected_commands = {
+            '\\bibliography', '\\bibliographystyle', '\\bibitem', '\\cite', '\\nocite'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+    def test_bibliography_citation_command_robustness(self):
+        """Test that bibliography and citation commands have appropriate robustness assignments."""
+        registry = CommandDefinitionRegistry()
+        register_bibliography_citation_commands(registry)
+        
+        # Robust commands
+        robust_commands = ['\\bibliography', '\\bibliographystyle', '\\bibitem']
+        for cmd in robust_commands:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            assert data['robustness'] == 'robust', f"Command {cmd} should be robust but is {data['robustness']}"
+        
+        # Fragile commands
+        fragile_commands = ['\\cite', '\\nocite']
+        for cmd in fragile_commands:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            assert data['robustness'] == 'fragile', f"Command {cmd} should be fragile but is {data['robustness']}"
+
+    def test_bibliography_citation_command_types(self):
+        """Test that all bibliography and citation commands have the correct command type."""
+        registry = CommandDefinitionRegistry()
+        register_bibliography_citation_commands(registry)
+        
+        all_commands = ['\\bibliography', '\\bibliographystyle', '\\bibitem', '\\cite', '\\nocite']
+        for cmd in all_commands:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            assert data['command_type'] == 'bibliography', f"Command {cmd} should have bibliography type but has {data['command_type']}"
