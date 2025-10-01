@@ -1,0 +1,67 @@
+{
+  "metadata": {
+    "registry_type": "EnvironmentDefinition",
+    "registry_module": "latex_parser.latex.definitions.environment_definition",
+    "generated_at": "2025-10-01T14:13:07.353497+00:00"
+  },
+  "entries": {
+    "array": {
+      "name": "array",
+      "syntax": "\\begin{array}[pos]{cols}",
+      "environment_type": "tabular",
+      "robustness": "robust",
+      "modes": [
+        "math_inline",
+        "math_display"
+      ],
+      "description": "tabular environment for math mode with column alignment specification",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "C.10.2",
+          "pages": "204-207"
+        }
+      ]
+    },
+    "tabular": {
+      "name": "tabular",
+      "syntax": "\\begin{tabular}[pos]{cols}",
+      "environment_type": "tabular",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math_inline",
+        "math_display"
+      ],
+      "description": "tabular environment for creating tables with column alignment specification",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "C.10.2",
+          "pages": "204-207"
+        }
+      ]
+    },
+    "tabular*": {
+      "name": "tabular*",
+      "syntax": "\\begin{tabular*}{width}[pos]{cols}",
+      "environment_type": "tabular",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math_inline",
+        "math_display"
+      ],
+      "description": "tabular environment with specified total width for creating tables",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "C.10.2",
+          "pages": "204-207"
+        }
+      ]
+    }
+  }
+}
