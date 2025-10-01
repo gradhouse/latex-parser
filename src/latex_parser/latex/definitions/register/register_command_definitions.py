@@ -303,12 +303,6 @@ def register_arrow_commands(registry: CommandDefinitionRegistry) -> None:
     add_arrow_cmd('\\rightharpoonup', '\\rightharpoonup', 'right harpoon up')
     add_arrow_cmd('\\rightharpoondown', '\\rightharpoondown', 'right harpoon down')
     add_arrow_cmd('\\leadsto', '\\leadsto', 'leads to arrow')
-    add_arrow_cmd('\\uparrow', '\\uparrow', 'up arrow')
-    add_arrow_cmd('\\Uparrow', '\\Uparrow', 'double up arrow')
-    add_arrow_cmd('\\downarrow', '\\downarrow', 'down arrow')
-    add_arrow_cmd('\\Downarrow', '\\Downarrow', 'double down arrow')
-    add_arrow_cmd('\\updownarrow', '\\updownarrow', 'up-down arrow')
-    add_arrow_cmd('\\Updownarrow', '\\Updownarrow', 'double up-down arrow')
     add_arrow_cmd('\\nearrow', '\\nearrow', 'north-east arrow')
     add_arrow_cmd('\\searrow', '\\searrow', 'south-east arrow')
     add_arrow_cmd('\\swarrow', '\\swarrow', 'south-west arrow')
@@ -348,7 +342,6 @@ def register_misc_symbol_commands(registry: CommandDefinitionRegistry) -> None:
     add_misc_cmd('\\surd', '\\surd', 'square root sign')
     add_misc_cmd('\\top', '\\top', 'top (truth)')
     add_misc_cmd('\\bot', '\\bot', 'bottom (falsity)')
-    add_misc_cmd('\\|', '\\|', 'vertical double bar')
     add_misc_cmd('\\angle', '\\angle', 'angle symbol')
     add_misc_cmd('\\forall', '\\forall', 'for all')
     add_misc_cmd('\\exists', '\\exists', 'there exists')
@@ -356,7 +349,6 @@ def register_misc_symbol_commands(registry: CommandDefinitionRegistry) -> None:
     add_misc_cmd('\\flat', '\\flat', 'flat (music)')
     add_misc_cmd('\\natural', '\\natural', 'natural (music)')
     add_misc_cmd('\\sharp', '\\sharp', 'sharp (music)')
-    add_misc_cmd('\\backslash', '\\backslash', 'backslash')
     add_misc_cmd('\\partial', '\\partial', 'partial derivative symbol')
     add_misc_cmd('\\infty', '\\infty', 'infinity symbol')
     add_misc_cmd('\\Box', '\\Box', 'box symbol')
@@ -595,8 +587,6 @@ def register_text_symbol_commands(registry: CommandDefinitionRegistry) -> None:
     add_text_symbol_cmd('\\%', '\\%', 'percent sign (%)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
     add_text_symbol_cmd('\\&', '\\&', 'ampersand (&)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
     add_text_symbol_cmd('\\_', '\\_', 'underscore (_)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
-    add_text_symbol_cmd('\\{', '\\{', 'left brace ({)', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
-    add_text_symbol_cmd('\\}', '\\}', 'right brace (})', [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
 
 
 def register_text_spacing_commands(registry: CommandDefinitionRegistry) -> None:
@@ -623,6 +613,73 @@ def register_text_spacing_commands(registry: CommandDefinitionRegistry) -> None:
     add_spacing_cmd('\\;', '\\;', 'thick space')
     add_spacing_cmd('\\ ', '\\ ', 'interword space')
 
+
+def register_delimiter_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register delimiter and delimiter sizing commands in the command definition registry.
+    Includes all delimiters from Lamport: ( [ \\{ \\lfloor \\lceil \\langle / | 
+    ) ] \\} \\rfloor \\rceil \\rangle \\backslash \\| \\uparrow \\downarrow 
+    \\updownarrow \\Uparrow \\Downarrow and \\Updownarrow.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for delimiter commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.3.4, C.7.5', 'pages': '46-47, 190'}]
+    
+    def add_delimiter_cmd(name: str, syntax: str, description: str, modes: List[CommandMode]) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.DELIMITER,
+            robustness=CommandRobustness.ROBUST, modes=modes,
+            description=description, references=references
+        ))
+    
+    # Delimiter sizing commands (primarily math mode)
+    add_delimiter_cmd('\\bigl', '\\bigl⟨delimiter⟩', 'applies big sizing to left delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\bigr', '\\bigr⟨delimiter⟩', 'applies big sizing to right delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Bigl', '\\Bigl⟨delimiter⟩', 'applies Big sizing to left delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Bigr', '\\Bigr⟨delimiter⟩', 'applies Big sizing to right delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\biggl', '\\biggl⟨delimiter⟩', 'applies bigg sizing to left delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\biggr', '\\biggr⟨delimiter⟩', 'applies bigg sizing to right delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Biggl', '\\Biggl⟨delimiter⟩', 'applies Bigg sizing to left delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Biggr', '\\Biggr⟨delimiter⟩', 'applies Bigg sizing to right delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\left', '\\left⟨delimiter⟩...\\right⟨delimiter⟩', 'auto-sizes left delimiter (paired with \\right)', [CommandMode.MATH])
+    add_delimiter_cmd('\\right', '\\right⟨delimiter⟩', 'auto-sizes right delimiter (paired with \\left)', [CommandMode.MATH])
+    
+    # Basic delimiter symbols (parentheses, brackets, and vertical bars work in all modes)
+    add_delimiter_cmd('(', '(', 'left parenthesis delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_delimiter_cmd(')', ')', 'right parenthesis delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_delimiter_cmd('[', '[', 'left square bracket delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_delimiter_cmd(']', ']', 'right square bracket delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_delimiter_cmd('|', '|', 'vertical bar delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Brace delimiters 
+    add_delimiter_cmd('\\{', '\\{', 'left brace delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_delimiter_cmd('\\}', '\\}', 'right brace delimiter', [CommandMode.MATH, CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Math-only named delimiters
+    add_delimiter_cmd('\\langle', '\\langle', 'left angle bracket delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\rangle', '\\rangle', 'right angle bracket delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\lceil', '\\lceil', 'left ceiling delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\rceil', '\\rceil', 'right ceiling delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\lfloor', '\\lfloor', 'left floor delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\rfloor', '\\rfloor', 'right floor delimiter', [CommandMode.MATH])
+    
+    # Slash and backslash delimiters (math mode)
+    add_delimiter_cmd('/', '/', 'forward slash delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\backslash', '\\backslash', 'backslash delimiter', [CommandMode.MATH])
+    
+    # Double vertical bar (math mode)
+    add_delimiter_cmd('\\|', '\\|', 'double vertical bar delimiter', [CommandMode.MATH])
+    
+    # Arrow delimiters (math mode only)
+    add_delimiter_cmd('\\uparrow', '\\uparrow', 'up arrow delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\downarrow', '\\downarrow', 'down arrow delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\updownarrow', '\\updownarrow', 'up-down arrow delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Uparrow', '\\Uparrow', 'double up arrow delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Downarrow', '\\Downarrow', 'double down arrow delimiter', [CommandMode.MATH])
+    add_delimiter_cmd('\\Updownarrow', '\\Updownarrow', 'double up-down arrow delimiter', [CommandMode.MATH])
+
         
 def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     """
@@ -645,3 +702,4 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_text_accent_commands(registry)
     register_text_symbol_commands(registry)
     register_text_spacing_commands(registry)
+    register_delimiter_commands(registry)

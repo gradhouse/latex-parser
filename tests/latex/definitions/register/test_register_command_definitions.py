@@ -21,6 +21,7 @@ from latex_parser.latex.definitions.register.register_command_definitions import
     register_text_accent_commands,
     register_text_symbol_commands,
     register_text_spacing_commands,
+    register_delimiter_commands,
     register_latex_commands
 )
 
@@ -138,12 +139,12 @@ class TestRegisterArrowCommands:
         register_arrow_commands(registry)
         
         expected_commands = {
-            '\\Downarrow', '\\Leftarrow', '\\Leftrightarrow', '\\Longleftarrow', '\\Longleftrightarrow', 
-            '\\Longrightarrow', '\\Rightarrow', '\\Uparrow', '\\Updownarrow', '\\downarrow', '\\hookleftarrow', 
-            '\\hookrightarrow', '\\leadsto', '\\leftarrow', '\\leftharpoondown', '\\leftharpoonup', 
-            '\\leftrightarrow', '\\longleftarrow', '\\longleftrightarrow', '\\longmapsto', '\\longrightarrow', 
-            '\\mapsto', '\\nearrow', '\\nwarrow', '\\rightarrow', '\\rightharpoondown', '\\rightharpoonup', 
-            '\\rightleftharpoons', '\\searrow', '\\swarrow', '\\uparrow', '\\updownarrow'
+            '\\Leftarrow', '\\Leftrightarrow', '\\Longleftarrow', '\\Longleftrightarrow',
+            '\\Longrightarrow', '\\Rightarrow', '\\hookleftarrow',
+            '\\hookrightarrow', '\\leadsto', '\\leftarrow', '\\leftharpoondown', '\\leftharpoonup',
+            '\\leftrightarrow', '\\longleftarrow', '\\longleftrightarrow', '\\longmapsto', '\\longrightarrow',
+            '\\mapsto', '\\nearrow', '\\nwarrow', '\\rightarrow', '\\rightharpoondown', '\\rightharpoonup',
+            '\\rightleftharpoons', '\\searrow', '\\swarrow'
         }
         
         registered_keys = set(registry.list_keys())
@@ -161,10 +162,10 @@ class TestRegisterMiscSymbolCommands:
         register_misc_symbol_commands(registry)
         
         expected_commands = {
-            '\\Box', '\\Diamond', '\\Im', '\\Re', '\\aleph', '\\angle', '\\backslash', '\\bot', '\\clubsuit', 
-            '\\diamondsuit', '\\ell', '\\emptyset', '\\exists', '\\flat', '\\forall', '\\hbar', '\\heartsuit', 
-            '\\imath', '\\infty', '\\jmath', '\\mho', '\\nabla', '\\natural', '\\neg', '\\partial', '\\prime', 
-            '\\sharp', '\\spadesuit', '\\surd', '\\top', '\\triangle', '\\wp', '\\|'
+            '\\Box', '\\Diamond', '\\Im', '\\Re', '\\aleph', '\\angle', '\\bot', '\\clubsuit',
+            '\\diamondsuit', '\\ell', '\\emptyset', '\\exists', '\\flat', '\\forall', '\\hbar', '\\heartsuit',
+            '\\imath', '\\infty', '\\jmath', '\\mho', '\\nabla', '\\natural', '\\neg', '\\partial', '\\prime',
+            '\\sharp', '\\spadesuit', '\\surd', '\\top', '\\triangle', '\\wp'
         }
         
         registered_keys = set(registry.list_keys())
@@ -277,9 +278,9 @@ class TestRegisterTextSymbolCommands:
         register_text_symbol_commands(registry)
         
         expected_commands = {
-            '!`', '?`', '\\AA', '\\AE', '\\L', '\\O', '\\OE', '\\P', '\\S', '\\aa', '\\ae', 
+            '!`', '?`', '\\AA', '\\AE', '\\L', '\\O', '\\OE', '\\P', '\\S', '\\aa', '\\ae',
             '\\copyright', '\\dag', '\\ddag', '\\l', '\\o', '\\oe', '\\pounds', '\\ss',
-            '\\#', '\\$', '\\%', '\\&', '\\_', '\\{', '\\}'
+            '\\#', '\\$', '\\%', '\\&', '\\_'
         }
         
         registered_keys = set(registry.list_keys())
@@ -372,7 +373,12 @@ class TestRegisterLatexCommands:
             '\\copyright', '\\dag', '\\ddag', '\\l', '\\o', '\\oe', '\\pounds', '\\ss',
             '\\#', '\\$', '\\%', '\\&', '\\_', '\\{', '\\}',
             # Text spacing commands
-            '\\ ', '\\!', '\\,', '\\:', '\\;'
+            '\\ ', '\\!', '\\,', '\\:', '\\;',
+            # Delimiter commands
+            '(', ')', '[', ']', '|', '\\{', '\\}', '\\bigl', '\\bigr', '\\Bigl', '\\Bigr', '\\biggl', '\\biggr', 
+            '\\Biggl', '\\Biggr', '\\left', '\\right', '\\langle', '\\rangle', '\\lceil', '\\rceil', 
+            '\\lfloor', '\\rfloor', '/', '\\backslash', '\\|',
+            '\\uparrow', '\\downarrow', '\\updownarrow', '\\Uparrow', '\\Downarrow', '\\Updownarrow'
         }
         
         registered_keys = set(registry.list_keys())
@@ -402,8 +408,90 @@ class TestRegisterLatexCommands:
         
         # Expected counts based on individual function tests:
         # Document: 8, Sectioning: 14, Greek: 40, Binary: 36, Relation: 36, 
-        # Arrow: 32, Misc: 33, Variable-sized: 13, Log-like: 34, Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 26, Text spacing: 5
-        expected_total = 8 + 14 + 40 + 36 + 36 + 32 + 33 + 13 + 34 + 12 + 4 + 14 + 26 + 5
+        # Arrow: 26 (removed 6 arrows), Misc: 31 (removed 2), Variable-sized: 13, Log-like: 34, 
+        # Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 24 (removed 2), Text spacing: 5, Delimiter: 32
+        expected_total = 8 + 14 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total, f"Expected {expected_total} total commands, got {actual_total}"
+
+
+class TestRegisterDelimiterCommands:
+    """Test register_delimiter_commands function."""
+
+    def test_registers_expected_delimiter_commands(self):
+        """Test that all expected delimiter commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_delimiter_commands(registry)
+        
+        expected_commands = {
+            # Basic delimiters (work in all modes)
+            '(', ')', '[', ']', '|', '\\{', '\\}',
+            # Sizing commands (math mode only)
+            '\\bigl', '\\bigr', '\\Bigl', '\\Bigr', '\\biggl', '\\biggr', 
+            '\\Biggl', '\\Biggr', '\\left', '\\right',
+            # Named delimiters (math mode only)
+            '\\langle', '\\rangle', '\\lceil', '\\rceil', '\\lfloor', '\\rfloor',
+            # Slash and backslash delimiters
+            '/', '\\backslash',
+            # Double vertical bar
+            '\\|',
+            # Arrow delimiters (math mode only)
+            '\\uparrow', '\\downarrow', '\\updownarrow', '\\Uparrow', '\\Downarrow', '\\Updownarrow'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+    def test_delimiter_command_modes(self):
+        """Test that delimiter commands have appropriate mode assignments."""
+        registry = CommandDefinitionRegistry()
+        register_delimiter_commands(registry)
+        
+        # Universal delimiters should work in all modes
+        universal_delimiters = ['(', ')', '[', ']', '|', '\\{', '\\}']
+        for cmd in universal_delimiters:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            expected_modes = ['math', 'paragraph', 'left_right']
+            assert data['modes'] == expected_modes, f"Command {cmd} should work in all modes but has modes {data['modes']}"
+        
+        # Math-only sizing commands
+        math_only_sizing = ['\\bigl', '\\bigr', '\\Bigl', '\\Bigr', '\\biggl', '\\biggr', 
+                           '\\Biggl', '\\Biggr', '\\left', '\\right']
+        for cmd in math_only_sizing:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            expected_modes = ['math']
+            assert data['modes'] == expected_modes, f"Command {cmd} should be math-only but has modes {data['modes']}"
+        
+        # Math-only named delimiters and symbols
+        math_only_named = ['\\langle', '\\rangle', '\\lceil', '\\rceil', '\\lfloor', '\\rfloor',
+                          '/', '\\backslash', '\\|',
+                          '\\uparrow', '\\downarrow', '\\updownarrow', '\\Uparrow', '\\Downarrow', '\\Updownarrow']
+        for cmd in math_only_named:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            expected_modes = ['math']
+            assert data['modes'] == expected_modes, f"Command {cmd} should be math-only but has modes {data['modes']}"
+
+    def test_delimiter_special_syntax(self):
+        """Test that delimiter commands have special syntax notation."""
+        registry = CommandDefinitionRegistry()
+        register_delimiter_commands(registry)
+        
+        # Test left/right sizing commands have special syntax
+        left_right_commands = ['\\left', '\\right']
+        for cmd in left_right_commands:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            assert '⟨delimiter⟩' in data['syntax'], f"Command {cmd} should have special delimiter syntax"
+        
+        # Test sizing commands have sizing syntax
+        sizing_commands = ['\\bigl', '\\bigr', '\\Bigl', '\\Bigr']
+        for cmd in sizing_commands:
+            entry = registry.get_entry(cmd)
+            data = entry.as_dict()
+            assert '⟨delimiter⟩' in data['syntax'], f"Command {cmd} should have delimiter syntax"

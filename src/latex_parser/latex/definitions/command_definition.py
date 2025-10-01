@@ -48,6 +48,7 @@ class CommandType(Enum):
     TEXT_ACCENT = 'text_accent'                               # Text accent commands (e.g., \', \`, \^, \", \~)
     TEXT_SYMBOL = 'text_symbol'                               # Text symbol commands (e.g., \oe, \ae, \ss, \dag, \S)
     TEXT_SPACING = 'text_spacing'                             # Text spacing commands (e.g., \,, \!, \:, \;, \ )
+    DELIMITER = 'delimiter'                                   # Delimiter and delimiter sizing commands (e.g., \bigl, \left, (, [)
     
 
 class CommandDefinition:

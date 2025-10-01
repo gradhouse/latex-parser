@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-09-30T21:41:05.290383+00:00"
+    "generated_at": "2025-10-01T08:41:09.431895+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -2657,108 +2657,6 @@
         }
       ]
     },
-    "\\uparrow": {
-      "name": "\\uparrow",
-      "syntax": "\\uparrow",
-      "command_type": "math_symbol_arrow",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "up arrow",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
-    "\\Uparrow": {
-      "name": "\\Uparrow",
-      "syntax": "\\Uparrow",
-      "command_type": "math_symbol_arrow",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "double up arrow",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
-    "\\downarrow": {
-      "name": "\\downarrow",
-      "syntax": "\\downarrow",
-      "command_type": "math_symbol_arrow",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "down arrow",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
-    "\\Downarrow": {
-      "name": "\\Downarrow",
-      "syntax": "\\Downarrow",
-      "command_type": "math_symbol_arrow",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "double down arrow",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
-    "\\updownarrow": {
-      "name": "\\updownarrow",
-      "syntax": "\\updownarrow",
-      "command_type": "math_symbol_arrow",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "up-down arrow",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
-    "\\Updownarrow": {
-      "name": "\\Updownarrow",
-      "syntax": "\\Updownarrow",
-      "command_type": "math_symbol_arrow",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "double up-down arrow",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
     "\\nearrow": {
       "name": "\\nearrow",
       "syntax": "\\nearrow",
@@ -3082,23 +2980,6 @@
         }
       ]
     },
-    "\\|": {
-      "name": "\\|",
-      "syntax": "\\|",
-      "command_type": "math_symbol_misc",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "vertical double bar",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
     "\\angle": {
       "name": "\\angle",
       "syntax": "\\angle",
@@ -3210,23 +3091,6 @@
         "math"
       ],
       "description": "sharp (music)",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.3.2, C.7.3",
-          "pages": "41-45, 189-190"
-        }
-      ]
-    },
-    "\\backslash": {
-      "name": "\\backslash",
-      "syntax": "\\backslash",
-      "command_type": "math_symbol_misc",
-      "robustness": "robust",
-      "modes": [
-        "math"
-      ],
-      "description": "backslash",
       "references": [
         {
           "ref_id": "lamport_1994",
@@ -5154,44 +5018,6 @@
         }
       ]
     },
-    "\\{": {
-      "name": "\\{",
-      "syntax": "\\{",
-      "command_type": "text_symbol",
-      "robustness": "robust",
-      "modes": [
-        "paragraph",
-        "left_right",
-        "math"
-      ],
-      "description": "left brace ({)",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.2.2, C.3.4",
-          "pages": "38-39, 173"
-        }
-      ]
-    },
-    "\\}": {
-      "name": "\\}",
-      "syntax": "\\}",
-      "command_type": "text_symbol",
-      "robustness": "robust",
-      "modes": [
-        "paragraph",
-        "left_right",
-        "math"
-      ],
-      "description": "right brace (})",
-      "references": [
-        {
-          "ref_id": "lamport_1994",
-          "sections": "3.2.2, C.3.4",
-          "pages": "38-39, 173"
-        }
-      ]
-    },
     "\\,": {
       "name": "\\,",
       "syntax": "\\,",
@@ -5284,6 +5110,564 @@
           "ref_id": "lamport_1994",
           "sections": "3.3.7, C.7.7",
           "pages": "50-51, 191"
+        }
+      ]
+    },
+    "\\bigl": {
+      "name": "\\bigl",
+      "syntax": "\\bigl\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies big sizing to left delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\bigr": {
+      "name": "\\bigr",
+      "syntax": "\\bigr\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies big sizing to right delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Bigl": {
+      "name": "\\Bigl",
+      "syntax": "\\Bigl\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies Big sizing to left delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Bigr": {
+      "name": "\\Bigr",
+      "syntax": "\\Bigr\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies Big sizing to right delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\biggl": {
+      "name": "\\biggl",
+      "syntax": "\\biggl\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies bigg sizing to left delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\biggr": {
+      "name": "\\biggr",
+      "syntax": "\\biggr\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies bigg sizing to right delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Biggl": {
+      "name": "\\Biggl",
+      "syntax": "\\Biggl\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies Bigg sizing to left delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Biggr": {
+      "name": "\\Biggr",
+      "syntax": "\\Biggr\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "applies Bigg sizing to right delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\left": {
+      "name": "\\left",
+      "syntax": "\\left\u27e8delimiter\u27e9...\\right\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "auto-sizes left delimiter (paired with \\right)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\right": {
+      "name": "\\right",
+      "syntax": "\\right\u27e8delimiter\u27e9",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "auto-sizes right delimiter (paired with \\left)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "(": {
+      "name": "(",
+      "syntax": "(",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "left parenthesis delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    ")": {
+      "name": ")",
+      "syntax": ")",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "right parenthesis delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "[": {
+      "name": "[",
+      "syntax": "[",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "left square bracket delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "]": {
+      "name": "]",
+      "syntax": "]",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "right square bracket delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "|": {
+      "name": "|",
+      "syntax": "|",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "vertical bar delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\{": {
+      "name": "\\{",
+      "syntax": "\\{",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "left brace delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\}": {
+      "name": "\\}",
+      "syntax": "\\}",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math",
+        "paragraph",
+        "left_right"
+      ],
+      "description": "right brace delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\langle": {
+      "name": "\\langle",
+      "syntax": "\\langle",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left angle bracket delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\rangle": {
+      "name": "\\rangle",
+      "syntax": "\\rangle",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right angle bracket delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\lceil": {
+      "name": "\\lceil",
+      "syntax": "\\lceil",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left ceiling delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\rceil": {
+      "name": "\\rceil",
+      "syntax": "\\rceil",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right ceiling delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\lfloor": {
+      "name": "\\lfloor",
+      "syntax": "\\lfloor",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "left floor delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\rfloor": {
+      "name": "\\rfloor",
+      "syntax": "\\rfloor",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "right floor delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "/": {
+      "name": "/",
+      "syntax": "/",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "forward slash delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\backslash": {
+      "name": "\\backslash",
+      "syntax": "\\backslash",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "backslash delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\|": {
+      "name": "\\|",
+      "syntax": "\\|",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double vertical bar delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\uparrow": {
+      "name": "\\uparrow",
+      "syntax": "\\uparrow",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "up arrow delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\downarrow": {
+      "name": "\\downarrow",
+      "syntax": "\\downarrow",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "down arrow delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\updownarrow": {
+      "name": "\\updownarrow",
+      "syntax": "\\updownarrow",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "up-down arrow delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Uparrow": {
+      "name": "\\Uparrow",
+      "syntax": "\\Uparrow",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double up arrow delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Downarrow": {
+      "name": "\\Downarrow",
+      "syntax": "\\Downarrow",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double down arrow delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\Updownarrow": {
+      "name": "\\Updownarrow",
+      "syntax": "\\Updownarrow",
+      "command_type": "delimiter",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "double up-down arrow delimiter",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.3.4, C.7.5",
+          "pages": "46-47, 190"
         }
       ]
     }
