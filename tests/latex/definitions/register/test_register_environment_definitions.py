@@ -14,6 +14,7 @@ from latex_parser.latex.definitions.environment_definition import (
 from latex_parser.latex.definitions.register.register_environment_definitions import (
     register_tabular_environments, 
     register_latex_environments,
+    register_document_environments,
     register_document_section_environments,
     register_bibliography_environments
 )
@@ -472,6 +473,31 @@ class TestRegisterEquationEnvironments:
         assert 'deprecated' in eqnarray_env._environment_definition['description']
 
 
+class TestRegisterDocumentEnvironments:
+    """Test register_document_environments function."""
+
+    def test_registers_expected_document_environments(self):
+        """Test that all expected document environments are registered and only those."""
+        registry = EnvironmentDefinitionRegistry()
+        register_document_environments(registry)
+
+        expected_environments = {'document'}
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected environments are present
+        assert registered_keys == expected_environments, f"Expected {expected_environments}, got {registered_keys}"
+
+    def test_document_environments_have_correct_type(self):
+        """Test that document environments have correct environment type."""
+        registry = EnvironmentDefinitionRegistry()
+        register_document_environments(registry)
+
+        # Check that the document environments have correct environment_type
+        for env_name in ['document']:
+            assert registry.get_entry(env_name)._environment_definition['environment_type'] == EnvironmentType.DOCUMENT
+
+
 class TestRegisterDocumentSectionEnvironments:
     """Test register_document_section_environments function."""
 
@@ -546,8 +572,8 @@ class TestRegisterLatexEnvironments:
         registry = EnvironmentDefinitionRegistry()
         register_latex_environments(registry)
         
-        # Currently tabular (3) + basic math (2) + equation (14) + float (4) + alignment (3) + document section (1) + bibliography (1) environments are registered
-        expected_total = 28  # 3 tabular + 2 basic math + 14 equation + 4 float + 3 alignment + 1 document section + 1 bibliography environments
+        # Currently document (1) + tabular (3) + basic math (2) + equation (14) + float (4) + alignment (3) + document section (1) + bibliography (1) environments are registered
+        expected_total = 29  # 1 document + 3 tabular + 2 basic math + 14 equation + 4 float + 3 alignment + 1 document section + 1 bibliography environments
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total
@@ -634,8 +660,8 @@ class TestRegisterLatexEnvironments:
             elif robustness == EnvironmentRobustness.FRAGILE:
                 fragile_count += 1
         
-        # Currently tabular environments (3) are robust, basic math (2) are robust, equation environments (10) are robust, subsidiary (4) are fragile, float (4) are fragile, alignment (3) are robust, document section (1) are robust, bibliography (1) are robust
-        assert robust_count == 20
+        # Currently document (1) are robust, tabular environments (3) are robust, basic math (2) are robust, equation environments (10) are robust, subsidiary (4) are fragile, float (4) are fragile, alignment (3) are robust, document section (1) are robust, bibliography (1) are robust
+        assert robust_count == 21
         assert fragile_count == 8
 
     def test_mode_distribution(self):

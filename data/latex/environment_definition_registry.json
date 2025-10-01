@@ -2,9 +2,26 @@
   "metadata": {
     "registry_type": "EnvironmentDefinition",
     "registry_module": "latex_parser.latex.definitions.environment_definition",
-    "generated_at": "2025-10-01T18:07:18.643583+00:00"
+    "generated_at": "2025-10-01T18:19:12.522202+00:00"
   },
   "entries": {
+    "document": {
+      "name": "document",
+      "syntax": "\\begin{document}",
+      "environment_type": "document",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "main document environment that contains the entire document body",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "2.2.2",
+          "pages": "21"
+        }
+      ]
+    },
     "array": {
       "name": "array",
       "syntax": "\\begin{array}[pos]{cols}",

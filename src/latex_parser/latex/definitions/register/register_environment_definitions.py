@@ -212,6 +212,27 @@ def register_alignment_environments(registry: EnvironmentDefinitionRegistry) -> 
                      'right-aligns text lines within the environment, leaving left margin ragged')
 
 
+def register_document_environments(registry: EnvironmentDefinitionRegistry) -> None:
+    """
+    Register document environments in the environment definition registry.
+    
+    :param registry: EnvironmentDefinitionRegistry, the registry to populate
+    """
+    
+    # Document environment
+    registry.add_entry('document', EnvironmentDefinition(
+        name='document', 
+        syntax='\\begin{document}', 
+        environment_type=EnvironmentType.DOCUMENT,
+        robustness=EnvironmentRobustness.ROBUST, 
+        modes=[EnvironmentMode.PARAGRAPH],
+        description='main document environment that contains the entire document body',
+        references=[
+            {'ref_id': 'lamport_1994', 'sections': '2.2.2', 'pages': '21'}
+        ]
+    ))
+
+
 def register_document_section_environments(registry: EnvironmentDefinitionRegistry) -> None:
     """
     Register document section environments in the environment definition registry.
@@ -261,6 +282,7 @@ def register_latex_environments(registry: EnvironmentDefinitionRegistry) -> None
     :param registry: EnvironmentDefinitionRegistry, the registry to populate
     """
     
+    register_document_environments(registry)
     register_tabular_environments(registry)
     register_math_environments(registry)
     register_equation_environments(registry)
