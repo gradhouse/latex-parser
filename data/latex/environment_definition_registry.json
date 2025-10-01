@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "EnvironmentDefinition",
     "registry_module": "latex_parser.latex.definitions.environment_definition",
-    "generated_at": "2025-10-01T14:13:07.353497+00:00"
+    "generated_at": "2025-10-01T18:07:18.643583+00:00"
   },
   "entries": {
     "array": {
@@ -60,6 +60,505 @@
           "ref_id": "latex_companion_2004",
           "sections": "C.10.2",
           "pages": "204-207"
+        }
+      ]
+    },
+    "math": {
+      "name": "math",
+      "syntax": "\\begin{math}",
+      "environment_type": "math_inline",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "verbose form of inline math environment, equivalent to \\(...\\)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "displaymath": {
+      "name": "displaymath",
+      "syntax": "\\begin{displaymath}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "verbose form of display math environment, equivalent to \\[...\\]",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "equation": {
+      "name": "equation",
+      "syntax": "\\begin{equation}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "numbered displayed equation environment for single equations",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "equation*": {
+      "name": "equation*",
+      "syntax": "\\begin{equation*}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "unnumbered displayed equation environment for single equations",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "multline": {
+      "name": "multline",
+      "syntax": "\\begin{multline}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "numbered multi-line equation environment with automatic line breaking",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "multline*": {
+      "name": "multline*",
+      "syntax": "\\begin{multline*}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "unnumbered multi-line equation environment with automatic line breaking",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "gather": {
+      "name": "gather",
+      "syntax": "\\begin{gather}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "numbered environment for gathering multiple equations with centered alignment",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "gather*": {
+      "name": "gather*",
+      "syntax": "\\begin{gather*}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "unnumbered environment for gathering multiple equations with centered alignment",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "align": {
+      "name": "align",
+      "syntax": "\\begin{align}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "numbered environment for aligning multiple equations at specified points",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "align*": {
+      "name": "align*",
+      "syntax": "\\begin{align*}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "unnumbered environment for aligning multiple equations at specified points",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "flalign": {
+      "name": "flalign",
+      "syntax": "\\begin{flalign}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "numbered full-width alignment environment for equations",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "flalign*": {
+      "name": "flalign*",
+      "syntax": "\\begin{flalign*}",
+      "environment_type": "math_display",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "unnumbered full-width alignment environment for equations",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "split": {
+      "name": "split",
+      "syntax": "\\begin{split}",
+      "environment_type": "math_display",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "environment for splitting single equations across multiple lines within other math environments",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "gathered": {
+      "name": "gathered",
+      "syntax": "\\begin{gathered}",
+      "environment_type": "math_display",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "subsidiary environment for gathering equations within other math environments",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "aligned": {
+      "name": "aligned",
+      "syntax": "\\begin{aligned}",
+      "environment_type": "math_display",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "subsidiary environment for aligned equations within other math environments",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "eqnarray": {
+      "name": "eqnarray",
+      "syntax": "\\begin{eqnarray}",
+      "environment_type": "math_display",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "legacy numbered equation array environment (deprecated, use align instead)",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "8.2, 8.2.1",
+          "pages": "468-471"
+        },
+        {
+          "ref_id": "lamport_1994",
+          "sections": "C.7.1",
+          "pages": "187-189"
+        }
+      ]
+    },
+    "figure": {
+      "name": "figure",
+      "syntax": "\\begin{figure}[loc]",
+      "environment_type": "float",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "floating environment for figures with captions and cross-references",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.5.1, C.9.1",
+          "pages": "58-59, 197-200"
+        }
+      ]
+    },
+    "figure*": {
+      "name": "figure*",
+      "syntax": "\\begin{figure*}[loc]",
+      "environment_type": "float",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "two-column floating environment for figures spanning both columns in two-column documents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.5.1, C.9.1",
+          "pages": "58-59, 197-200"
+        }
+      ]
+    },
+    "table": {
+      "name": "table",
+      "syntax": "\\begin{table}[loc]",
+      "environment_type": "float",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "floating environment for tables with captions and cross-references",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.5.1, C.9.1",
+          "pages": "58-59, 197-200"
+        }
+      ]
+    },
+    "table*": {
+      "name": "table*",
+      "syntax": "\\begin{table*}[loc]",
+      "environment_type": "float",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "two-column floating environment for tables spanning both columns in two-column documents",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.5.1, C.9.1",
+          "pages": "58-59, 197-200"
+        }
+      ]
+    },
+    "center": {
+      "name": "center",
+      "syntax": "\\begin{center}",
+      "environment_type": "alignment",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "centers text lines within the environment",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.5",
+          "pages": "111-112"
+        }
+      ]
+    },
+    "flushleft": {
+      "name": "flushleft",
+      "syntax": "\\begin{flushleft}",
+      "environment_type": "alignment",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "left-aligns text lines within the environment, leaving right margin ragged",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.5",
+          "pages": "111-112"
+        }
+      ]
+    },
+    "flushright": {
+      "name": "flushright",
+      "syntax": "\\begin{flushright}",
+      "environment_type": "alignment",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "right-aligns text lines within the environment, leaving left margin ragged",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.5",
+          "pages": "111-112"
+        }
+      ]
+    },
+    "abstract": {
+      "name": "abstract",
+      "syntax": "\\begin{abstract}",
+      "environment_type": "document_section",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "document abstract environment for typesetting the abstract section",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.1.3, C.5.4",
+          "pages": "90, 181-183"
+        }
+      ]
+    },
+    "thebibliography": {
+      "name": "thebibliography",
+      "syntax": "\\begin{thebibliography}{widest_label}",
+      "environment_type": "bibliography",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "bibliography environment for manually creating bibliography lists with \\bibitem entries",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.3, C.11.3",
+          "pages": "69-72, 209-210"
         }
       ]
     }

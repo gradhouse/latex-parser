@@ -12,7 +12,10 @@ from latex_parser.latex.definitions.environment_definition import (
     EnvironmentDefinition, EnvironmentType, EnvironmentMode, EnvironmentRobustness
 )
 from latex_parser.latex.definitions.register.register_environment_definitions import (
-    register_tabular_environments, register_latex_environments
+    register_tabular_environments, 
+    register_latex_environments,
+    register_document_section_environments,
+    register_bibliography_environments
 )
 
 
@@ -196,6 +199,329 @@ class TestRegisterTabularEnvironments:
         assert 'table' in tabular_star_desc.lower()
 
 
+class TestRegisterFloatEnvironments:
+    """Test register_float_environments function."""
+
+    def test_registers_expected_float_environments(self):
+        """Test that all expected float environments are registered."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        expected_environments = {'figure', 'figure*', 'table', 'table*'}
+        registered_keys = set(registry.list_keys())
+        
+        assert registered_keys == expected_environments
+
+    def test_all_float_environments_have_float_type(self):
+        """Test that all float environments have FLOAT type."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            assert env._environment_definition['environment_type'] == EnvironmentType.FLOAT
+
+    def test_all_float_environments_work_in_paragraph_mode(self):
+        """Test that all float environments work in paragraph mode."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            modes = env._environment_definition['modes']
+            assert EnvironmentMode.PARAGRAPH in modes
+            assert len(modes) == 1  # Should only work in paragraph mode
+
+    def test_all_float_environments_are_fragile(self):
+        """Test that all float environments are fragile."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            assert env._environment_definition['robustness'] == EnvironmentRobustness.FRAGILE
+
+    def test_float_environments_have_proper_references(self):
+        """Test that all float environments have proper references."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        expected_references = [
+            {'ref_id': 'lamport_1994', 'sections': '3.5.1, C.9.1', 'pages': '58-59, 197-200'}
+        ]
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            assert env._environment_definition['references'] == expected_references
+
+    def test_specific_float_environment_properties(self):
+        """Test specific properties of float environments."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        # Test figure environment
+        figure_env = registry.get_entry('figure')
+        assert figure_env._environment_definition['name'] == 'figure'
+        assert figure_env._environment_definition['syntax'] == '\\begin{figure}[loc]'
+        assert 'floating environment for figures' in figure_env._environment_definition['description']
+        
+        # Test figure* environment
+        figure_star_env = registry.get_entry('figure*')
+        assert figure_star_env._environment_definition['name'] == 'figure*'
+        assert 'two-column' in figure_star_env._environment_definition['description']
+        assert 'spanning both columns' in figure_star_env._environment_definition['description']
+        
+        # Test table environment
+        table_env = registry.get_entry('table')
+        assert table_env._environment_definition['name'] == 'table'
+        assert table_env._environment_definition['syntax'] == '\\begin{table}[loc]'
+        assert 'floating environment for tables' in table_env._environment_definition['description']
+        
+        # Test table* environment
+        table_star_env = registry.get_entry('table*')
+        assert table_star_env._environment_definition['name'] == 'table*'
+        assert 'two-column' in table_star_env._environment_definition['description']
+
+    def test_float_environments_have_location_parameter(self):
+        """Test that float environments include location parameter in syntax."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_float_environments
+        register_float_environments(registry)
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            syntax = env._environment_definition['syntax']
+            assert '[loc]' in syntax, f"Environment {env_name} should have [loc] parameter"
+
+
+class TestRegisterMathEnvironments:
+    """Test register_math_environments function."""
+
+    def test_registers_expected_math_environments(self):
+        """Test that all expected basic math environments are registered."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_math_environments
+        register_math_environments(registry)
+        
+        expected_environments = {'math', 'displaymath'}
+        registered_keys = set(registry.list_keys())
+        
+        assert registered_keys == expected_environments
+
+    def test_math_environment_properties(self):
+        """Test that math environment has correct properties."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_math_environments
+        register_math_environments(registry)
+        
+        math_env = registry.get_entry('math')
+        
+        assert math_env._environment_definition['name'] == 'math'
+        assert math_env._environment_definition['syntax'] == '\\begin{math}'
+        assert math_env._environment_definition['environment_type'] == EnvironmentType.MATH_INLINE
+        assert math_env._environment_definition['robustness'] == EnvironmentRobustness.ROBUST
+        expected_modes = [EnvironmentMode.PARAGRAPH, EnvironmentMode.LEFT_RIGHT]
+        assert math_env._environment_definition['modes'] == expected_modes
+        assert 'inline math' in math_env._environment_definition['description']
+        assert '\\(...\\)' in math_env._environment_definition['description']
+
+    def test_displaymath_environment_properties(self):
+        """Test that displaymath environment has correct properties."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_math_environments
+        register_math_environments(registry)
+        
+        displaymath_env = registry.get_entry('displaymath')
+        
+        assert displaymath_env._environment_definition['name'] == 'displaymath'
+        assert displaymath_env._environment_definition['syntax'] == '\\begin{displaymath}'
+        assert displaymath_env._environment_definition['environment_type'] == EnvironmentType.MATH_DISPLAY
+        assert displaymath_env._environment_definition['robustness'] == EnvironmentRobustness.ROBUST
+        assert displaymath_env._environment_definition['modes'] == [EnvironmentMode.PARAGRAPH]
+        assert 'display math' in displaymath_env._environment_definition['description']
+        assert '\\[...\\]' in displaymath_env._environment_definition['description']
+
+    def test_math_environments_have_proper_references(self):
+        """Test that basic math environments have proper references."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_math_environments
+        register_math_environments(registry)
+        
+        expected_references = [
+            {'ref_id': 'lamport_1994', 'sections': 'C.7.1', 'pages': '187-189'}
+        ]
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            assert env._environment_definition['references'] == expected_references
+
+
+class TestRegisterEquationEnvironments:
+    """Test register_equation_environments function."""
+
+    def test_registers_expected_equation_environments(self):
+        """Test that all expected equation environments are registered and only those."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_equation_environments
+        register_equation_environments(registry)
+        
+        expected_environments = {
+            'equation', 'equation*', 'multline', 'multline*', 'gather', 'gather*',
+            'align', 'align*', 'flalign', 'flalign*', 'split', 'gathered', 'aligned', 'eqnarray'
+        }
+        registered_keys = set(registry.list_keys())
+        
+        assert registered_keys == expected_environments
+
+    def test_all_equation_environments_have_math_display_type(self):
+        """Test that all equation environments have MATH_DISPLAY type."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_equation_environments
+        register_equation_environments(registry)
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            assert env._environment_definition['environment_type'] == EnvironmentType.MATH_DISPLAY
+
+    def test_all_equation_environments_work_in_paragraph_mode(self):
+        """Test that all equation environments work in paragraph mode."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_equation_environments
+        register_equation_environments(registry)
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            modes = env._environment_definition['modes']
+            assert EnvironmentMode.PARAGRAPH in modes
+            assert len(modes) == 1  # Should only work in paragraph mode
+
+    def test_robust_vs_fragile_equation_environments(self):
+        """Test the distribution of robust vs fragile equation environments."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_equation_environments
+        register_equation_environments(registry)
+        
+        robust_envs = []
+        fragile_envs = []
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            robustness = env._environment_definition['robustness']
+            
+            if robustness == EnvironmentRobustness.ROBUST:
+                robust_envs.append(env_name)
+            elif robustness == EnvironmentRobustness.FRAGILE:
+                fragile_envs.append(env_name)
+        
+        # Main environments should be robust
+        expected_robust = {
+            'equation', 'equation*', 'multline', 'multline*', 'gather', 'gather*',
+            'align', 'align*', 'flalign', 'flalign*'
+        }
+        # Subsidiary environments and legacy should be fragile
+        expected_fragile = {'split', 'gathered', 'aligned', 'eqnarray'}
+        
+        assert set(robust_envs) == expected_robust
+        assert set(fragile_envs) == expected_fragile
+
+    def test_equation_environments_have_proper_references(self):
+        """Test that all equation environments have proper references."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_equation_environments
+        register_equation_environments(registry)
+        
+        expected_references = [
+            {'ref_id': 'latex_companion_2004', 'sections': '8.2, 8.2.1', 'pages': '468-471'},
+            {'ref_id': 'lamport_1994', 'sections': 'C.7.1', 'pages': '187-189'}
+        ]
+        
+        for env_name in registry.list_keys():
+            env = registry.get_entry(env_name)
+            assert env._environment_definition['references'] == expected_references
+
+    def test_specific_equation_environment_properties(self):
+        """Test specific properties of key equation environments."""
+        registry = EnvironmentDefinitionRegistry()
+        from latex_parser.latex.definitions.register.register_environment_definitions import register_equation_environments
+        register_equation_environments(registry)
+        
+        # Test equation environment
+        equation_env = registry.get_entry('equation')
+        assert equation_env._environment_definition['name'] == 'equation'
+        assert equation_env._environment_definition['syntax'] == '\\begin{equation}'
+        assert 'numbered displayed equation' in equation_env._environment_definition['description']
+        
+        # Test equation* environment
+        equation_star_env = registry.get_entry('equation*')
+        assert equation_star_env._environment_definition['name'] == 'equation*'
+        assert 'unnumbered displayed equation' in equation_star_env._environment_definition['description']
+        
+        # Test align environment
+        align_env = registry.get_entry('align')
+        assert 'aligning multiple equations' in align_env._environment_definition['description']
+        
+        # Test eqnarray environment (legacy)
+        eqnarray_env = registry.get_entry('eqnarray')
+        assert 'legacy' in eqnarray_env._environment_definition['description']
+        assert 'deprecated' in eqnarray_env._environment_definition['description']
+
+
+class TestRegisterDocumentSectionEnvironments:
+    """Test register_document_section_environments function."""
+
+    def test_registers_expected_document_section_environments(self):
+        """Test that all expected document section environments are registered and only those."""
+        registry = EnvironmentDefinitionRegistry()
+        register_document_section_environments(registry)
+
+        expected_environments = {'abstract'}
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected environments are present
+        assert registered_keys == expected_environments, f"Expected {expected_environments}, got {registered_keys}"
+
+    def test_document_section_environments_have_correct_type(self):
+        """Test that document section environments have correct environment type."""
+        registry = EnvironmentDefinitionRegistry()
+        register_document_section_environments(registry)
+
+        # Check that the document section environments have correct environment_type
+        for env_name in ['abstract']:
+            assert registry.get_entry(env_name)._environment_definition['environment_type'] == EnvironmentType.DOCUMENT_SECTION
+
+
+class TestRegisterBibliographyEnvironments:
+    """Test register_bibliography_environments function."""
+
+    def test_registers_expected_bibliography_environments(self):
+        """Test that all expected bibliography environments are registered and only those."""
+        registry = EnvironmentDefinitionRegistry()
+        register_bibliography_environments(registry)
+
+        expected_environments = {'thebibliography'}
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected environments are present
+        assert registered_keys == expected_environments, f"Expected {expected_environments}, got {registered_keys}"
+
+    def test_bibliography_environments_have_correct_type(self):
+        """Test that bibliography environments have correct environment type."""
+        registry = EnvironmentDefinitionRegistry()
+        register_bibliography_environments(registry)
+
+        # Check that the bibliography environments have correct environment_type
+        for env_name in ['thebibliography']:
+            assert registry.get_entry(env_name)._environment_definition['environment_type'] == EnvironmentType.BIBLIOGRAPHY
+
+
 class TestRegisterLatexEnvironments:
     """Test register_latex_environments function."""
 
@@ -205,18 +531,23 @@ class TestRegisterLatexEnvironments:
         register_latex_environments(registry)
         
         # Should have tabular environments registered
-        expected_environments = {'array', 'tabular', 'tabular*'}
+        expected_tabular_environments = {'array', 'tabular', 'tabular*'}
         registered_keys = set(registry.list_keys())
         
-        assert registered_keys == expected_environments
+        # Check that all tabular environments are present
+        assert expected_tabular_environments.issubset(registered_keys)
+        
+        # Should also have basic math environments
+        expected_math_environments = {'math', 'displaymath'}
+        assert expected_math_environments.issubset(registered_keys)
 
     def test_expected_total_environment_count(self):
         """Test that the total number of registered environments matches expectations."""
         registry = EnvironmentDefinitionRegistry()
         register_latex_environments(registry)
         
-        # Currently only tabular environments are registered
-        expected_total = 3  # array, tabular, tabular*
+        # Currently tabular (3) + basic math (2) + equation (14) + float (4) + alignment (3) + document section (1) + bibliography (1) environments are registered
+        expected_total = 28  # 3 tabular + 2 basic math + 14 equation + 4 float + 3 alignment + 1 document section + 1 bibliography environments
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total
@@ -276,9 +607,15 @@ class TestRegisterLatexEnvironments:
             env_type = env._environment_definition['environment_type']
             type_counts[env_type] = type_counts.get(env_type, 0) + 1
         
-        # Currently should only have tabular environments
+        # Currently should have tabular, math inline, math display, and float environments
         assert EnvironmentType.TABULAR in type_counts
+        assert EnvironmentType.MATH_INLINE in type_counts
+        assert EnvironmentType.MATH_DISPLAY in type_counts
+        assert EnvironmentType.FLOAT in type_counts
         assert type_counts[EnvironmentType.TABULAR] == 3
+        assert type_counts[EnvironmentType.MATH_INLINE] == 1
+        assert type_counts[EnvironmentType.MATH_DISPLAY] == 15  # 14 equation + 1 displaymath
+        assert type_counts[EnvironmentType.FLOAT] == 4
 
     def test_robustness_distribution(self):
         """Test the distribution of robust vs fragile environments."""
@@ -297,9 +634,9 @@ class TestRegisterLatexEnvironments:
             elif robustness == EnvironmentRobustness.FRAGILE:
                 fragile_count += 1
         
-        # Currently all tabular environments are robust
-        assert robust_count == 3
-        assert fragile_count == 0
+        # Currently tabular environments (3) are robust, basic math (2) are robust, equation environments (10) are robust, subsidiary (4) are fragile, float (4) are fragile, alignment (3) are robust, document section (1) are robust, bibliography (1) are robust
+        assert robust_count == 20
+        assert fragile_count == 8
 
     def test_mode_distribution(self):
         """Test that environments have appropriate mode distributions."""

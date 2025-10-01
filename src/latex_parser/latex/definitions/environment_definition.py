@@ -35,8 +35,14 @@ class EnvironmentType(Enum):
     Enumeration for LaTeX environment type categories.
     """
     UNKNOWN = 'unknown'                                       # Type is not specified or not applicable
+    DOCUMENT = 'document'                                     # document
+    DOCUMENT_SECTION = 'document_section'                     # abstract, titlepage
+    BIBLIOGRAPHY = 'bibliography'                             # thebibliography
+    FLOAT = 'float'                                           # figure, table
+    ALIGNMENT = 'alignment'                                   # center, flushleft, flushright
     TABULAR = 'tabular'                                       # tabular, tabular*, array
-    MATH_DISPLAY = 'math_display'                             # equation, align, gather
+    MATH_INLINE = 'math_inline'                               # math
+    MATH_DISPLAY = 'math_display'                             # equation, align, gather, displaymath
 
 
 class EnvironmentDefinition:

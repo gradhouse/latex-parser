@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-10-01T09:28:14.442879+00:00"
+    "generated_at": "2025-10-01T18:07:07.098130+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -6482,6 +6482,60 @@
           "ref_id": "lamport_1994",
           "sections": "3.1, C.15",
           "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\centering": {
+      "name": "\\centering",
+      "syntax": "\\centering",
+      "command_type": "alignment",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "centers subsequent text lines until the end of the current group or environment",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.5",
+          "pages": "111-112"
+        }
+      ]
+    },
+    "\\raggedright": {
+      "name": "\\raggedright",
+      "syntax": "\\raggedright",
+      "command_type": "alignment",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "left-aligns subsequent text lines, leaving right margin ragged",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.5",
+          "pages": "111-112"
+        }
+      ]
+    },
+    "\\raggedleft": {
+      "name": "\\raggedleft",
+      "syntax": "\\raggedleft",
+      "command_type": "alignment",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "right-aligns subsequent text lines, leaving left margin ragged",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "6.5",
+          "pages": "111-112"
         }
       ]
     }
