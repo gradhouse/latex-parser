@@ -841,6 +841,32 @@ def register_font_declaration_commands(registry: CommandDefinitionRegistry) -> N
                      [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
 
         
+def register_alignment_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register alignment commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for alignment commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '6.5', 'pages': '111-112'}]
+    
+    def add_alignment_cmd(name: str, syntax: str, description: str) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.ALIGNMENT,
+            robustness=CommandRobustness.ROBUST, modes=[CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT],
+            description=description, references=references
+        ))
+    
+    # Register alignment commands
+    add_alignment_cmd('\\centering', '\\centering', 
+                     'centers subsequent text lines until the end of the current group or environment')
+    add_alignment_cmd('\\raggedright', '\\raggedright', 
+                     'left-aligns subsequent text lines, leaving right margin ragged')
+    add_alignment_cmd('\\raggedleft', '\\raggedleft', 
+                     'right-aligns subsequent text lines, leaving left margin ragged')
+
+
 def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     """
     Register LaTeX commands in the command definition registry.
@@ -865,3 +891,4 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_delimiter_commands(registry)
     register_bibliography_citation_commands(registry)
     register_font_declaration_commands(registry)
+    register_alignment_commands(registry)

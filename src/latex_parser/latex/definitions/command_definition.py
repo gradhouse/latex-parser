@@ -36,6 +36,7 @@ class CommandType(Enum):
     UNKNOWN = 'unknown'                                       # Type is not specified or not applicable
     DOCUMENT = 'document'                                     # Document-level commands (e.g., \documentclass)
     SECTIONING = 'sectioning'                                 # Sectioning commands (e.g., \section, \chapter)
+    ALIGNMENT = 'alignment'                                   # Text alignment commands (e.g., \centering, \raggedright)
     MATH_SYMBOL_GREEK_LETTER = 'math_symbol_greek_letter'     # Greek letters for math mode (e.g., \alpha, \beta)
     MATH_SYMBOL_BINARY_OP = 'math_symbol_binary_op'           # Binary operation symbols (e.g., \times, \pm)
     MATH_SYMBOL_RELATION = 'math_symbol_relation'             # Relation symbols (e.g., \leq, \equiv)

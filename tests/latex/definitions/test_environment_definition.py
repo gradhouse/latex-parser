@@ -80,7 +80,10 @@ class TestEnvironmentType:
 
     def test_all_environment_types_exist(self):
         """Test that all expected environment types are defined."""
-        expected_types = {'UNKNOWN', 'TABULAR', 'MATH_DISPLAY'}
+        expected_types = {
+            'UNKNOWN', 'DOCUMENT', 'DOCUMENT_SECTION', 'BIBLIOGRAPHY', 
+            'FLOAT', 'ALIGNMENT', 'TABULAR', 'MATH_INLINE', 'MATH_DISPLAY'
+        }
         actual_types = {env_type.name for env_type in EnvironmentType}
         assert actual_types == expected_types
 

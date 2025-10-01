@@ -9,6 +9,7 @@ from latex_parser.latex.definitions.command_definition_registry import CommandDe
 from latex_parser.latex.definitions.register.register_command_definitions import (
     register_document_commands,
     register_sectioning_commands,
+    register_alignment_commands,
     register_greek_letter_commands,
     register_binary_operation_commands,
     register_relation_commands,
@@ -44,6 +45,37 @@ class TestRegisterDocumentCommands:
         
         # Check that exactly the expected commands are present
         assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+
+class TestRegisterAlignmentCommands:
+    """Test register_alignment_commands function."""
+
+    def test_registers_expected_alignment_commands(self):
+        """Test that all expected alignment commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_alignment_commands(registry)
+
+        expected_commands = {
+            '\\centering', '\\raggedright', '\\raggedleft'
+        }
+        
+        registered_keys = set(registry.list_keys())
+        
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+
+    def test_alignment_commands_have_correct_type(self):
+        """Test that alignment commands have correct command type."""
+        registry = CommandDefinitionRegistry()
+        register_alignment_commands(registry)
+
+        # Check that the alignment commands have correct command_type
+        for command_name in ['\\centering', '\\raggedright', '\\raggedleft']:
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            assert data['command_type'] == 'alignment', f"Command {command_name} should have alignment type but has {data['command_type']}"
+            assert 'paragraph' in data['modes'], f"Command {command_name} should include paragraph mode but has {data['modes']}"
+            assert data['robustness'] == 'robust', f"Command {command_name} should be robust but has {data['robustness']}"
 
 
 class TestRegisterSectioningCommands:
@@ -326,10 +358,12 @@ class TestRegisterLatexCommands:
             '\\section', '\\section*', '\\subsection', '\\subsection*',
             '\\subsubsection', '\\subsubsection*', '\\paragraph', '\\paragraph*',
             '\\subparagraph', '\\subparagraph*',
+            # Alignment commands
+            '\\centering', '\\raggedright', '\\raggedleft',
             # Greek letter commands
-            '\\Delta', '\\Gamma', '\\Lambda', '\\Omega', '\\Phi', '\\Pi', '\\Psi', '\\Sigma', '\\Theta', '\\Upsilon', '\\Xi', 
-            '\\alpha', '\\beta', '\\chi', '\\delta', '\\epsilon', '\\eta', '\\gamma', '\\iota', '\\kappa', '\\lambda', 
-            '\\mu', '\\nu', '\\omega', '\\phi', '\\pi', '\\psi', '\\rho', '\\sigma', '\\tau', '\\theta', '\\upsilon', 
+            '\\Delta', '\\Gamma', '\\Lambda', '\\Omega', '\\Phi', '\\Pi', '\\Psi', '\\Sigma', '\\Theta', '\\Upsilon', '\\Xi',
+            '\\alpha', '\\beta', '\\chi', '\\delta', '\\epsilon', '\\eta', '\\gamma', '\\iota', '\\kappa', '\\lambda',
+            '\\mu', '\\nu', '\\omega', '\\phi', '\\pi', '\\psi', '\\rho', '\\sigma', '\\tau', '\\theta', '\\upsilon',
             '\\varepsilon', '\\varphi', '\\varpi', '\\varrho', '\\varsigma', '\\vartheta', '\\xi', '\\zeta',
             # Binary operation commands
             '\\amalg', '\\ast', '\\bigcirc', '\\bigtriangledown', '\\bigtriangleup', '\\bullet', '\\cap', '\\cdot', 
@@ -418,10 +452,10 @@ class TestRegisterLatexCommands:
         register_latex_commands(registry)
         
         # Expected counts based on individual function tests:
-        # Document: 8, Sectioning: 14, Greek: 40, Binary: 36, Relation: 36, 
-        # Arrow: 26 (removed 6 arrows), Misc: 31 (removed 2), Variable-sized: 13, Log-like: 34, 
+        # Document: 8, Sectioning: 14, Alignment: 3, Greek: 40, Binary: 36, Relation: 36,
+        # Arrow: 26 (removed 6 arrows), Misc: 31 (removed 2), Variable-sized: 13, Log-like: 34,
         # Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 24 (removed 2), Text spacing: 5, Delimiter: 32, Bibliography: 5, Font: 40
-        expected_total = 8 + 14 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32 + 5 + 40
+        expected_total = 8 + 14 + 3 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32 + 5 + 40
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total, f"Expected {expected_total} total commands, got {actual_total}"
