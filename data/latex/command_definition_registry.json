@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-10-01T08:41:09.431895+00:00"
+    "generated_at": "2025-10-01T09:28:14.442879+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -5668,6 +5668,820 @@
           "ref_id": "lamport_1994",
           "sections": "3.3.4, C.7.5",
           "pages": "46-47, 190"
+        }
+      ]
+    },
+    "\\bibliography": {
+      "name": "\\bibliography",
+      "syntax": "\\bibliography{bibliography_files}",
+      "command_type": "bibliography",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "specifies the bibliography database files to use",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.3, C.11.3",
+          "pages": "69-72, 209-210"
+        }
+      ]
+    },
+    "\\bibliographystyle": {
+      "name": "\\bibliographystyle",
+      "syntax": "\\bibliographystyle{bib_style}",
+      "command_type": "bibliography",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "specifies the bibliography style to use",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.3, C.11.3",
+          "pages": "69-72, 209-210"
+        }
+      ]
+    },
+    "\\bibitem": {
+      "name": "\\bibitem",
+      "syntax": "\\bibitem[label]{cite_key}",
+      "command_type": "bibliography",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "creates a bibliography entry with optional label",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.3, C.11.3",
+          "pages": "69-72, 209-210"
+        }
+      ]
+    },
+    "\\cite": {
+      "name": "\\cite",
+      "syntax": "\\cite[text]{key_list}",
+      "command_type": "bibliography",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "cites one or more bibliography entries with optional prefix text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.3, C.11.3",
+          "pages": "69-72, 209-210"
+        }
+      ]
+    },
+    "\\nocite": {
+      "name": "\\nocite",
+      "syntax": "\\nocite{key_list}",
+      "command_type": "bibliography",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "includes bibliography entries in the bibliography without citing them in text",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.3, C.11.3",
+          "pages": "69-72, 209-210"
+        }
+      ]
+    },
+    "\\mdseries": {
+      "name": "\\mdseries",
+      "syntax": "\\mdseries",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font weight to medium (normal)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\bfseries": {
+      "name": "\\bfseries",
+      "syntax": "\\bfseries",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font weight to bold",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\rmfamily": {
+      "name": "\\rmfamily",
+      "syntax": "\\rmfamily",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font family to roman (serif)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\sffamily": {
+      "name": "\\sffamily",
+      "syntax": "\\sffamily",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font family to sans serif",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\ttfamily": {
+      "name": "\\ttfamily",
+      "syntax": "\\ttfamily",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font family to typewriter (monospace)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\upshape": {
+      "name": "\\upshape",
+      "syntax": "\\upshape",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font shape to upright",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\itshape": {
+      "name": "\\itshape",
+      "syntax": "\\itshape",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font shape to italic",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\slshape": {
+      "name": "\\slshape",
+      "syntax": "\\slshape",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font shape to slanted",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\scshape": {
+      "name": "\\scshape",
+      "syntax": "\\scshape",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font shape to small caps",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\normalfont": {
+      "name": "\\normalfont",
+      "syntax": "\\normalfont",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "resets font to document default",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textmd": {
+      "name": "\\textmd",
+      "syntax": "\\textmd{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in medium (normal) weight font",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textbf": {
+      "name": "\\textbf",
+      "syntax": "\\textbf{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in bold weight font",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textrm": {
+      "name": "\\textrm",
+      "syntax": "\\textrm{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in roman (serif) font family",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textsf": {
+      "name": "\\textsf",
+      "syntax": "\\textsf{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in sans serif font family",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\texttt": {
+      "name": "\\texttt",
+      "syntax": "\\texttt{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in typewriter (monospace) font family",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textup": {
+      "name": "\\textup",
+      "syntax": "\\textup{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in upright font shape",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textit": {
+      "name": "\\textit",
+      "syntax": "\\textit{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in italic font shape",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textsl": {
+      "name": "\\textsl",
+      "syntax": "\\textsl{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in slanted font shape",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textsc": {
+      "name": "\\textsc",
+      "syntax": "\\textsc{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in small caps font shape",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\textnormal": {
+      "name": "\\textnormal",
+      "syntax": "\\textnormal{text}",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right",
+        "math"
+      ],
+      "description": "typesets text in document default font",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\rm": {
+      "name": "\\rm",
+      "syntax": "\\rm",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font family to roman (deprecated, use \\rmfamily)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\sf": {
+      "name": "\\sf",
+      "syntax": "\\sf",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font family to sans serif (deprecated, use \\sffamily)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\tt": {
+      "name": "\\tt",
+      "syntax": "\\tt",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font family to typewriter (deprecated, use \\ttfamily)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\bf": {
+      "name": "\\bf",
+      "syntax": "\\bf",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font series to bold (deprecated, use \\bfseries)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\it": {
+      "name": "\\it",
+      "syntax": "\\it",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font shape to italic (deprecated, use \\itshape)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\sl": {
+      "name": "\\sl",
+      "syntax": "\\sl",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font shape to slanted (deprecated, use \\slshape)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\sc": {
+      "name": "\\sc",
+      "syntax": "\\sc",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: sets font shape to small caps (deprecated, use \\scshape)",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\em": {
+      "name": "\\em",
+      "syntax": "\\em",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "legacy: emphasis font (contextual italic/upright, deprecated, use \\emph{text})",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\cal": {
+      "name": "\\cal",
+      "syntax": "\\cal",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "legacy: calligraphic font for math mode (deprecated, use \\mathcal{text})",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\mit": {
+      "name": "\\mit",
+      "syntax": "\\mit",
+      "command_type": "font_declaration",
+      "robustness": "robust",
+      "modes": [
+        "math"
+      ],
+      "description": "legacy: math italic font for math mode (deprecated, use \\mathit{text})",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\tiny": {
+      "name": "\\tiny",
+      "syntax": "\\tiny",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to tiny",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\scriptsize": {
+      "name": "\\scriptsize",
+      "syntax": "\\scriptsize",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to script size",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\footnotesize": {
+      "name": "\\footnotesize",
+      "syntax": "\\footnotesize",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to footnote size",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\small": {
+      "name": "\\small",
+      "syntax": "\\small",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to small",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\normalsize": {
+      "name": "\\normalsize",
+      "syntax": "\\normalsize",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to normal size",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\large": {
+      "name": "\\large",
+      "syntax": "\\large",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to large",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\Large": {
+      "name": "\\Large",
+      "syntax": "\\Large",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to Large",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\LARGE": {
+      "name": "\\LARGE",
+      "syntax": "\\LARGE",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to LARGE",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\huge": {
+      "name": "\\huge",
+      "syntax": "\\huge",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to huge",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
+        }
+      ]
+    },
+    "\\Huge": {
+      "name": "\\Huge",
+      "syntax": "\\Huge",
+      "command_type": "font_declaration",
+      "robustness": "fragile",
+      "modes": [
+        "paragraph",
+        "left_right"
+      ],
+      "description": "sets font size to Huge",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "3.1, C.15",
+          "pages": "36-37, 225-226"
         }
       ]
     }

@@ -680,6 +680,166 @@ def register_delimiter_commands(registry: CommandDefinitionRegistry) -> None:
     add_delimiter_cmd('\\Downarrow', '\\Downarrow', 'double down arrow delimiter', [CommandMode.MATH])
     add_delimiter_cmd('\\Updownarrow', '\\Updownarrow', 'double up-down arrow delimiter', [CommandMode.MATH])
 
+
+def register_bibliography_citation_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register bibliography and citation commands in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for bibliography and citation commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '4.3, C.11.3', 'pages': '69-72, 209-210'}]
+    
+    def add_bibcite_cmd(name: str, syntax: str, description: str, robustness: CommandRobustness, modes: List[CommandMode]) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.BIBLIOGRAPHY,
+            robustness=robustness, modes=modes,
+            description=description, references=references
+        ))
+    
+    # Register bibliography and citation commands
+    add_bibcite_cmd('\\bibliography', '\\bibliography{bibliography_files}', 
+                   'specifies the bibliography database files to use', 
+                   CommandRobustness.ROBUST, [CommandMode.PARAGRAPH])
+    add_bibcite_cmd('\\bibliographystyle', '\\bibliographystyle{bib_style}', 
+                   'specifies the bibliography style to use', 
+                   CommandRobustness.ROBUST, [CommandMode.PARAGRAPH])
+    add_bibcite_cmd('\\bibitem', '\\bibitem[label]{cite_key}', 
+                   'creates a bibliography entry with optional label', 
+                   CommandRobustness.ROBUST, [CommandMode.PARAGRAPH])
+    add_bibcite_cmd('\\cite', '\\cite[text]{key_list}', 
+                   'cites one or more bibliography entries with optional prefix text', 
+                   CommandRobustness.FRAGILE, [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_bibcite_cmd('\\nocite', '\\nocite{key_list}', 
+                   'includes bibliography entries in the bibliography without citing them in text', 
+                   CommandRobustness.FRAGILE, [CommandMode.PARAGRAPH])
+
+
+def register_font_declaration_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register font declaration commands and font commands with arguments in the command definition registry.
+    
+    :param registry: CommandDefinitionRegistry, the registry to populate
+    """
+    
+    # Common attributes for font declaration commands
+    references = [{'ref_id': 'lamport_1994', 'sections': '3.1, C.15', 'pages': '36-37, 225-226'}]
+    
+    def add_font_decl_cmd(name: str, syntax: str, description: str, modes: List[CommandMode]) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.FONT_DECLARATION,
+            robustness=CommandRobustness.ROBUST, modes=modes,
+            description=description, references=references
+        ))
+    
+    # Register font weight declarations (paragraph and left-right modes only)
+    add_font_decl_cmd('\\mdseries', '\\mdseries', 'sets font weight to medium (normal)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\bfseries', '\\bfseries', 'sets font weight to bold', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Register font family declarations (paragraph and left-right modes only)
+    add_font_decl_cmd('\\rmfamily', '\\rmfamily', 'sets font family to roman (serif)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\sffamily', '\\sffamily', 'sets font family to sans serif', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\ttfamily', '\\ttfamily', 'sets font family to typewriter (monospace)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Register font shape declarations (paragraph and left-right modes only)
+    add_font_decl_cmd('\\upshape', '\\upshape', 'sets font shape to upright', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\itshape', '\\itshape', 'sets font shape to italic', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\slshape', '\\slshape', 'sets font shape to slanted', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\scshape', '\\scshape', 'sets font shape to small caps', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Register font reset declaration (paragraph and left-right modes only)
+    add_font_decl_cmd('\\normalfont', '\\normalfont', 'resets font to document default', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    
+    # Register font weight commands (can be used in math mode also)
+    add_font_decl_cmd('\\textmd', '\\textmd{text}', 'typesets text in medium (normal) weight font', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_font_decl_cmd('\\textbf', '\\textbf{text}', 'typesets text in bold weight font', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    
+    # Register font family commands (can be used in math mode also)
+    add_font_decl_cmd('\\textrm', '\\textrm{text}', 'typesets text in roman (serif) font family', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_font_decl_cmd('\\textsf', '\\textsf{text}', 'typesets text in sans serif font family', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_font_decl_cmd('\\texttt', '\\texttt{text}', 'typesets text in typewriter (monospace) font family', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    
+    # Register font shape commands (can be used in math mode also)
+    add_font_decl_cmd('\\textup', '\\textup{text}', 'typesets text in upright font shape', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_font_decl_cmd('\\textit', '\\textit{text}', 'typesets text in italic font shape', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_font_decl_cmd('\\textsl', '\\textsl{text}', 'typesets text in slanted font shape', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    add_font_decl_cmd('\\textsc', '\\textsc{text}', 'typesets text in small caps font shape', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    
+    # Register font reset command (can be used in math mode also)
+    add_font_decl_cmd('\\textnormal', '\\textnormal{text}', 'typesets text in document default font', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT, CommandMode.MATH])
+    
+    # Register legacy 2-letter font commands (LaTeX 2.09 compatibility, deprecated)
+    add_font_decl_cmd('\\rm', '\\rm', 'legacy: sets font family to roman (deprecated, use \\rmfamily)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\sf', '\\sf', 'legacy: sets font family to sans serif (deprecated, use \\sffamily)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\tt', '\\tt', 'legacy: sets font family to typewriter (deprecated, use \\ttfamily)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\bf', '\\bf', 'legacy: sets font series to bold (deprecated, use \\bfseries)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\it', '\\it', 'legacy: sets font shape to italic (deprecated, use \\itshape)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\sl', '\\sl', 'legacy: sets font shape to slanted (deprecated, use \\slshape)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\sc', '\\sc', 'legacy: sets font shape to small caps (deprecated, use \\scshape)', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\em', '\\em', 'legacy: emphasis font (contextual italic/upright, deprecated, use \\emph{text})', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_decl_cmd('\\cal', '\\cal', 'legacy: calligraphic font for math mode (deprecated, use \\mathcal{text})', 
+                     [CommandMode.MATH])
+    add_font_decl_cmd('\\mit', '\\mit', 'legacy: math italic font for math mode (deprecated, use \\mathit{text})', 
+                     [CommandMode.MATH])
+
+    # Font size commands (fragile, cannot be used in math mode)
+    def add_font_size_cmd(name: str, syntax: str, description: str, modes: List[CommandMode]) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, syntax=syntax, command_type=CommandType.FONT_DECLARATION,
+            robustness=CommandRobustness.FRAGILE, modes=modes,
+            description=description, references=references
+        ))
+    
+    add_font_size_cmd('\\tiny', '\\tiny', 'sets font size to tiny', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\scriptsize', '\\scriptsize', 'sets font size to script size', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\footnotesize', '\\footnotesize', 'sets font size to footnote size', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\small', '\\small', 'sets font size to small', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\normalsize', '\\normalsize', 'sets font size to normal size', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\large', '\\large', 'sets font size to large', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\Large', '\\Large', 'sets font size to Large', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\LARGE', '\\LARGE', 'sets font size to LARGE', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\huge', '\\huge', 'sets font size to huge', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+    add_font_size_cmd('\\Huge', '\\Huge', 'sets font size to Huge', 
+                     [CommandMode.PARAGRAPH, CommandMode.LEFT_RIGHT])
+
         
 def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     """
@@ -703,3 +863,5 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_text_symbol_commands(registry)
     register_text_spacing_commands(registry)
     register_delimiter_commands(registry)
+    register_bibliography_citation_commands(registry)
+    register_font_declaration_commands(registry)

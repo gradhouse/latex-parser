@@ -49,6 +49,8 @@ class CommandType(Enum):
     TEXT_SYMBOL = 'text_symbol'                               # Text symbol commands (e.g., \oe, \ae, \ss, \dag, \S)
     TEXT_SPACING = 'text_spacing'                             # Text spacing commands (e.g., \,, \!, \:, \;, \ )
     DELIMITER = 'delimiter'                                   # Delimiter and delimiter sizing commands (e.g., \bigl, \left, (, [)
+    BIBLIOGRAPHY = 'bibliography'                             # Bibliography and citation commands (e.g., \cite, \bibitem, \bibliography)
+    FONT_DECLARATION = 'font_declaration'                     # Font declaration and command commands (e.g., \bfseries, \textbf{text}, \itshape, \textit{text})
     
 
 class CommandDefinition:
@@ -186,8 +188,8 @@ class CommandDefinition:
         references = copy.deepcopy(data['references']) # list of dicts
 
         return cls(
-            name=data.get('name', ''),
-            syntax=data.get('syntax', ''),
+            name=name,
+            syntax=syntax,
             command_type=command_type,
             robustness=robustness,
             modes=modes,
