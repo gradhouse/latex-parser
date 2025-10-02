@@ -8,43 +8,54 @@ import os
 import sys
 import pytest
 
-from latex_parser.latex.elements.environment import Environment
+from src.latex_parser.latex.elements.environment import Environment
 
 
 def load_test_cases():
-    """Load test cases from the fixtures directory."""
-    fixtures_dir = os.path.join(os.path.dirname(__file__), '..', 'fixtures')
-    sys.path.insert(0, fixtures_dir)
+    """Load test cases from external fixtures."""
+    from tests.latex.fixtures.environment_test_cases import (
+        FIND_ALL_BEGIN_ENVIRONMENTS_BASIC_TESTS,
+        FIND_ALL_BEGIN_ENVIRONMENTS_WHITESPACE_TESTS,
+        FIND_ALL_BEGIN_ENVIRONMENTS_EDGE_CASE_TESTS,
+        FIND_ALL_END_ENVIRONMENTS_BASIC_TESTS,
+        FIND_BEGIN_ENVIRONMENT_BASIC_TESTS,
+        FIND_BEGIN_ENVIRONMENT_WHITESPACE_TESTS,
+        FIND_BEGIN_ENVIRONMENT_EDGE_CASE_TESTS,
+        FIND_END_ENVIRONMENT_BASIC_TESTS,
+        FIND_END_ENVIRONMENT_WHITESPACE_TESTS,
+        INTEGRATION_TESTS,
+        INVALID_INPUT_TESTS
+    )
+    from tests.latex.fixtures.parse_environment_arguments_test_cases import (
+        PARSE_ENVIRONMENT_ARGUMENTS_BASIC_TESTS,
+        PARSE_ENVIRONMENT_ARGUMENTS_WHITESPACE_TESTS,
+        PARSE_ENVIRONMENT_ARGUMENTS_OPTIONAL_TESTS,
+        PARSE_ENVIRONMENT_ARGUMENTS_EDGE_CASE_TESTS,
+        PARSE_ENVIRONMENT_ARGUMENTS_NESTED_TESTS,
+        PARSE_ENVIRONMENT_ARGUMENTS_COMPLEX_TESTS,
+        PARSE_ENVIRONMENT_ARGUMENTS_ERROR_HANDLING_TESTS
+    )
     
-    try:
-        from environment_test_cases import (
-            FIND_ALL_BEGIN_ENVIRONMENTS_BASIC_TESTS,
-            FIND_ALL_BEGIN_ENVIRONMENTS_WHITESPACE_TESTS,
-            FIND_ALL_BEGIN_ENVIRONMENTS_EDGE_CASE_TESTS,
-            FIND_ALL_END_ENVIRONMENTS_BASIC_TESTS,
-            FIND_BEGIN_ENVIRONMENT_BASIC_TESTS,
-            FIND_BEGIN_ENVIRONMENT_WHITESPACE_TESTS,
-            FIND_BEGIN_ENVIRONMENT_EDGE_CASE_TESTS,
-            FIND_END_ENVIRONMENT_BASIC_TESTS,
-            FIND_END_ENVIRONMENT_WHITESPACE_TESTS,
-            INTEGRATION_TESTS,
-            INVALID_INPUT_TESTS
-        )
-        return {
-            'find_all_begin_basic': FIND_ALL_BEGIN_ENVIRONMENTS_BASIC_TESTS,
-            'find_all_begin_whitespace': FIND_ALL_BEGIN_ENVIRONMENTS_WHITESPACE_TESTS,
-            'find_all_begin_edge_case': FIND_ALL_BEGIN_ENVIRONMENTS_EDGE_CASE_TESTS,
-            'find_all_end_basic': FIND_ALL_END_ENVIRONMENTS_BASIC_TESTS,
-            'find_begin_basic': FIND_BEGIN_ENVIRONMENT_BASIC_TESTS,
-            'find_begin_whitespace': FIND_BEGIN_ENVIRONMENT_WHITESPACE_TESTS,
-            'find_begin_edge_case': FIND_BEGIN_ENVIRONMENT_EDGE_CASE_TESTS,
-            'find_end_basic': FIND_END_ENVIRONMENT_BASIC_TESTS,
-            'find_end_whitespace': FIND_END_ENVIRONMENT_WHITESPACE_TESTS,
-            'integration': INTEGRATION_TESTS,
-            'invalid_input': INVALID_INPUT_TESTS
-        }
-    finally:
-        sys.path.pop(0)
+    return {
+        'find_all_begin_basic': FIND_ALL_BEGIN_ENVIRONMENTS_BASIC_TESTS,
+        'find_all_begin_whitespace': FIND_ALL_BEGIN_ENVIRONMENTS_WHITESPACE_TESTS,
+        'find_all_begin_edge_case': FIND_ALL_BEGIN_ENVIRONMENTS_EDGE_CASE_TESTS,
+        'find_all_end_basic': FIND_ALL_END_ENVIRONMENTS_BASIC_TESTS,
+        'find_begin_basic': FIND_BEGIN_ENVIRONMENT_BASIC_TESTS,
+        'find_begin_whitespace': FIND_BEGIN_ENVIRONMENT_WHITESPACE_TESTS,
+        'find_begin_edge_case': FIND_BEGIN_ENVIRONMENT_EDGE_CASE_TESTS,
+        'find_end_basic': FIND_END_ENVIRONMENT_BASIC_TESTS,
+        'find_end_whitespace': FIND_END_ENVIRONMENT_WHITESPACE_TESTS,
+        'integration': INTEGRATION_TESTS,
+        'invalid_input': INVALID_INPUT_TESTS,
+        'parse_args_basic': PARSE_ENVIRONMENT_ARGUMENTS_BASIC_TESTS,
+        'parse_args_whitespace': PARSE_ENVIRONMENT_ARGUMENTS_WHITESPACE_TESTS,
+        'parse_args_optional': PARSE_ENVIRONMENT_ARGUMENTS_OPTIONAL_TESTS,
+        'parse_args_edge_case': PARSE_ENVIRONMENT_ARGUMENTS_EDGE_CASE_TESTS,
+        'parse_args_nested': PARSE_ENVIRONMENT_ARGUMENTS_NESTED_TESTS,
+        'parse_args_complex': PARSE_ENVIRONMENT_ARGUMENTS_COMPLEX_TESTS,
+        'parse_args_error_handling': PARSE_ENVIRONMENT_ARGUMENTS_ERROR_HANDLING_TESTS
+    }
 
 
 class TestEnvironment:
@@ -119,4 +130,88 @@ class TestEnvironment:
     def test_invalid_input_handling(self, test_case):
         """Test handling of invalid input types."""
         result = Environment.find_all_begin_environments(test_case['content'])
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_basic'])
+    def test_parse_environment_arguments_basic(self, test_case):
+        """Test parse_environment_arguments with basic test cases."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_whitespace'])
+    def test_parse_environment_arguments_whitespace(self, test_case):
+        """Test parse_environment_arguments with whitespace variations."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_optional'])
+    def test_parse_environment_arguments_optional(self, test_case):
+        """Test parse_environment_arguments with optional arguments."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_edge_case'])
+    def test_parse_environment_arguments_edge_cases(self, test_case):
+        """Test parse_environment_arguments with edge cases."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_nested'])
+    def test_parse_environment_arguments_nested(self, test_case):
+        """Test parse_environment_arguments with nested brackets/braces."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_complex'])
+    def test_parse_environment_arguments_complex(self, test_case):
+        """Test parse_environment_arguments with complex real-world cases."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
+        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+
+    @pytest.mark.parametrize("test_case", load_test_cases()['parse_args_error_handling'])
+    def test_parse_environment_arguments_error_handling(self, test_case):
+        """Test parse_environment_arguments error handling with malformed input."""
+        result = Environment.parse_environment_arguments(
+            test_case['content'],
+            test_case['environment_name'],
+            test_case['begin_start'],
+            test_case['begin_end'],
+            test_case['syntax']
+        )
         assert result == test_case['expected'], f"Failed for {test_case['description']}"
