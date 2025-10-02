@@ -305,3 +305,61 @@ INVALID_INPUT_TESTS = [
         'expected': []
     }
 ]
+
+# Test cases for star environments
+FIND_ALL_BEGIN_ENVIRONMENTS_STAR_TESTS = [
+    {
+        'description': 'star environments',
+        'content': r'''\begin{equation*}
+\begin{align*}
+\begin{figure*}
+\begin{table*}''',
+        'expected': [('equation*', 0, 17), ('align*', 18, 32), ('figure*', 33, 48), ('table*', 49, 63)]
+    },
+    {
+        'description': 'mixed star and non-star environments',
+        'content': r'''\begin{equation}
+\begin{equation*}
+\begin{align}
+\begin{align*}''',
+        'expected': [('equation', 0, 16), ('equation*', 17, 34), ('align', 35, 48), ('align*', 49, 63)]
+    }
+]
+
+FIND_ALL_END_ENVIRONMENTS_STAR_TESTS = [
+    {
+        'description': 'star end environments',
+        'content': r'''\end{equation*}
+\end{align*}
+\end{figure*}''',
+        'expected': [('equation*', 0, 15), ('align*', 16, 28), ('figure*', 29, 42)]
+    }
+]
+
+FIND_BEGIN_ENVIRONMENT_STAR_TESTS = [
+    {
+        'description': 'find specific star environment',
+        'content': r'''\begin{equation}
+\begin{equation*}
+\begin{align*}''',
+        'environment_name': 'equation*',
+        'expected': [(17, 34)]
+    },
+    {
+        'description': 'no match for star when looking for non-star',
+        'content': r'\begin{equation*}',
+        'environment_name': 'equation',
+        'expected': []
+    }
+]
+
+FIND_END_ENVIRONMENT_STAR_TESTS = [
+    {
+        'description': 'find specific star end environment',
+        'content': r'''\end{equation}
+\end{equation*}
+\end{align*}''',
+        'environment_name': 'equation*',
+        'expected': [(15, 30)]
+    }
+]

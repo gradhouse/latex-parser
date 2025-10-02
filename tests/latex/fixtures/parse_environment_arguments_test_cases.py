@@ -471,3 +471,267 @@ PARSE_ENVIRONMENT_ARGUMENTS_ERROR_HANDLING_TESTS = [
         }
     }
 ]
+
+# Additional test cases for edge case coverage
+PARSE_ENVIRONMENT_ARGUMENTS_EDGE_COVERAGE_TESTS = [
+    {
+        'description': 'required argument missing opening brace',
+        'content': r'\begin{array}[pos]missing_brace',
+        'environment_name': 'array',
+        'begin_start': 0,
+        'begin_end': 13,
+        'syntax': r'\begin{array}[pos]{cols}',
+        'expected': {
+            'environment_name': 'array',
+            'complete_start': 0,
+            'complete_end': 18,
+            'arguments': {
+                'pos': {
+                    'value': 'pos',
+                    'start': 13,
+                    'end': 18,
+                    'type': 'optional'
+                }
+            }
+        }
+    },
+    {
+        'description': 'required argument with no closing brace',
+        'content': r'\begin{array}{unclosed_brace',
+        'environment_name': 'array',
+        'begin_start': 0,
+        'begin_end': 13,
+        'syntax': r'\begin{array}{cols}',
+        'expected': {
+            'environment_name': 'array',
+            'complete_start': 0,
+            'complete_end': 13,
+            'arguments': {}
+        }
+    },
+    {
+        'description': 'optional argument with no closing bracket',
+        'content': r'\begin{array}[unclosed_bracket',
+        'environment_name': 'array',
+        'begin_start': 0,
+        'begin_end': 13,
+        'syntax': r'\begin{array}[pos]{cols}',
+        'expected': {
+            'environment_name': 'array',
+            'complete_start': 0,
+            'complete_end': 13,
+            'arguments': {}
+        }
+    },
+    {
+        'description': 'optional argument at wrong position',
+        'content': r'\begin{array}{cols}[pos]',
+        'environment_name': 'array',
+        'begin_start': 0,
+        'begin_end': 13,
+        'syntax': r'\begin{array}[pos]{cols}',
+        'expected': {
+            'environment_name': 'array',
+            'complete_start': 0,
+            'complete_end': 19,
+            'arguments': {
+                'cols': {
+                    'value': 'cols',
+                    'start': 13,
+                    'end': 19,
+                    'type': 'required'
+                }
+            }
+        }
+    },
+    {
+        'description': 'required argument missing but optional present',
+        'content': r'\begin{tabular}[t]',
+        'environment_name': 'tabular',
+        'begin_start': 0,
+        'begin_end': 15,
+        'syntax': r'\begin{tabular}{cols}[pos]',
+        'expected': {
+            'environment_name': 'tabular',
+            'complete_start': 0,
+            'complete_end': 15,
+            'arguments': {}
+        }
+    },
+    {
+        'description': 'required argument malformed brace parsing fails',
+        'content': r'\begin{array}{unclosed_brace_content',
+        'environment_name': 'array',
+        'begin_start': 0,
+        'begin_end': 13,
+        'syntax': r'\begin{array}{cols}',
+        'expected': {
+            'environment_name': 'array',
+            'complete_start': 0,
+            'complete_end': 13,
+            'arguments': {}
+        }
+    },
+    {
+        'description': 'multiple required arguments to trigger continue branch',
+        'content': r'\begin{minipage}{5cm}{content here}',
+        'environment_name': 'minipage',
+        'begin_start': 0,
+        'begin_end': 16,
+        'syntax': r'\begin{minipage}{width}{content}',
+        'expected': {
+            'environment_name': 'minipage',
+            'complete_start': 0,
+            'complete_end': 35,
+            'arguments': {
+                'width': {
+                    'value': '5cm',
+                    'start': 16,
+                    'end': 21,
+                    'type': 'required'
+                },
+                'content': {
+                    'value': 'content here',
+                    'start': 21,
+                    'end': 35,
+                    'type': 'required'
+                }
+            }
+        }
+    },
+    {
+        'description': 'required argument followed by optional to trigger continue',
+        'content': r'\begin{table}{cols}[pos]',
+        'environment_name': 'table',
+        'begin_start': 0,
+        'begin_end': 13,
+        'syntax': r'\begin{table}{cols}[pos]',
+        'expected': {
+            'environment_name': 'table',
+            'complete_start': 0,
+            'complete_end': 24,
+            'arguments': {
+                'cols': {
+                    'value': 'cols',
+                    'start': 13,
+                    'end': 19,
+                    'type': 'required'
+                },
+                'pos': {
+                    'value': 'pos',
+                    'start': 19,
+                    'end': 24,
+                    'type': 'optional'
+                }
+            }
+        }
+    }
+]
+
+# Test cases for multiple required arguments to hit 182->156 branch
+PARSE_ENVIRONMENT_ARGUMENTS_MULTIPLE_REQUIRED_TESTS = [
+    {
+        'description': 'multiple required arguments - hits 182->156 branch',
+        'content': r'\begin{foo}{abc}{def}',
+        'environment_name': 'foo',
+        'begin_start': 0,
+        'begin_end': 11,
+        'syntax': r'\begin{foo}{first}{second}',
+        'expected': {
+            'environment_name': 'foo',
+            'complete_start': 0,
+            'complete_end': 21,
+            'arguments': {
+                'first': {
+                    'value': 'abc',
+                    'start': 11,
+                    'end': 16,
+                    'type': 'required'
+                },
+                'second': {
+                    'value': 'def',
+                    'start': 16,
+                    'end': 21,
+                    'type': 'required'
+                }
+            }
+        }
+    }
+]
+
+# Test case for the ValueError path - this should only be used internally 
+# to test error handling for malformed syntax definitions
+PARSE_ENVIRONMENT_ARGUMENTS_ERROR_COVERAGE_TESTS = [
+    {
+        'content': r'\begin{foo}',
+        'syntax': r'\begin{foo}',  # This will be modified in the test to have invalid arg_type
+        'expected_error': ValueError,
+        'expected_message': 'can not happen'
+    }
+]
+
+# Test cases for environments with * character
+PARSE_ENVIRONMENT_ARGUMENTS_STAR_TESTS = [
+    {
+        'description': 'equation* environment basic',
+        'content': r'\begin{equation*}',
+        'environment_name': 'equation*',
+        'begin_start': 0,
+        'begin_end': 17,
+        'syntax': r'\begin{equation*}',
+        'expected': {
+            'environment_name': 'equation*',
+            'complete_start': 0,
+            'complete_end': 17,
+            'arguments': {}
+        }
+    },
+    {
+        'description': 'align* environment with arguments',
+        'content': r'\begin{align*}[t]',
+        'environment_name': 'align*',
+        'begin_start': 0,
+        'begin_end': 14,
+        'syntax': r'\begin{align*}[pos]',
+        'expected': {
+            'environment_name': 'align*',
+            'complete_start': 0,
+            'complete_end': 17,
+            'arguments': {
+                'pos': {
+                    'value': 't',
+                    'start': 14,
+                    'end': 17,
+                    'type': 'optional'
+                }
+            }
+        }
+    },
+    {
+        'description': 'tabular* environment with width and position',
+        'content': r'\begin{tabular*}{10cm}[b]',
+        'environment_name': 'tabular*',
+        'begin_start': 0,
+        'begin_end': 16,
+        'syntax': r'\begin{tabular*}{width}[pos]',
+        'expected': {
+            'environment_name': 'tabular*',
+            'complete_start': 0,
+            'complete_end': 25,
+            'arguments': {
+                'width': {
+                    'value': '10cm',
+                    'start': 16,
+                    'end': 22,
+                    'type': 'required'
+                },
+                'pos': {
+                    'value': 'b',
+                    'start': 22,
+                    'end': 25,
+                    'type': 'optional'
+                }
+            }
+        }
+    }
+]

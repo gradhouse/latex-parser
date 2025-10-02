@@ -198,6 +198,8 @@ class Environment:
                 else:
                     # Required argument not found - parsing failed
                     break
+            else:
+                raise ValueError(f'{arg_type} is not required or optional')
         
         return {
             'environment_name': environment_name,
@@ -215,8 +217,6 @@ class Environment:
         :param environment_name: Name of the environment
         :return: List of argument info dictionaries
         """
-        if not syntax:
-            return []
         
         # Remove the \begin{environment_name} part to focus on arguments
         escaped_name = re.escape(environment_name)
