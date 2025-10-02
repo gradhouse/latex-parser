@@ -87,8 +87,20 @@ class TestCommand:
     @pytest.mark.parametrize("test_case", FIND_COMMANDS_ERROR_TESTS)
     def test_find_commands_error_handling(self, test_case):
         """Test error handling in command finding."""
-        result = Command.find_command(test_case['content'], test_case['command_name'])
-        assert result == test_case['expected'], f"Failed for {test_case['description']}"
+        if 'should_raise' in test_case:
+            # Test expects an exception
+            if test_case['should_raise'] == 'ValueError':
+                try:
+                    Command.find_command(test_case['content'], test_case['command_name'])
+                    assert False, f"Expected ValueError but no exception was raised for {test_case['description']}"
+                except ValueError:
+                    pass  # Expected exception
+            else:
+                assert False, f"Unknown exception type: {test_case['should_raise']}"
+        else:
+            # Test expects a result
+            result = Command.find_command(test_case['content'], test_case['command_name'])
+            assert result == test_case['expected'], f"Failed for {test_case['description']}"
 
     @pytest.mark.parametrize("test_case", FIND_COMMAND_COVERAGE_TESTS)
     def test_find_command_coverage_completion(self, test_case):
@@ -116,8 +128,14 @@ class TestCommand:
     def test_find_command_invalid_inputs(self):
         """Test with invalid inputs."""
         # Empty strings should return empty list, not error
-        assert Command.find_command("", "textbf") == []
-        assert Command.find_command("content", "") == []
+        assert Command.find_command("", r"\textbf") == []
+        
+        # Test with empty command name should raise ValueError due to validation
+        try:
+            Command.find_command("content", "")
+            assert False, "Should have raised ValueError for empty command name"
+        except ValueError:
+            pass  # Expected
         
     def test_find_all_commands_overlap_coverage(self):
         """Test case to cover the overlap detection branch in find_all_commands."""
@@ -130,7 +148,7 @@ class TestCommand:
         # The important thing is that we don't crash and handle overlaps correctly
         command_names = [name for name, start, end in result]
         
-        # Expected: alpha*, beta (@ is not part of command name), gamma
+        # Expected: \alpha*, \beta (@ is not part of command name), \gamma
         # The @ and ! are not captured because they follow letter commands
-        expected_commands = ['alpha*', 'beta', 'gamma']
+        expected_commands = [r'\alpha*', r'\beta', r'\gamma']
         assert command_names == expected_commands

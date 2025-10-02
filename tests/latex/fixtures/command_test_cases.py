@@ -10,36 +10,36 @@ FIND_ALL_COMMANDS_BASIC_TESTS = [
         'description': 'simple letter commands',
         'content': r'\textbf{hello} \alpha \beta',
         'expected': [
-            ('textbf', 0, 7),
-            ('alpha', 15, 21),
-            ('beta', 22, 27)
+            (r'\textbf', 0, 7),
+            (r'\alpha', 15, 21),
+            (r'\beta', 22, 27)
         ]
     },
     {
         'description': 'non-letter commands',
         'content': r'text \@ \! \# content',
         'expected': [
-            ('@', 5, 7),
-            ('!', 8, 10),
-            ('#', 11, 13)
+            (r'\@', 5, 7),
+            (r'\!', 8, 10),
+            (r'\#', 11, 13)
         ]
     },
     {
         'description': 'mixed commands',
         'content': r'\textbf \@ \alpha \!',
         'expected': [
-            ('textbf', 0, 7),
-            ('@', 8, 10),
-            ('alpha', 11, 17),
-            ('!', 18, 20)
+            (r'\textbf', 0, 7),
+            (r'\@', 8, 10),
+            (r'\alpha', 11, 17),
+            (r'\!', 18, 20)
         ]
     },
     {
         'description': 'commands with star forms',
         'content': r'\section{title} \section*{starred}',
         'expected': [
-            ('section', 0, 8),
-            ('section*', 16, 25)
+            (r'\section', 0, 8),
+            (r'\section*', 16, 25)
         ]
     }
 ]
@@ -50,18 +50,18 @@ FIND_ALL_COMMANDS_AT_SYMBOL_TESTS = [
         'description': 'commands with @ as initial character',
         'content': r'\@chapter{title} \@section{content}',
         'expected': [
-            ('@chapter', 0, 9),
-            ('@section', 17, 26)
+            (r'\@chapter', 0, 9),
+            (r'\@section', 17, 26)
         ]
     },
     {
         'description': 'mixed @ usage - standalone and initial',
         'content': r'\@ \@section \alpha \!',
         'expected': [
-            ('@', 0, 2),
-            ('@section', 3, 12),
-            ('alpha', 13, 19),
-            ('!', 20, 22)
+            (r'\@', 0, 2),
+            (r'\@section', 3, 12),
+            (r'\alpha', 13, 19),
+            (r'\!', 20, 22)
         ]
     }
 ]
@@ -72,19 +72,19 @@ FIND_ALL_COMMANDS_WHITESPACE_TESTS = [
         'description': 'commands with trailing spaces',
         'content': r'\alpha \beta  \gamma	\delta',
         'expected': [
-            ('alpha', 0, 6),
-            ('beta', 7, 12),
-            ('gamma', 14, 20),
-            ('delta', 21, 27)
+            (r'\alpha', 0, 6),
+            (r'\beta', 7, 12),
+            (r'\gamma', 14, 20),
+            (r'\delta', 21, 27)
         ]
     },
     {
         'description': 'commands with newlines',
         'content': r'\alpha' + '\n' + r'\beta' + '\n\n' + r'\gamma',
         'expected': [
-            ('alpha', 0, 6),
-            ('beta', 7, 12),
-            ('gamma', 14, 20)
+            (r'\alpha', 0, 6),
+            (r'\beta', 7, 12),
+            (r'\gamma', 14, 20)
         ]
     }
 ]
@@ -105,9 +105,9 @@ FIND_ALL_COMMANDS_EDGE_TESTS = [
         'description': 'escaped backslashes',
         'content': r'\\textbf \textbf \\',
         'expected': [
-            ('textbf', 1, 8),  # \textbf (the \\ overlap is handled)
-            ('textbf', 9, 16), # Second \textbf  
-            ('\\', 17, 19)     # Final \\ (no overlap)
+            (r'\textbf', 1, 8),  # \textbf (the \\ overlap is handled)
+            (r'\textbf', 9, 16), # Second \textbf  
+            (r'\\', 17, 19)     # Final \\ (double backslash command)
         ]
     }
 ]
@@ -116,7 +116,7 @@ FIND_ALL_COMMANDS_EDGE_TESTS = [
 FIND_COMMAND_SPECIFIC_TESTS = [
     {
         'description': 'find specific letter command',
-        'command_name': 'textbf',
+        'command_name': r'\textbf',
         'content': r'\textbf{hello} \textit{world} \textbf{again}',
         'expected': [
             (0, 7),   # First \textbf
@@ -125,7 +125,7 @@ FIND_COMMAND_SPECIFIC_TESTS = [
     },
     {
         'description': 'find non-letter command',
-        'command_name': '@',
+        'command_name': r'\@',
         'content': r'text \@ more \! text \@ again',
         'expected': [
             (5, 7),   # First \@
@@ -134,7 +134,7 @@ FIND_COMMAND_SPECIFIC_TESTS = [
     },
     {
         'description': 'find starred command',
-        'command_name': 'section*',
+        'command_name': r'\section*',
         'content': r'\section{title} \section*{starred} \section{normal}',
         'expected': [
             (16, 25)  # \section*
@@ -142,7 +142,7 @@ FIND_COMMAND_SPECIFIC_TESTS = [
     },
     {
         'description': 'find regular command (not starred)',
-        'command_name': 'section',
+        'command_name': r'\section',
         'content': r'\section{title} \section*{starred} \section{normal}',
         'expected': [
             (0, 8),   # First \section
@@ -155,7 +155,7 @@ FIND_COMMAND_SPECIFIC_TESTS = [
 FIND_COMMAND_AT_SYMBOL_TESTS = [
     {
         'description': 'find @ as non-letter command',
-        'command_name': '@',
+        'command_name': r'\@',
         'content': r'\@ \@chapter \@section',
         'expected': [
             (0, 2)  # Only the standalone \@
@@ -163,7 +163,7 @@ FIND_COMMAND_AT_SYMBOL_TESTS = [
     },
     {
         'description': 'find @chapter command',
-        'command_name': '@chapter',
+        'command_name': r'\@chapter',
         'content': r'\@ \@chapter \@section',
         'expected': [
             (3, 12)  # \@chapter
@@ -171,7 +171,7 @@ FIND_COMMAND_AT_SYMBOL_TESTS = [
     },
     {
         'description': 'find @section command',
-        'command_name': '@section',
+        'command_name': r'\@section',
         'content': r'\@ \@chapter \@section',
         'expected': [
             (13, 22)  # \@section
@@ -183,7 +183,7 @@ FIND_COMMAND_AT_SYMBOL_TESTS = [
 FIND_COMMAND_BOUNDARY_TESTS = [
     {
         'description': 'command boundaries',
-        'command_name': 'text',
+        'command_name': r'\text',
         'content': r'\text \textbf \textbold \textt',
         'expected': [
             (0, 5)  # Only \text, not \textbf or \textbold
@@ -191,7 +191,7 @@ FIND_COMMAND_BOUNDARY_TESTS = [
     },
     {
         'description': 'case sensitivity',
-        'command_name': 'alpha',
+        'command_name': r'\alpha',
         'content': r'\Alpha \alpha \BETA \beta',
         'expected': [
             (7, 13)  # Only \alpha (lowercase)
@@ -212,8 +212,8 @@ This is \textbf{bold} and \textit{italic} text.
 \cite{ref1} and \ref{fig:1}
 \end{document}''',
         'expected_commands': [
-            'documentclass', 'usepackage', 'begin', 'section*', 'textbf', 
-            'textit', 'frac', 'cite', 'ref', 'end'
+            r'\documentclass', r'\usepackage', r'\begin', r'\section*', r'\textbf', 
+            r'\textit', r'\frac', r'\cite', r'\ref', r'\end'
         ]
     }
 ]
@@ -224,7 +224,7 @@ FIND_COMMANDS_ERROR_TESTS = [
         'description': 'empty command name',
         'command_name': '',
         'content': r'\textbf{hello}',
-        'expected': []
+        'should_raise': 'ValueError'  # Changed: empty command name should raise ValueError
     }
 ]
 
@@ -232,19 +232,19 @@ FIND_COMMANDS_ERROR_TESTS = [
 FIND_COMMAND_COVERAGE_TESTS = [
     {
         'description': 'Find single non-letter command $ (line 88 coverage)',
-        'command_name': '$',
+        'command_name': r'\$',
         'content': r'\$ and \& and \%',
         'expected': [(0, 2)]
     },
     {
         'description': 'Find @ command with star (line 96 coverage)',
-        'command_name': '@name*',
+        'command_name': r'\@name*',
         'content': r'\@name* text',
         'expected': [(0, 7)]
     },
     {
         'description': 'Find & command for non-letter end calculation (line 117 coverage)',
-        'command_name': '&',
+        'command_name': r'\&',
         'content': r'\& symbol',
         'expected': [(0, 2)]
     }
@@ -256,45 +256,45 @@ FIND_ALL_COMMANDS_LATEX_CORNER_CASES = [
         'description': 'Commands with digits and underscores (valid in makeatletter)',
         'content': r'\command@internal \test_helper \name123',
         'expected': [
-            ('command', 0, 8),      # \command (@ not part of name when not initial)
-            ('test', 18, 23),       # \test (_ not part of command name)  
-            ('name', 31, 36)        # \name (digits not part of command name)
+            (r'\command', 0, 8),      # \command (@ not part of name when not initial)
+            (r'\test', 18, 23),       # \test (_ not part of command name)  
+            (r'\name', 31, 36)        # \name (digits not part of command name)
         ]
     },
     {
         'description': 'Commands with Unicode characters (only ASCII letters supported)',
         'content': r'\été \naïve \résumé',
         'expected': [
-            ('na', 5, 8),           # \na (ï not supported, so parses as \na + ïve)
-            ('r', 12, 14)           # \r (é not supported, so parses as \r + ésumé)
+            (r'\na', 5, 8),           # \na (ï not supported, so parses as \na + ïve)
+            (r'\r', 12, 14)           # \r (é not supported, so parses as \r + ésumé)
         ]
     },
     {
         'description': 'Multiple consecutive backslashes',
         'content': r'\\\\text \\\\ \\newline',
         'expected': [
-            ('\\', 0, 2),           # First \\
-            ('text', 3, 8),         # \text (space after second \\)
-            ('\\', 9, 11),          # Third \\
-            ('\\', 11, 13),         # Fourth \\
-            ('newline', 15, 23)     # \newline (space after fifth \\)
+            (r'\\', 0, 2),           # First \\
+            (r'\text', 3, 8),         # \text (space after second \\)
+            (r'\\', 9, 11),          # Third \\
+            (r'\\', 11, 13),         # Fourth \\
+            (r'\newline', 15, 23)     # \newline (space after fifth \\)
         ]
     },
     {
         'description': 'Commands at end of content (no trailing space)',
         'content': r'\end{document}\bye',
         'expected': [
-            ('end', 0, 4),
-            ('bye', 14, 18)
+            (r'\end', 0, 4),
+            (r'\bye', 14, 18)
         ]
     },
     {
         'description': 'Commands with immediate braces and brackets',
         'content': r'\textbf{bold}\cite[p.5]{ref}\frac{1}{2}',
         'expected': [
-            ('textbf', 0, 7),
-            ('cite', 13, 18),
-            ('frac', 28, 33)        # Position adjusted for actual parsing
+            (r'\textbf', 0, 7),
+            (r'\cite', 13, 18),
+            (r'\frac', 28, 33)        # Position adjusted for actual parsing
         ]
     }
 ]
@@ -302,31 +302,31 @@ FIND_ALL_COMMANDS_LATEX_CORNER_CASES = [
 FIND_COMMAND_LATEX_CORNER_CASES = [
     {
         'description': 'Find command followed by digits (should not include digits)',
-        'command_name': 'name',
+        'command_name': r'\name',
         'content': r'\name123 text',
         'expected': [(0, 5)]
     },
     {
         'description': 'Find command followed by underscore (should not include underscore)',
-        'command_name': 'test',
+        'command_name': r'\test',
         'content': r'\test_helper',
         'expected': [(0, 5)]
     },
     {
         'description': 'Find ASCII command (Unicode not supported in LaTeX commands)',
-        'command_name': 'na',
+        'command_name': r'\na',
         'content': r'\été and \naïve',
         'expected': [(9, 12)]       # Only finds \na in \naïve
     },
     {
         'description': 'Find backslash command in multiple consecutive backslashes',
-        'command_name': '\\',
+        'command_name': r'\\',
         'content': r'\\\\text',
         'expected': [(0, 2), (2, 4)]
     },
     {
         'description': 'Find command at very end of content',
-        'command_name': 'bye',
+        'command_name': r'\bye',
         'content': r'\end{document}\bye',
         'expected': [(14, 18)]
     }

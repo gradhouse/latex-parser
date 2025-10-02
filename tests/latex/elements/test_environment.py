@@ -9,6 +9,7 @@ import sys
 import pytest
 
 from latex_parser.latex.elements.environment import Environment
+from latex_parser.latex.elements.command import Command
 
 
 def load_test_cases():
@@ -292,11 +293,11 @@ class TestEnvironment:
         content = r'[test]'
         
         # Test with start_pos >= len(content)
-        result = Environment._parse_bracket_argument(content, 10)
+        result = Command._parse_bracket_argument(content, 10)
         assert result is None
         
         # Test with start_pos pointing to non-bracket character
-        result = Environment._parse_bracket_argument(content, 1)  # Points to 't'
+        result = Command._parse_bracket_argument(content, 1)  # Points to 't'
         assert result is None
 
     def test_parse_brace_argument_invalid_start_pos(self):
@@ -304,30 +305,30 @@ class TestEnvironment:
         content = r'{test}'
         
         # Test with start_pos >= len(content)
-        result = Environment._parse_brace_argument(content, 10)
+        result = Command._parse_brace_argument(content, 10)
         assert result is None
         
         # Test with start_pos pointing to non-brace character  
-        result = Environment._parse_brace_argument(content, 1)  # Points to 't'
+        result = Command._parse_brace_argument(content, 1)  # Points to 't'
         assert result is None
 
     def test_parse_bracket_argument_valid_cases(self):
         """Test _parse_bracket_argument with valid inputs."""
         # Simple case
         content = r'[test]'
-        result = Environment._parse_bracket_argument(content, 0)
+        result = Command._parse_bracket_argument(content, 0)
         expected = {'value': 'test', 'start': 0, 'end': 6}
         assert result == expected
         
         # Nested brackets
         content = r'[test[nested]more]'
-        result = Environment._parse_bracket_argument(content, 0)
+        result = Command._parse_bracket_argument(content, 0)
         expected = {'value': 'test[nested]more', 'start': 0, 'end': 18}
         assert result == expected
         
         # Empty brackets
         content = r'[]'
-        result = Environment._parse_bracket_argument(content, 0)
+        result = Command._parse_bracket_argument(content, 0)
         expected = {'value': '', 'start': 0, 'end': 2}
         assert result == expected
 
@@ -335,19 +336,19 @@ class TestEnvironment:
         """Test _parse_brace_argument with valid inputs."""
         # Simple case
         content = r'{test}'
-        result = Environment._parse_brace_argument(content, 0)
+        result = Command._parse_brace_argument(content, 0)
         expected = {'value': 'test', 'start': 0, 'end': 6}
         assert result == expected
         
         # Nested braces
         content = r'{test{nested}more}'
-        result = Environment._parse_brace_argument(content, 0)
+        result = Command._parse_brace_argument(content, 0)
         expected = {'value': 'test{nested}more', 'start': 0, 'end': 18}
         assert result == expected
         
         # Empty braces
         content = r'{}'
-        result = Environment._parse_brace_argument(content, 0)
+        result = Command._parse_brace_argument(content, 0)
         expected = {'value': '', 'start': 0, 'end': 2}
         assert result == expected
 
@@ -397,8 +398,8 @@ class TestEnvironment:
         # Mock the syntax parsing to return an invalid arg_type
         import unittest.mock
         
-        with unittest.mock.patch.object(Environment, '_parse_syntax_arguments') as mock_parse_syntax:
-            # Make _parse_syntax_arguments return an invalid argument type
+        with unittest.mock.patch.object(Command, 'parse_syntax_arguments') as mock_parse_syntax:
+            # Make parse_syntax_arguments return an invalid argument type
             mock_parse_syntax.return_value = [
                 {'type': 'invalid_type', 'name': 'test'}  # This should trigger the ValueError
             ]
