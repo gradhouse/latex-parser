@@ -41,7 +41,27 @@ class TestCommandDefinitionEnums:
         """CommandType enum has all expected values."""
         expected_values = {
             'unknown': CommandType.UNKNOWN,
-            'sectioning': CommandType.SECTIONING
+            'document': CommandType.DOCUMENT,
+            'sectioning': CommandType.SECTIONING,
+            'alignment': CommandType.ALIGNMENT,
+            'math_symbol_greek_letter': CommandType.MATH_SYMBOL_GREEK_LETTER,
+            'math_symbol_binary_op': CommandType.MATH_SYMBOL_BINARY_OP,
+            'math_symbol_relation': CommandType.MATH_SYMBOL_RELATION,
+            'math_symbol_arrow': CommandType.MATH_SYMBOL_ARROW,
+            'math_symbol_misc': CommandType.MATH_SYMBOL_MISC,
+            'math_symbol_variable_sized': CommandType.MATH_SYMBOL_VARIABLE_SIZED,
+            'math_function_log_like': CommandType.MATH_FUNCTION_LOG_LIKE,
+            'math_accent': CommandType.MATH_ACCENT,
+            'math_enclosure': CommandType.MATH_ENCLOSURE,
+            'text_accent': CommandType.TEXT_ACCENT,
+            'text_symbol': CommandType.TEXT_SYMBOL,
+            'text_spacing': CommandType.TEXT_SPACING,
+            'delimiter': CommandType.DELIMITER,
+            'bibliography': CommandType.BIBLIOGRAPHY,
+            'font_declaration': CommandType.FONT_DECLARATION,
+            'command_definition': CommandType.COMMAND_DEFINITION,
+            'environment_definition': CommandType.ENVIRONMENT_DEFINITION,
+            'tex_command_definition': CommandType.TEX_COMMAND_DEFINITION
         }
         
         for value_str, enum_value in expected_values.items():

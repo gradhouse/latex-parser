@@ -920,6 +920,31 @@ def register_command_definition_commands(registry: CommandDefinitionRegistry) ->
                    'TeX primitive: defines a macro with flexible parameter pattern matching')
 
 
+def register_environment_definition_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register commands for defining new environments.
+    """
+    references = [{'ref_id': 'latex_companion_2004', 'sections': 'A.1.3', 'pages': '847-850'}]
+    
+    def add_env_def_cmd(name: str, syntax: str, description: str) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, 
+            syntax=syntax, 
+            command_type=CommandType.ENVIRONMENT_DEFINITION,
+            robustness=CommandRobustness.FRAGILE, 
+            modes=[CommandMode.PREAMBLE, CommandMode.PARAGRAPH],
+            description=description, 
+            references=references
+        ))
+    
+    add_env_def_cmd('\\newenvironment', 
+                   '\\newenvironment{name}[nargs][default]{begin_definition}{end_definition}',
+                   'defines a new environment; errors if the environment already exists')
+    add_env_def_cmd('\\renewenvironment', 
+                   '\\renewenvironment{name}[nargs][default]{begin_definition}{end_definition}',
+                   'redefines an existing environment; errors if the environment does not exist')
+
+
 def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     """
     Register LaTeX commands in the command definition registry.
@@ -946,3 +971,4 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_font_declaration_commands(registry)
     register_alignment_commands(registry)
     register_command_definition_commands(registry)
+    register_environment_definition_commands(registry)

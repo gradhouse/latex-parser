@@ -53,6 +53,7 @@ class CommandType(Enum):
     BIBLIOGRAPHY = 'bibliography'                             # Bibliography and citation commands (e.g., \cite, \bibitem, \bibliography)
     FONT_DECLARATION = 'font_declaration'                     # Font declaration and command commands (e.g., \bfseries, \textbf{text}, \itshape, \textit{text})
     COMMAND_DEFINITION = 'command_definition'                 # Command definition commands (e.g., \newcommand, \renewcommand, \newcommand*)
+    ENVIRONMENT_DEFINITION = 'environment_definition'         # Environment definition commands (e.g., \newenvironment, \renewenvironment)
     TEX_COMMAND_DEFINITION = 'tex_command_definition'         # TeX primitive command definition commands (e.g., \def)
     
 
