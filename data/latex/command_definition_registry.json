@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-10-01T18:07:07.098130+00:00"
+    "generated_at": "2025-10-03T10:42:36.992640+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -6536,6 +6536,132 @@
           "ref_id": "lamport_1994",
           "sections": "6.5",
           "pages": "111-112"
+        }
+      ]
+    },
+    "\\newcommand": {
+      "name": "\\newcommand",
+      "syntax": "\\newcommand{cmd}[nargs][default]{definition}",
+      "command_type": "command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "defines a new command; errors if the command already exists",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "A.1.2",
+          "pages": "843-847"
+        }
+      ]
+    },
+    "\\newcommand*": {
+      "name": "\\newcommand*",
+      "syntax": "\\newcommand*{cmd}[nargs][default]{definition}",
+      "command_type": "command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "defines a new command, disallowing paragraph breaks in the definition",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "A.1.2",
+          "pages": "843-847"
+        }
+      ]
+    },
+    "\\renewcommand": {
+      "name": "\\renewcommand",
+      "syntax": "\\renewcommand{cmd}[nargs][default]{definition}",
+      "command_type": "command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "redefines an existing command; errors if the command does not exist",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "A.1.2",
+          "pages": "843-847"
+        }
+      ]
+    },
+    "\\renewcommand*": {
+      "name": "\\renewcommand*",
+      "syntax": "\\renewcommand*{cmd}[nargs][default]{definition}",
+      "command_type": "command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "redefines an existing command, disallowing paragraph breaks in the definition",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "A.1.2",
+          "pages": "843-847"
+        }
+      ]
+    },
+    "\\providecommand": {
+      "name": "\\providecommand",
+      "syntax": "\\providecommand{cmd}[nargs][default]{definition}",
+      "command_type": "command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "defines a new command only if it is not already defined",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "A.1.2",
+          "pages": "843-847"
+        }
+      ]
+    },
+    "\\providecommand*": {
+      "name": "\\providecommand*",
+      "syntax": "\\providecommand*{cmd}[nargs][default]{definition}",
+      "command_type": "command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "defines a new command only if it is not already defined, disallowing paragraph breaks in the definition",
+      "references": [
+        {
+          "ref_id": "latex_companion_2004",
+          "sections": "A.1.2",
+          "pages": "843-847"
+        }
+      ]
+    },
+    "\\def": {
+      "name": "\\def",
+      "syntax": "\\def\u27e8pattern\u27e9{\u27e8replacement\u27e9}",
+      "command_type": "tex_command_definition",
+      "robustness": "fragile",
+      "modes": [
+        "preamble",
+        "paragraph"
+      ],
+      "description": "TeX primitive: defines a macro with flexible parameter pattern matching",
+      "references": [
+        {
+          "ref_id": "knuth_1986",
+          "sections": "20",
+          "pages": "199-219"
         }
       ]
     }

@@ -203,6 +203,10 @@ class Command:
         :return: Dictionary with parsed arguments and position info, or None if empty args
         """
         
+        # Special handling for TeX \def commands
+        if not is_environment and command_name == '\\def':
+            return Command.parse_def_command(content, start_pos, end_pos)
+        
         # Parse the syntax to identify argument patterns
         syntax_args = Command.parse_syntax_arguments(syntax, command_name, is_environment)
         if not syntax_args:
@@ -361,3 +365,130 @@ class Command:
         
         # No matching closing brace found
         return None
+
+    @staticmethod
+    def parse_def_command(content: str, command_start: int, command_end: int) -> Optional[Dict[str, Any]]:
+        """
+        Parse TeX \\def command with flexible parameter pattern matching.
+        
+        \\def syntax: \\def⟨pattern⟩{⟨replacement⟩}
+        Examples:
+        - \\def\\mycommand{replacement}
+        - \\def\\mycommand#1{replacement with #1}
+        - \\def\\mycommand#1#2{replacement with #1 and #2}  
+        - \\def\\mycommand#1 stop{replacement} (delimited parameter)
+        - \\def\\mycommand#1[#2]#3{replacement} (complex pattern)
+        
+        :param content: The LaTeX content to parse
+        :param command_start: Start position of \\def command
+        :param command_end: End position of \\def command name
+        :return: Dictionary with parsed pattern and replacement, or None if parsing fails
+        """
+        if command_end >= len(content):
+            return None
+        
+        # Skip whitespace after \\def
+        pos = command_end
+        while pos < len(content) and content[pos].isspace():
+            pos += 1
+        
+        if pos >= len(content):
+            return None
+        
+        # Parse the pattern part (everything before the replacement braces)
+        # In TeX \def, we need to find the first unmatched { which starts the replacement
+        pattern_start = pos
+        pattern_end = None
+        
+        # Find the replacement braces - first { that's not part of balanced pairs in pattern
+        while pos < len(content):
+            char = content[pos]
+            
+            if char == '{':
+                # In standard TeX \def, the first { starts the replacement
+                # More complex brace handling could be added here if needed
+                pattern_end = pos
+                break
+                
+            pos += 1
+        
+        if pattern_end is None:
+            return None
+        
+        # Extract pattern
+        pattern = content[pattern_start:pattern_end].strip()
+        
+        # Parse the replacement braces {replacement}
+        replacement_result = Command._parse_brace_argument(content, pattern_end)
+        if not replacement_result:
+            return None
+        
+        # Parse parameter information from pattern using more robust approach
+        parameters = []
+        param_pattern = r'#(\d+)'
+        
+        for match in re.finditer(param_pattern, pattern):
+            param_num = int(match.group(1))
+            parameters.append({
+                'number': param_num,
+                'position': match.start(),
+                'text': match.group(0)
+            })
+        
+        # Sort parameters by position to ensure correct order
+        parameters.sort(key=lambda p: p['position'])
+        
+        # Find delimited patterns (text between parameters and after last parameter)
+        delimiters = []
+        if parameters:
+            # Check for delimiters between parameters and after last parameter
+            last_end = 0
+            for param in parameters:
+                # Check for delimiter before this parameter
+                if param['position'] > last_end:
+                    delimiter_text = pattern[last_end:param['position']].strip()
+                    if delimiter_text:
+                        delimiters.append({
+                            'text': delimiter_text,
+                            'before_param': param['number']
+                        })
+                last_end = param['position'] + len(param['text'])
+            
+            # Check for delimiter after last parameter
+            if last_end < len(pattern):
+                delimiter_text = pattern[last_end:].strip()
+                # Since pattern is already stripped and we have text after last_end,
+                # delimiter_text should always be non-empty
+                delimiters.append({
+                    'text': delimiter_text, 
+                    'after_last_param': True
+                })
+        else:
+            # No parameters - the entire pattern is a delimiter  
+            if pattern.strip():
+                delimiters.append({
+                    'text': pattern.strip(),
+                    'before_param': None
+                })
+        
+        return {
+            'command_name': '\\def',
+            'complete_start': command_start,
+            'complete_end': replacement_result['end'],
+            'arguments': {
+                'pattern': {
+                    'value': pattern,
+                    'start': pattern_start,
+                    'end': pattern_end,
+                    'type': 'def_pattern',
+                    'parameters': parameters,
+                    'delimiters': delimiters
+                },
+                'replacement': {
+                    'value': replacement_result['value'],
+                    'start': replacement_result['start'],
+                    'end': replacement_result['end'],
+                    'type': 'def_replacement'
+                }
+            }
+        }

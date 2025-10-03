@@ -52,6 +52,8 @@ class CommandType(Enum):
     DELIMITER = 'delimiter'                                   # Delimiter and delimiter sizing commands (e.g., \bigl, \left, (, [)
     BIBLIOGRAPHY = 'bibliography'                             # Bibliography and citation commands (e.g., \cite, \bibitem, \bibliography)
     FONT_DECLARATION = 'font_declaration'                     # Font declaration and command commands (e.g., \bfseries, \textbf{text}, \itshape, \textit{text})
+    COMMAND_DEFINITION = 'command_definition'                 # Command definition commands (e.g., \newcommand, \renewcommand, \newcommand*)
+    TEX_COMMAND_DEFINITION = 'tex_command_definition'         # TeX primitive command definition commands (e.g., \def)
     
 
 class CommandDefinition:
