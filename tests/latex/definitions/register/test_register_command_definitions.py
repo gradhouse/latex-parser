@@ -26,6 +26,7 @@ from latex_parser.latex.definitions.register.register_command_definitions import
     register_bibliography_citation_commands,
     register_command_definition_commands,
     register_environment_definition_commands,
+    register_file_inclusion_commands,
     register_latex_commands
 )
 
@@ -430,7 +431,9 @@ class TestRegisterLatexCommands:
             '\\newcommand', '\\newcommand*', '\\renewcommand', '\\renewcommand*', 
             '\\providecommand', '\\providecommand*', '\\def',
             # Environment definition commands
-            '\\newenvironment', '\\renewenvironment'
+            '\\newenvironment', '\\renewenvironment',
+            # File inclusion commands
+            '\\include', '\\includeonly', '\\input'
         }
         
         registered_keys = set(registry.list_keys())
@@ -461,8 +464,8 @@ class TestRegisterLatexCommands:
         # Expected counts based on individual function tests:
         # Document: 8, Sectioning: 14, Alignment: 3, Greek: 40, Binary: 36, Relation: 36,
         # Arrow: 26 (removed 6 arrows), Misc: 31 (removed 2), Variable-sized: 13, Log-like: 34,
-        # Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 24 (removed 2), Text spacing: 5, Delimiter: 32, Bibliography: 5, Font: 40, Command definition: 7, Environment definition: 2
-        expected_total = 8 + 14 + 3 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32 + 5 + 40 + 7 + 2
+        # Math accent: 12, Math enclosure: 4, Text accent: 14, Text symbol: 24 (removed 2), Text spacing: 5, Delimiter: 32, Bibliography: 5, Font: 40, Command definition: 7, Environment definition: 2, File inclusion: 3
+        expected_total = 8 + 14 + 3 + 40 + 36 + 36 + 26 + 31 + 13 + 34 + 12 + 4 + 14 + 24 + 5 + 32 + 5 + 40 + 7 + 2 + 3
         actual_total = len(registry.list_keys())
         
         assert actual_total == expected_total, f"Expected {expected_total} total commands, got {actual_total}"
@@ -835,3 +838,135 @@ class TestRegisterEnvironmentDefinitionCommands:
         renew_data = renew_entry.as_dict()
         assert 'redefines an existing environment' in renew_data['description']
         assert 'errors if the environment does not exist' in renew_data['description']
+
+
+class TestRegisterFileInclusionCommands:
+    """Test register_file_inclusion_commands function."""
+
+    def test_registers_expected_file_inclusion_commands(self):
+        """Test that all expected file inclusion commands are registered and only those."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        expected_commands = {
+            '\\include', '\\includeonly', '\\input'
+        }
+
+        registered_keys = set(registry.list_keys())
+
+        # Check that exactly the expected commands are present
+        assert registered_keys == expected_commands, f"Expected {expected_commands}, got {registered_keys}"
+    
+    def test_file_inclusion_commands_have_correct_type(self):
+        """Test that file inclusion commands have correct command type."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        # Check that all file inclusion commands have correct command_type
+        file_commands = ['\\include', '\\includeonly', '\\input']
+        
+        for command_name in file_commands:
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            assert data['command_type'] == 'file_inclusion', f"Command {command_name} should have file_inclusion type but has {data['command_type']}"
+
+    def test_file_inclusion_commands_have_correct_properties(self):
+        """Test that file inclusion commands have correct robustness and modes."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        all_commands = ['\\include', '\\includeonly', '\\input']
+        
+        for command_name in all_commands:
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            # Check robustness
+            assert data['robustness'] == 'robust', f"Command {command_name} should be robust but has {data['robustness']}"
+            # Check modes
+            expected_modes = {'paragraph'}
+            actual_modes = set(data['modes'])
+            assert actual_modes == expected_modes, f"Command {command_name} should have modes {expected_modes} but has {actual_modes}"
+
+    def test_file_inclusion_commands_syntax_format(self):
+        """Test that file inclusion commands have correct syntax format."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        # Expected syntax patterns
+        expected_syntax = {
+            '\\include': '\\include{file_name}',
+            '\\includeonly': '\\includeonly{file_list}',
+            '\\input': '\\input{file_name}'
+        }
+        
+        for command_name, expected in expected_syntax.items():
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            assert data['syntax'] == expected, f"Command {command_name} should have syntax '{expected}' but has '{data['syntax']}'"
+
+    def test_file_inclusion_commands_have_descriptions(self):
+        """Test that file inclusion commands have non-empty descriptions."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        all_commands = ['\\include', '\\includeonly', '\\input']
+        
+        for command_name in all_commands:
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            assert data['description'], f"Command {command_name} should have a non-empty description"
+            assert len(data['description']) > 0, f"Command {command_name} description should not be empty"
+
+    def test_file_inclusion_commands_have_references(self):
+        """Test that file inclusion commands have references."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        all_commands = ['\\include', '\\includeonly', '\\input']
+        
+        for command_name in all_commands:
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            assert isinstance(data['references'], list), f"Command {command_name} should have references as a list"
+            assert len(data['references']) > 0, f"Command {command_name} should have at least one reference"
+            # Check that each reference has expected fields
+            for ref in data['references']:
+                assert 'ref_id' in ref, f"Reference for {command_name} should have 'ref_id' field"
+                assert 'sections' in ref, f"Reference for {command_name} should have 'sections' field"
+                assert 'pages' in ref, f"Reference for {command_name} should have 'pages' field"
+
+    def test_file_inclusion_commands_reference_content(self):
+        """Test that file inclusion commands reference Lamport sections 4.4 and C.11.4."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        all_commands = ['\\include', '\\includeonly', '\\input']
+        
+        for command_name in all_commands:
+            entry = registry.get_entry(command_name)
+            data = entry.as_dict()
+            references = data['references']
+            assert len(references) == 1, f"Command {command_name} should have exactly one reference"
+            
+            ref = references[0]
+            assert ref['ref_id'] == 'lamport_1994', f"Command {command_name} should reference Lamport 1994"
+            assert ref['sections'] == '4.4, C.11.4', f"Command {command_name} should reference sections 4.4, C.11.4"
+            assert ref['pages'] == '72-74, 210-211', f"Command {command_name} should reference pages 72-74, 210-211"
+
+    def test_file_inclusion_commands_descriptions_content(self):
+        """Test that file inclusion commands have appropriate descriptions."""
+        registry = CommandDefinitionRegistry()
+        register_file_inclusion_commands(registry)
+
+        # Check specific descriptions
+        include_entry = registry.get_entry('\\include')
+        include_data = include_entry.as_dict()
+        assert 'includes the contents of a file' in include_data['description']
+
+        includeonly_entry = registry.get_entry('\\includeonly')
+        includeonly_data = includeonly_entry.as_dict()
+        assert 'specifies which files should be included' in includeonly_data['description']
+
+        input_entry = registry.get_entry('\\input')
+        input_data = input_entry.as_dict()
+        assert 'reads and processes the contents of a file' in input_data['description']

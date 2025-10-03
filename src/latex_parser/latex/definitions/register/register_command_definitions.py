@@ -945,6 +945,34 @@ def register_environment_definition_commands(registry: CommandDefinitionRegistry
                    'redefines an existing environment; errors if the environment does not exist')
 
 
+def register_file_inclusion_commands(registry: CommandDefinitionRegistry) -> None:
+    """
+    Register file inclusion commands.
+    """
+    references = [{'ref_id': 'lamport_1994', 'sections': '4.4, C.11.4', 'pages': '72-74, 210-211'}]
+    
+    def add_file_cmd(name: str, syntax: str, description: str, robust: bool = True) -> None:
+        registry.add_entry(name, CommandDefinition(
+            name=name, 
+            syntax=syntax, 
+            command_type=CommandType.FILE_INCLUSION,
+            robustness=CommandRobustness.ROBUST if robust else CommandRobustness.FRAGILE, 
+            modes=[CommandMode.PARAGRAPH],
+            description=description, 
+            references=references
+        ))
+    
+    add_file_cmd('\\include', 
+                '\\include{file_name}',
+                'includes the contents of a file as if it were typed in place of the command')
+    add_file_cmd('\\includeonly', 
+                '\\includeonly{file_list}',
+                'specifies which files should be included when \\include commands are processed')
+    add_file_cmd('\\input', 
+                '\\input{file_name}',
+                'reads and processes the contents of a file as if typed at that point')
+
+
 def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     """
     Register LaTeX commands in the command definition registry.
@@ -972,3 +1000,4 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_alignment_commands(registry)
     register_command_definition_commands(registry)
     register_environment_definition_commands(registry)
+    register_file_inclusion_commands(registry)

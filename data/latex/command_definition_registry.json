@@ -2,7 +2,7 @@
   "metadata": {
     "registry_type": "CommandDefinition",
     "registry_module": "latex_parser.latex.definitions.command_definition",
-    "generated_at": "2025-10-03T18:32:13.881502+00:00"
+    "generated_at": "2025-10-03T18:56:25.114764+00:00"
   },
   "entries": {
     "\\documentclass": {
@@ -6698,6 +6698,57 @@
           "ref_id": "latex_companion_2004",
           "sections": "A.1.3",
           "pages": "847-850"
+        }
+      ]
+    },
+    "\\include": {
+      "name": "\\include",
+      "syntax": "\\include{file_name}",
+      "command_type": "file_inclusion",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "includes the contents of a file as if it were typed in place of the command",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.4, C.11.4",
+          "pages": "72-74, 210-211"
+        }
+      ]
+    },
+    "\\includeonly": {
+      "name": "\\includeonly",
+      "syntax": "\\includeonly{file_list}",
+      "command_type": "file_inclusion",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "specifies which files should be included when \\include commands are processed",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.4, C.11.4",
+          "pages": "72-74, 210-211"
+        }
+      ]
+    },
+    "\\input": {
+      "name": "\\input",
+      "syntax": "\\input{file_name}",
+      "command_type": "file_inclusion",
+      "robustness": "robust",
+      "modes": [
+        "paragraph"
+      ],
+      "description": "reads and processes the contents of a file as if typed at that point",
+      "references": [
+        {
+          "ref_id": "lamport_1994",
+          "sections": "4.4, C.11.4",
+          "pages": "72-74, 210-211"
         }
       ]
     }
