@@ -61,6 +61,7 @@ class TestCommandDefinitionEnums:
             'font_declaration': CommandType.FONT_DECLARATION,
             'command_definition': CommandType.COMMAND_DEFINITION,
             'environment_definition': CommandType.ENVIRONMENT_DEFINITION,
+            'file_inclusion': CommandType.FILE_INCLUSION,
             'tex_command_definition': CommandType.TEX_COMMAND_DEFINITION
         }
         
