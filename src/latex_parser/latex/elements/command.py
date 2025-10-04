@@ -492,3 +492,122 @@ class Command:
                 }
             }
         }
+
+    @staticmethod
+    def find_math_delimiters(content: str) -> List[Dict[str, Any]]:
+        """
+        Find all LaTeX math mode delimiters in the content.
+        
+        Searches for all math delimiters including:
+        - Display math: $$ and \\[ \\]
+        - Inline math: $ and \\( \\)
+        
+        Handles escaped delimiters properly by counting preceding backslashes.
+        When $$ is found, it takes precedence over individual $ signs.
+        
+        :param content: The LaTeX content to search
+        :return: List of dictionaries with delimiter info (command_name, start, end)
+        """
+        delimiters = []
+        i = 0
+        
+        while i < len(content):
+            # Check for escaped $ (\$) - skip it
+            if content[i] == '$':
+                # Count backslashes before the $
+                backslash_count = 0
+                j = i - 1
+                while j >= 0 and content[j] == '\\':
+                    backslash_count += 1
+                    j -= 1
+                
+                # If odd number of backslashes, the $ is escaped
+                if backslash_count % 2 == 1:
+                    i += 1
+                    continue
+                
+                # Check for $$ first (must come before single $)
+                if i < len(content) - 1 and content[i+1] == '$':
+                    delimiters.append({
+                        'command_name': '$$',
+                        'start': i,
+                        'end': i + 2
+                    })
+                    i += 2
+                    continue
+                else:
+                    # Single $
+                    delimiters.append({
+                        'command_name': '$',
+                        'start': i,
+                        'end': i + 1
+                    })
+                    i += 1
+                    continue
+                    
+            # Check for \( \[ \) and \]
+            elif i < len(content) - 1 and content[i] == '\\':
+                if content[i+1] == '(':
+                    delimiters.append({
+                        'command_name': '\\(',
+                        'start': i,
+                        'end': i + 2
+                    })
+                    i += 2
+                    continue
+                elif content[i+1] == '[':
+                    delimiters.append({
+                        'command_name': '\\[',
+                        'start': i,
+                        'end': i + 2
+                    })
+                    i += 2
+                    continue
+                elif content[i+1] == ')':
+                    delimiters.append({
+                        'command_name': '\\)',
+                        'start': i,
+                        'end': i + 2
+                    })
+                    i += 2
+                    continue
+                elif content[i+1] == ']':
+                    delimiters.append({
+                        'command_name': '\\]',
+                        'start': i,
+                        'end': i + 2
+                    })
+                    i += 2
+                    continue
+            
+            i += 1
+        
+        return delimiters
+
+    @staticmethod
+    def find_display_math_delimiters(content: str) -> List[Dict[str, Any]]:
+        """
+        Find display math delimiters only in the content.
+        
+        Filters the results of find_math_delimiters to return only display math
+        delimiters: $$ and \\[ \\]
+        
+        :param content: The LaTeX content to search
+        :return: List of dictionaries with display math delimiter info
+        """
+        all_delimiters = Command.find_math_delimiters(content)
+        return [d for d in all_delimiters if d['command_name'] in ['$$', '\\[', '\\]']]
+
+    @staticmethod  
+    def find_inline_math_delimiters(content: str) -> List[Dict[str, Any]]:
+        """
+        Find inline math delimiters only in the content.
+        
+        Filters the results of find_math_delimiters to return only inline math
+        delimiters: $ and \\( \\)
+        
+        :param content: The LaTeX content to search
+        :return: List of dictionaries with inline math delimiter info
+        """
+        all_delimiters = Command.find_math_delimiters(content)
+        return [d for d in all_delimiters if d['command_name'] in ['$', '\\(', '\\)']]
