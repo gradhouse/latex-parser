@@ -611,3 +611,25 @@ class Command:
         """
         all_delimiters = Command.find_math_delimiters(content)
         return [d for d in all_delimiters if d['command_name'] in ['$', '\\(', '\\)']]
+
+    @staticmethod
+    def apply_string_replacements(content: str, replacements: Dict[int, tuple]) -> str:
+        """
+        Apply string replacements to content at specified positions.
+        
+        Replacements are applied in reverse position order to maintain 
+        position accuracy as the string is modified.
+        
+        :param content: Original content string
+        :param replacements: Map of position to (replacement_text, original_length)
+        :return: Content with replacements applied
+        """
+        if not replacements:
+            return content
+            
+        result = content
+        for pos in sorted(replacements.keys(), reverse=True):
+            replacement_text, original_length = replacements[pos]
+            result = result[:pos] + replacement_text + result[pos + original_length:]
+        
+        return result
