@@ -1119,3 +1119,157 @@ class Command:
             return command_name
         
         return None
+
+    @staticmethod
+    def _convert_command_definition_to_syntax(command_entry: Dict[str, Any]) -> Dict[str, Optional[str]]:
+        """
+        Convert a document-defined command entry to syntax format with implementation and defaults.
+        
+        For \\newcommand{\\ps}[1]{\\begin{center}...}, this returns:
+        {
+            'syntax': '\\ps{#1}',
+            'implementation': '\\begin{center}\\leavevmode \\hbox{\\epsfxsize=2.5in\\epsfbox{#1}}\\end{center}',
+            'default': None  # or the actual default value if present
+        }
+        
+        :param command_entry: Entry from get_document_defined_commands()
+        :return: Dictionary with syntax, implementation, and default keys
+        :raises ValueError: If conversion is not possible
+        """
+        if not isinstance(command_entry, dict):
+            raise ValueError("Command entry must be a dictionary")
+        
+        if 'arguments' not in command_entry:
+            raise ValueError("Command entry missing 'arguments' field")
+        
+        arguments = command_entry['arguments']
+        
+        # Extract the command name being defined
+        if 'cmd' not in arguments or 'value' not in arguments['cmd']:
+            raise ValueError("Command entry missing command name in arguments.cmd.value")
+        
+        cmd_name = arguments['cmd']['value']
+        if not cmd_name.startswith('\\'):
+            raise ValueError(f"Command name must start with backslash, got: {cmd_name}")
+        
+        # Extract the implementation (definition body)
+        if 'definition' not in arguments or 'value' not in arguments['definition']:
+            raise ValueError("Command entry missing definition in arguments.definition.value")
+        
+        implementation = arguments['definition']['value']
+        
+        # Extract default parameter if present
+        default = None
+        if 'default' in arguments and 'value' in arguments['default']:
+            default = arguments['default']['value']
+        
+        # Start building the syntax with the actual command name
+        syntax = cmd_name
+        
+        # Add arguments based on nargs
+        if 'nargs' in arguments and 'value' in arguments['nargs']:
+            try:
+                nargs = int(arguments['nargs']['value'])
+                if nargs < 0 or nargs > 9:
+                    raise ValueError(f"Number of arguments must be between 0 and 9, got: {nargs}")
+                
+                # Check if there's a default value for the first argument
+                has_default = default is not None
+                
+                for i in range(nargs):
+                    if i == 0 and has_default:
+                        # First argument is optional when there's a default
+                        syntax += f"[#{i+1}]"
+                    else:
+                        # Required argument
+                        syntax += f"{{#{i+1}}}"
+                        
+            except ValueError as e:
+                if "invalid literal" in str(e):
+                    raise ValueError(f"Invalid number of arguments: {arguments['nargs']['value']}")
+                raise
+        
+        return {
+            'syntax': syntax,
+            'implementation': implementation,
+            'default': default
+        }
+
+    @staticmethod
+    def _convert_environment_definition_to_syntax(environment_entry: Dict[str, Any]) -> Dict[str, Optional[str]]:
+        """
+        Convert a document-defined environment entry to syntax format with implementation and defaults.
+        
+        For \\newenvironment{myenv}[2][default]{\\begin{center}#1}{\\end{center}}, this returns:
+        {
+            'syntax': '\\begin{myenv}[#1]{#2}',
+            'begin_implementation': '\\begin{center}#1',
+            'end_implementation': '\\end{center}',
+            'default': 'default'
+        }
+        
+        :param environment_entry: Entry from get_document_defined_environments()
+        :return: Dictionary with syntax, begin_implementation, end_implementation, and default keys
+        :raises ValueError: If conversion is not possible
+        """
+        if not isinstance(environment_entry, dict):
+            raise ValueError("Environment entry must be a dictionary")
+        
+        if 'arguments' not in environment_entry:
+            raise ValueError("Environment entry missing 'arguments' field")
+        
+        arguments = environment_entry['arguments']
+        
+        # Extract the environment name being defined
+        if 'name' not in arguments or 'value' not in arguments['name']:
+            raise ValueError("Environment entry missing environment name in arguments.name.value")
+        
+        env_name = arguments['name']['value']
+        
+        # Extract the begin and end implementations
+        if 'begin_definition' not in arguments or 'value' not in arguments['begin_definition']:
+            raise ValueError("Environment entry missing begin definition in arguments.begin_definition.value")
+        
+        if 'end_definition' not in arguments or 'value' not in arguments['end_definition']:
+            raise ValueError("Environment entry missing end definition in arguments.end_definition.value")
+        
+        begin_implementation = arguments['begin_definition']['value']
+        end_implementation = arguments['end_definition']['value']
+        
+        # Extract default parameter if present
+        default = None
+        if 'default' in arguments and 'value' in arguments['default']:
+            default = arguments['default']['value']
+        
+        # Start building the syntax with the environment begin
+        syntax = f"\\begin{{{env_name}}}"
+        
+        # Add arguments based on nargs
+        if 'nargs' in arguments and 'value' in arguments['nargs']:
+            try:
+                nargs = int(arguments['nargs']['value'])
+                if nargs < 0 or nargs > 9:
+                    raise ValueError(f"Number of arguments must be between 0 and 9, got: {nargs}")
+                
+                # Check if there's a default value for the first argument
+                has_default = default is not None
+                
+                for i in range(nargs):
+                    if i == 0 and has_default:
+                        # First argument is optional when there's a default
+                        syntax += f"[#{i+1}]"
+                    else:
+                        # Required argument
+                        syntax += f"{{#{i+1}}}"
+                        
+            except ValueError as e:
+                if "invalid literal" in str(e):
+                    raise ValueError(f"Invalid number of arguments: {arguments['nargs']['value']}")
+                raise
+        
+        return {
+            'syntax': syntax,
+            'begin_implementation': begin_implementation,
+            'end_implementation': end_implementation,
+            'default': default
+        }
