@@ -31,7 +31,7 @@ def load_test_cases():
         INTEGRATION_TESTS,
         INVALID_INPUT_TESTS
     )
-    from latex.fixtures.parse_environment_arguments_test_cases import (
+    from latex.fixtures.environment_parse_arguments_test_cases import (
         PARSE_ENVIRONMENT_ARGUMENTS_BASIC_TESTS,
         PARSE_ENVIRONMENT_ARGUMENTS_WHITESPACE_TESTS,
         PARSE_ENVIRONMENT_ARGUMENTS_OPTIONAL_TESTS,

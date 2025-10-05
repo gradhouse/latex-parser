@@ -867,84 +867,6 @@ def register_alignment_commands(registry: CommandDefinitionRegistry) -> None:
                      'right-aligns subsequent text lines, leaving left margin ragged')
 
 
-def register_command_definition_commands(registry: CommandDefinitionRegistry) -> None:
-    """
-    Register commands for defining new commands.
-    """
-    references = [{'ref_id': 'latex_companion_2004', 'sections': 'A.1.2', 'pages': '843-847'}]
-    
-    def add_cmd_def_cmd(name: str, syntax: str, description: str) -> None:
-        registry.add_entry(name, CommandDefinition(
-            name=name, 
-            syntax=syntax, 
-            command_type=CommandType.COMMAND_DEFINITION,
-            robustness=CommandRobustness.FRAGILE, 
-            modes=[CommandMode.PREAMBLE, CommandMode.PARAGRAPH],
-            description=description, 
-            references=references
-        ))
-    
-    add_cmd_def_cmd('\\newcommand', 
-                   '\\newcommand{cmd}[nargs][default]{definition}',
-                   'defines a new command; errors if the command already exists')
-    add_cmd_def_cmd('\\newcommand*', 
-                   '\\newcommand*{cmd}[nargs][default]{definition}',
-                   'defines a new command, disallowing paragraph breaks in the definition')
-    add_cmd_def_cmd('\\renewcommand', 
-                   '\\renewcommand{cmd}[nargs][default]{definition}',
-                   'redefines an existing command; errors if the command does not exist')
-    add_cmd_def_cmd('\\renewcommand*', 
-                   '\\renewcommand*{cmd}[nargs][default]{definition}',
-                   'redefines an existing command, disallowing paragraph breaks in the definition')
-    add_cmd_def_cmd('\\providecommand', 
-                   '\\providecommand{cmd}[nargs][default]{definition}',
-                   'defines a new command only if it is not already defined')
-    add_cmd_def_cmd('\\providecommand*', 
-                   '\\providecommand*{cmd}[nargs][default]{definition}',
-                   'defines a new command only if it is not already defined, disallowing paragraph breaks in the definition')
-    
-    # TeX primitive command definition - requires special parsing
-    def add_tex_cmd_def(name: str, syntax: str, description: str) -> None:
-        registry.add_entry(name, CommandDefinition(
-            name=name, 
-            syntax=syntax, 
-            command_type=CommandType.TEX_COMMAND_DEFINITION,
-            robustness=CommandRobustness.FRAGILE, 
-            modes=[CommandMode.PREAMBLE, CommandMode.PARAGRAPH],
-            description=description, 
-            references=[{'ref_id': 'knuth_1986', 'sections': '20', 'pages': '199-219'}]
-        ))
-    
-    add_tex_cmd_def('\\def', 
-                   '\\def⟨pattern⟩{⟨replacement⟩}',
-                   'TeX primitive: defines a macro with flexible parameter pattern matching')
-
-
-def register_environment_definition_commands(registry: CommandDefinitionRegistry) -> None:
-    """
-    Register commands for defining new environments.
-    """
-    references = [{'ref_id': 'latex_companion_2004', 'sections': 'A.1.3', 'pages': '847-850'}]
-    
-    def add_env_def_cmd(name: str, syntax: str, description: str) -> None:
-        registry.add_entry(name, CommandDefinition(
-            name=name, 
-            syntax=syntax, 
-            command_type=CommandType.ENVIRONMENT_DEFINITION,
-            robustness=CommandRobustness.FRAGILE, 
-            modes=[CommandMode.PREAMBLE, CommandMode.PARAGRAPH],
-            description=description, 
-            references=references
-        ))
-    
-    add_env_def_cmd('\\newenvironment', 
-                   '\\newenvironment{name}[nargs][default]{begin_definition}{end_definition}',
-                   'defines a new environment; errors if the environment already exists')
-    add_env_def_cmd('\\renewenvironment', 
-                   '\\renewenvironment{name}[nargs][default]{begin_definition}{end_definition}',
-                   'redefines an existing environment; errors if the environment does not exist')
-
-
 def register_file_inclusion_commands(registry: CommandDefinitionRegistry) -> None:
     """
     Register file inclusion commands.
@@ -998,6 +920,4 @@ def register_latex_commands(registry: CommandDefinitionRegistry) -> None:
     register_bibliography_citation_commands(registry)
     register_font_declaration_commands(registry)
     register_alignment_commands(registry)
-    register_command_definition_commands(registry)
-    register_environment_definition_commands(registry)
     register_file_inclusion_commands(registry)
