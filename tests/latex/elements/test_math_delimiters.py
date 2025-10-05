@@ -7,7 +7,7 @@
 import pytest
 
 from latex_parser.latex.elements.command import Command
-from tests.latex.fixtures.math_delimiter_test_cases import (
+from tests.latex.fixtures.math_delimiters_test_cases import (
     MATH_DELIMITER_BASIC_TESTS,
     MATH_DELIMITER_COMPLEX_TESTS, 
     MATH_DELIMITER_EDGE_TESTS,

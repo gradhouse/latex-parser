@@ -12,7 +12,7 @@ from latex_parser.latex.elements.command import Command
 # Add the tests directory to the path to import fixtures
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from latex.fixtures.def_command_test_cases import (
+from latex.fixtures.command_def_test_cases import (
     DEF_COMMAND_BASIC_TESTS,
     DEF_COMMAND_COMPLEX_TESTS,
     DEF_COMMAND_EDGE_TESTS,

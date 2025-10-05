@@ -720,6 +720,177 @@ class Command:
         return [d for d in all_delimiters if d['command_name'] in ['$', '\\(', '\\)']]
 
     @staticmethod
+    def get_document_defined_commands(content: str) -> List[Dict[str, Any]]:
+        """
+        Find all document-defined commands in LaTeX content.
+        
+        Searches for and parses all LaTeX command definition commands:
+        - \\newcommand and \\newcommand*: Define new commands; error if command already exists
+        - \\renewcommand and \\renewcommand*: Redefine existing commands; error if command does not exist  
+        - \\providecommand and \\providecommand*: Define commands only if not already defined
+        
+        The starred versions (*) disallow paragraph breaks in the command definition.
+        
+        References:
+        - Lamport, L. (1994). LaTeX: A Document Preparation System. 2nd ed. Addison-Wesley. 
+          Sections 3.4, C.12.1. Pages 52-54, 212-213.
+        - Mittelbach, F., et al. (2004). The LaTeX Companion. 2nd ed. Addison-Wesley.
+          Sections A.1.2. Pages 843-847.
+        
+        :param content: LaTeX content to search
+        :return: List of parsed command definitions
+        
+        Return structure for each command definition:
+        {
+            'command_name': str,       # Full command name (e.g., '\\newcommand')
+            'complete_start': int,     # Start position of entire definition
+            'complete_end': int,       # End position of entire definition
+            'arguments': {
+                'cmd': {
+                    'value': str,          # Defined command name (e.g., '\\mycmd')
+                    'start': int,          # Start position
+                    'end': int,            # End position
+                    'type': str            # 'required'
+                },
+                'nargs': {             # Optional - number of arguments
+                    'value': str,          # Number as string
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'optional'
+                },
+                'default': {           # Optional - default value for first argument
+                    'value': str,          # Default value
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'optional'
+                },
+                'definition': {
+                    'value': str,          # Command definition/replacement text
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'required'
+                }
+            }
+        }
+        
+        Example:
+            >>> get_document_defined_commands(r'\\newcommand{\\foo}[1]{Hello #1}')
+            [{'command_name': '\\newcommand', 'arguments': {'cmd': {'value': '\\foo'}, ...}}]
+        """
+        # Command definitions to search for
+        command_definitions = [
+            ('\\newcommand', '\\newcommand{cmd}[nargs][default]{definition}'),
+            ('\\newcommand*', '\\newcommand*{cmd}[nargs][default]{definition}'),
+            ('\\renewcommand', '\\renewcommand{cmd}[nargs][default]{definition}'),
+            ('\\renewcommand*', '\\renewcommand*{cmd}[nargs][default]{definition}'),
+            ('\\providecommand', '\\providecommand{cmd}[nargs][default]{definition}'),
+            ('\\providecommand*', '\\providecommand*{cmd}[nargs][default]{definition}')
+        ]
+        
+        all_definitions = []
+        
+        for command, syntax in command_definitions:
+            # Find all occurrences of this command
+            positions = Command.find_command(content, command)
+            
+            # Parse each occurrence
+            for start_position, end_position in positions:
+                parsed = Command.parse_arguments(content, command, start_position, end_position, syntax, False)
+                
+                if parsed:
+                    all_definitions.append(parsed)
+        
+        # Sort by position in document
+        all_definitions.sort(key=lambda x: x['complete_start'])
+        
+        return all_definitions
+
+    @staticmethod
+    def get_document_defined_environments(content: str) -> List[Dict[str, Any]]:
+        """
+        Find all document-defined environments in LaTeX content.
+        
+        Searches for and parses all LaTeX environment definition commands:
+        - \\newenvironment: Define new environments; error if environment already exists
+        - \\renewenvironment: Redefine existing environments; error if environment does not exist
+        
+        References:
+        - Lamport, L. (1994). LaTeX: A Document Preparation System. 2nd ed. Addison-Wesley. 
+          Sections 3.5, C.12.2. Pages 54-55, 213-214.
+        - Mittelbach, F., et al. (2004). The LaTeX Companion. 2nd ed. Addison-Wesley.
+          Sections A.1.3. Pages 847-850.
+        
+        :param content: LaTeX content to search
+        :return: List of parsed environment definitions
+        
+        Return structure for each environment definition:
+        {
+            'command_name': str,       # Full command name (e.g., '\\newenvironment')
+            'complete_start': int,     # Start position of entire definition
+            'complete_end': int,       # End position of entire definition
+            'arguments': {
+                'name': {
+                    'value': str,          # Environment name (e.g., 'myenv')
+                    'start': int,          # Start position
+                    'end': int,            # End position
+                    'type': str            # 'required'
+                },
+                'nargs': {             # Optional - number of arguments
+                    'value': str,          # Number as string
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'optional'
+                },
+                'default': {           # Optional - default value for first argument
+                    'value': str,          # Default value
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'optional'
+                },
+                'begin_definition': {
+                    'value': str,          # Begin environment definition
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'required'
+                },
+                'end_definition': {
+                    'value': str,          # End environment definition
+                    'start': int,
+                    'end': int,
+                    'type': str            # 'required'
+                }
+            }
+        }
+        
+        Example:
+            >>> get_document_defined_environments(r'\\newenvironment{myenv}{\\begin{center}}{\\end{center}}')
+            [{'command_name': '\\newenvironment', 'arguments': {'name': {'value': 'myenv'}, ...}}]
+        """
+        # Environment definitions to search for
+        environment_definitions = [
+            ('\\newenvironment', '\\newenvironment{name}[nargs][default]{begin_definition}{end_definition}'),
+            ('\\renewenvironment', '\\renewenvironment{name}[nargs][default]{begin_definition}{end_definition}')
+        ]
+        
+        all_definitions = []
+        
+        for command, syntax in environment_definitions:
+            # Find all occurrences of this command
+            positions = Command.find_command(content, command)
+            
+            # Parse each occurrence
+            for start_position, end_position in positions:
+                parsed = Command.parse_arguments(content, command, start_position, end_position, syntax, False)
+                
+                if parsed:
+                    all_definitions.append(parsed)
+        
+        # Sort by position in document
+        all_definitions.sort(key=lambda x: x['complete_start'])
+        
+        return all_definitions
+
+    @staticmethod
     def apply_string_replacements(content: str, replacements: Dict[int, tuple]) -> str:
         """
         Apply string replacements to content at specified positions.
