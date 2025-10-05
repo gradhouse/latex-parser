@@ -24,7 +24,14 @@ class Command:
         - Spaces and single end-of-line following letter commands are ignored
         
         :param content: The LaTeX content to search
-        :return: List of tuples (name, start, end) with command name and positions
+        :return: List of tuples (command_name, start_pos, end_pos) where:
+                 - command_name (str): Full command name including backslash (e.g., "\\textbf", "\\section*")
+                 - start_pos (int): 0-based index of command start (position of backslash)
+                 - end_pos (int): 0-based index after command end (exclusive)
+                 
+        Example:
+            >>> find_all_commands("\\textbf{hello} \\emph{world}")
+            [('\\textbf', 0, 7), ('\\emph', 15, 20)]
         """
         
         matches = []
@@ -73,7 +80,15 @@ class Command:
         
         :param content: The LaTeX content to search
         :param command_name: The specific command name to find (with the backslash, e.g., '\\textbf')
-        :return: List of tuples (start, end) with positions of the command
+        :return: List of tuples (start_pos, end_pos) where:
+                 - start_pos (int): 0-based index of command start (position of backslash)
+                 - end_pos (int): 0-based index after command name end (exclusive, before arguments)
+                 
+        Example:
+            >>> find_command("\\textbf{hello} \\textbf{world}", "\\textbf")
+            [(0, 7), (15, 22)]
+            
+        :raises ValueError: If command_name doesn't start with backslash
         """
         
         # Ensure command name starts with backslash
@@ -295,6 +310,33 @@ class Command:
         :param command_end: End position of the command name
         :param syntax: Syntax definition for the command (e.g., "\\textbf{text}")
         :return: Dictionary with parsed arguments and position info, or None if empty args
+        
+        Return structure:
+        {
+            'arguments': {
+                'arg_name1': {
+                    'value': str,     # Argument content
+                    'start': int,     # Start position of argument (including delimiter)
+                    'end': int,       # End position of argument (including delimiter)
+                    'type': str       # 'optional' or 'required'
+                },
+                'arg_name2': { ... },
+                ...
+            }
+        }
+        
+        Example:
+            >>> parse_command_arguments(content, "textbf", 0, 7, "\\textbf{text}")
+            {
+                'arguments': {
+                    'text': {
+                        'value': 'hello',
+                        'start': 7,
+                        'end': 14,
+                        'type': 'required'
+                    }
+                }
+            }
         """
         return Command.parse_arguments(content, command_name, command_start, command_end, syntax, is_environment=False)
 
@@ -306,6 +348,13 @@ class Command:
         :param content: The content buffer
         :param start_pos: Position of the opening '['
         :return: Dictionary with value and positions, or None if parsing fails
+        
+        Return structure:
+        {
+            'value': str,     # Argument content (without brackets)
+            'start': int,     # Start position of '[' 
+            'end': int        # End position after ']'
+        }
         """
         if start_pos >= len(content) or content[start_pos] != '[':
             return None
@@ -340,6 +389,13 @@ class Command:
         :param content: The content buffer
         :param start_pos: Position of the opening '{'
         :return: Dictionary with value and positions, or None if parsing fails
+        
+        Return structure:
+        {
+            'value': str,     # Argument content (without braces)
+            'start': int,     # Start position of '{'
+            'end': int        # End position after '}'
+        }
         """
         if start_pos >= len(content) or content[start_pos] != '{':
             return None
@@ -383,6 +439,57 @@ class Command:
         :param command_start: Start position of \\def command
         :param command_end: End position of \\def command name
         :return: Dictionary with parsed pattern and replacement, or None if parsing fails
+        
+        Return structure:
+        {
+            'command_name': str,      # Always '\\def'
+            'complete_start': int,    # Start position of entire def command
+            'complete_end': int,      # End position of entire def command
+            'arguments': {
+                'pattern': {
+                    'value': str,         # Full pattern string (e.g., '\\mycommand#1#2')
+                    'start': int,         # Start position of pattern
+                    'end': int,           # End position of pattern
+                    'type': str,          # Always 'def_pattern'
+                    'parameters': [       # List of parameter info
+                        {
+                            'number': int,    # Parameter number (1, 2, 3, ...)
+                            'position': int,  # Position in pattern string
+                            'text': str       # Parameter text (e.g., '#1')
+                        }, ...
+                    ],
+                    'delimiters': [       # List of delimiter info
+                        {
+                            'text': str,           # Delimiter text
+                            'before_param': int,   # Parameter number this appears before (or None)
+                            'after_last_param': bool  # True if appears after last parameter
+                        }, ...
+                    ]
+                },
+                'replacement': {
+                    'value': str,         # Replacement text
+                    'start': int,         # Start position of replacement
+                    'end': int,           # End position of replacement
+                    'type': str           # Always 'def_replacement'
+                }
+            }
+        }
+        
+        Example:
+            >>> parse_def_command(r'\\def\\cmd#1{Hello #1}', 0, 4)
+            {
+                'command_name': '\\def',
+                'complete_start': 0,
+                'complete_end': 18,
+                'arguments': {
+                    'pattern': {
+                        'value': '\\cmd#1',
+                        'parameters': [{'number': 1, 'position': 4, 'text': '#1'}],
+                        'delimiters': [{'text': '\\cmd', 'before_param': 1}]
+                    },
+                    'replacement': {'value': 'Hello #1'}
+                }
+            }
         """
         if command_end >= len(content):
             return None
@@ -621,8 +728,15 @@ class Command:
         position accuracy as the string is modified.
         
         :param content: Original content string
-        :param replacements: Map of position to (replacement_text, original_length)
+        :param replacements: Map of position to (replacement_text, original_length) tuples
+                           - position (int): 0-based index where replacement starts
+                           - replacement_text (str): New text to insert
+                           - original_length (int): Length of original text to replace
         :return: Content with replacements applied
+        
+        Example:
+            >>> apply_string_replacements("Hello world", {0: ("Hi", 5)})
+            "Hi world"
         """
         if not replacements:
             return content
@@ -633,3 +747,204 @@ class Command:
             result = result[:pos] + replacement_text + result[pos + original_length:]
         
         return result
+
+    @staticmethod
+    def modernize_def_commands(content: str, is_strict: bool = False) -> str:
+        """
+        Convert \\def commands to \\newcommand where possible.
+        
+        Converts simple \\def patterns that can be expressed as \\newcommand:
+        - \\def\\mycommand{text} → \\newcommand{\\mycommand}{text}
+        - \\def\\mycommand#1{text} → \\newcommand{\\mycommand}[1]{text}
+        - \\def\\mycommand#1#2{text} → \\newcommand{\\mycommand}[2]{text}
+        
+        Leaves complex \\def patterns unchanged (delimited parameters, etc.)
+        
+        :param content: LaTeX content containing \\def commands
+        :param is_strict: If True, raises ValueError when a \\def cannot be converted.
+                      If False (default), skips unconvertible \\def commands silently.
+        :return: Content with \\def commands modernized to \\newcommand where possible
+        :raises ValueError: If strict=True and a \\def command cannot be converted
+        """
+        # Find all \def commands
+        def_positions = Command.find_command(content, '\\def')
+        
+        if not def_positions:
+            return content
+        
+        # Build replacement map
+        replacements = {}
+        
+        for start, end in def_positions:
+            # Parse the \def command
+            def_result = Command.parse_def_command(content, start, end)
+            
+            if def_result:
+                # Try to convert to \newcommand
+                newcommand_text = Command._convert_def_to_newcommand(def_result)
+                
+                if newcommand_text:
+                    # Add to replacements map
+                    original_length = def_result['complete_end'] - def_result['complete_start']
+                    replacements[def_result['complete_start']] = (newcommand_text, original_length)
+                elif is_strict:
+                    # In strict mode, raise an exception for unconvertible patterns
+                    pattern = def_result['arguments']['pattern']['value']
+                    reason = Command._get_conversion_failure_reason(def_result)
+                    raise ValueError(f"Cannot convert \\def command to \\newcommand: {pattern}. Reason: {reason}")
+            elif is_strict:
+                # In strict mode, raise an exception for unparseable \def commands
+                def_text = content[start:end]
+                raise ValueError(f"Failed to parse \\def command: {def_text}")
+        
+        # Apply replacements
+        return Command.apply_string_replacements(content, replacements)
+    
+    @staticmethod
+    def _convert_def_to_newcommand(def_result: Dict[str, Any]) -> Optional[str]:
+        """
+        Convert a parsed \\def command to \\newcommand syntax if possible.
+        
+        :param def_result: Output from parse_def_command (see parse_def_command documentation for structure)
+        :return: \\newcommand string if conversion possible, None otherwise
+        
+        Returns a string in format:
+        - No parameters: "\\newcommand{\\cmdname}{replacement}"
+        - With parameters: "\\newcommand{\\cmdname}[N]{replacement}"
+        
+        Example:
+            For input representing "\\def\\hello#1{Hi #1}":
+            Returns "\\newcommand{\\hello}[1]{Hi #1}"
+        """
+        pattern_info = def_result['arguments']['pattern']
+        replacement_info = def_result['arguments']['replacement']
+        
+        parameters = pattern_info['parameters']
+        delimiters = pattern_info['delimiters']
+        
+        # Check if conversion is possible
+        if not Command._can_convert_def_to_newcommand(parameters, delimiters):
+            return None
+        
+        # Extract command name from pattern
+        command_name = Command._extract_command_name_from_pattern(pattern_info['value'], parameters)
+        
+        if not command_name:
+            return None
+        
+        # Build \newcommand
+        replacement_text = replacement_info['value']
+        
+        if not parameters:
+            # No parameters: \newcommand{\commandname}{replacement}
+            return f"\\newcommand{{{command_name}}}{{{replacement_text}}}"
+        else:
+            # With parameters: \newcommand{\commandname}[n]{replacement}
+            param_count = len(parameters)
+            return f"\\newcommand{{{command_name}}}[{param_count}]{{{replacement_text}}}"
+    
+    @staticmethod
+    def _can_convert_def_to_newcommand(parameters: List[Dict[str, Any]], delimiters: List[Dict[str, Any]]) -> bool:
+        """
+        Check if a \\def pattern can be converted to \\newcommand.
+        
+        :param parameters: List of parameter info from def parsing (see parse_def_command docs)
+        :param delimiters: List of delimiter info from def parsing (see parse_def_command docs)
+        :return: True if conversion is possible, False otherwise
+        
+        Conversion rules:
+        - Parameters must be sequential (1, 2, 3, ...)
+        - No delimited parameters allowed (e.g., \\def\\cmd#1 stop{...})
+        - Only simple patterns convertible to \\newcommand syntax
+        """
+        if not parameters:
+            # No parameters - always convertible
+            return True
+        
+        # Check for sequential parameter numbering (1, 2, 3, ...)
+        expected_numbers = list(range(1, len(parameters) + 1))
+        actual_numbers = [p['number'] for p in parameters]
+        
+        if actual_numbers != expected_numbers:
+            # Non-sequential parameters - cannot convert
+            return False
+        
+        # Check for delimited parameters (delimiters between or after parameters)
+        for delimiter in delimiters:
+            # Allow only the command name delimiter before first parameter
+            if 'before_param' in delimiter and delimiter['before_param'] == 1:
+                continue  # This is the command name, which is fine
+            elif delimiter.get('before_param') is None and len(delimiters) == 1:
+                continue  # This is just the command name with no parameters
+            else:
+                # Any other delimiter indicates delimited parameters - cannot convert
+                return False
+        
+        return True
+    
+    @staticmethod
+    def _get_conversion_failure_reason(def_result: Dict[str, Any]) -> str:
+        """
+        Get a human-readable reason why a \\def command cannot be converted.
+        
+        :param def_result: Output from parse_def_command
+        :return: String describing why conversion failed
+        """
+        pattern_info = def_result['arguments']['pattern']
+        parameters = pattern_info['parameters']
+        delimiters = pattern_info['delimiters']
+        
+        if not parameters:
+            return "Unknown parsing error"
+        
+        # Check for sequential parameter numbering
+        expected_numbers = list(range(1, len(parameters) + 1))
+        actual_numbers = [p['number'] for p in parameters]
+        
+        if actual_numbers != expected_numbers:
+            return f"Non-sequential parameters (found: {actual_numbers}, expected: {expected_numbers})"
+        
+        # Check for delimited parameters
+        for delimiter in delimiters:
+            if 'before_param' in delimiter and delimiter['before_param'] == 1:
+                continue  # Command name delimiter is OK
+            elif delimiter.get('before_param') is None and len(delimiters) == 1:
+                continue  # Just command name with no parameters
+            else:
+                return f"Contains delimited parameters (delimiter: '{delimiter.get('text', 'unknown')}')"
+        
+        return "Unknown conversion restriction"
+
+    @staticmethod
+    def _extract_command_name_from_pattern(pattern: str, parameters: List[Dict[str, Any]]) -> Optional[str]:
+        """
+        Extract the command name from a \\def pattern.
+        
+        :param pattern: The pattern string (e.g., "\\mycommand#1#2")
+        :param parameters: List of parameter info (see parse_def_command docs for structure)
+        :return: Command name (e.g., "\\mycommand") or None if extraction fails
+        
+        Extraction rules:
+        - Command name must start with backslash
+        - Command name cannot contain spaces
+        - For patterns with parameters: extracts text before first parameter
+        - For patterns without parameters: uses entire pattern (if valid)
+        """
+        if not parameters:
+            # No parameters - the entire pattern should be the command name
+            pattern_clean = pattern.strip()
+            if pattern_clean.startswith('\\') and ' ' not in pattern_clean:
+                return pattern_clean
+            return None
+        
+        # Find the position of the first parameter
+        first_param = min(parameters, key=lambda p: p['position'])
+        first_param_pos = first_param['position']
+        
+        # Command name is everything before the first parameter
+        command_name = pattern[:first_param_pos].strip()
+        
+        if command_name.startswith('\\') and ' ' not in command_name:
+            return command_name
+        
+        return None
