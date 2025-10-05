@@ -25,3 +25,9 @@ pip install -e ".[test]"
 ## 3. License
 
 Licensed under the MIT License. See the LICENSE file for more details.
+
+## 4. Development Status & Known Issues
+
+### 🚧 **Prototype Stage**
+
+This project is currently in active development and prototyping phase. While core functionality is being implemented and tested, the API and feature set are subject to change.

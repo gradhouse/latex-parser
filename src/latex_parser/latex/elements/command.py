@@ -1418,3 +1418,152 @@ class Command:
             result = result.replace(param_name, value)
         
         return result
+
+    @staticmethod
+    def _apply_environment_definition(
+        environment_definition: Dict[str, Optional[str]], 
+        parsed_arguments: Dict[str, Any]
+    ) -> Tuple[str, str]:
+        """
+        Apply parsed arguments to an environment definition to generate the expanded environment.
+        
+        Takes the output from _convert_environment_definition_to_syntax and the output from
+        parse_arguments to generate the final expanded environment strings with parameters filled in.
+        
+        :param environment_definition: Output from _convert_environment_definition_to_syntax containing:
+            - 'syntax': str (e.g., '\\begin{myenv}[#1]{#2}')
+            - 'begin_implementation': str (e.g., '\\begin{center}#1')
+            - 'end_implementation': str (e.g., '\\end{center}')
+            - 'default': Optional[str] (default value for first optional parameter)
+        :param parsed_arguments: Output from parse_arguments containing:
+            - 'environment_name': str
+            - 'complete_start': int
+            - 'complete_end': int
+            - 'arguments': Dict[str, Dict] where each argument has 'value', 'start', 'end', 'type'
+        :return: Tuple of (begin_implementation_filled, end_implementation_filled)
+        :raises ValueError: If insufficient arguments provided or parameter validation fails
+        
+        LaTeX Rules:
+        - If there are N expected parameters and N-1 provided, use default for first optional parameter
+        - If there are fewer than N-1 parameters provided, raise an exception
+        - Required parameters must be provided
+        
+        Example:
+            environment_definition = {
+                'syntax': '\\begin{greetenv}[#1]{#2}',
+                'begin_implementation': 'Hello #1, welcome #2',
+                'end_implementation': 'Goodbye #1',
+                'default': 'World'
+            }
+            parsed_arguments = {
+                'environment_name': 'greetenv',
+                'arguments': {'#2': {'value': 'John', 'type': 'required'}}
+            }
+            Result: ('Hello World, welcome John', 'Goodbye World')
+        """
+        if not isinstance(environment_definition, dict):
+            raise ValueError("Environment definition must be a dictionary")
+        
+        if not isinstance(parsed_arguments, dict):
+            raise ValueError("Parsed arguments must be a dictionary")
+        
+        # Validate required fields in environment_definition
+        required_fields = ['syntax', 'begin_implementation', 'end_implementation']
+        for field in required_fields:
+            if field not in environment_definition:
+                raise ValueError(f"Environment definition missing required field: {field}")
+        
+        # Validate required fields in parsed_arguments
+        if 'arguments' not in parsed_arguments:
+            raise ValueError("Parsed arguments missing 'arguments' field")
+        
+        syntax = environment_definition['syntax']
+        begin_implementation = environment_definition['begin_implementation']
+        end_implementation = environment_definition['end_implementation']
+        default_value = environment_definition.get('default')
+        provided_args = parsed_arguments['arguments']
+        
+        # Validate that required string fields are not None
+        if not isinstance(syntax, str):
+            raise ValueError("Syntax must be a string")
+        if not isinstance(begin_implementation, str):
+            raise ValueError("Begin implementation must be a string")
+        if not isinstance(end_implementation, str):
+            raise ValueError("End implementation must be a string")
+        
+        # Extract environment name from syntax for error messages
+        env_name_match = re.search(r'\\begin\{([^}]+)\}', syntax)
+        env_name = env_name_match.group(1) if env_name_match else 'unknown'
+        
+        # Parse the syntax to determine expected parameters
+        parameter_pattern = r'#(\d+)'
+        expected_params = []
+        
+        # Find all parameters in the syntax
+        for match in re.finditer(parameter_pattern, syntax):
+            param_num = int(match.group(1))
+            param_name = f"#{param_num}"
+            
+            # Determine if parameter is optional (in []) or required (in {})
+            # Look at the character before the parameter in syntax
+            start_pos = match.start()
+            if start_pos > 0:
+                # Find the opening bracket/brace for this parameter
+                bracket_pos = syntax.rfind('[', 0, start_pos)
+                brace_pos = syntax.rfind('{', 0, start_pos)
+                
+                # Check which is closer and if it's properly closed after the parameter
+                param_type = 'required'  # default
+                if bracket_pos > brace_pos and bracket_pos != -1:
+                    # Check if there's a closing ] after this parameter
+                    close_bracket = syntax.find(']', match.end())
+                    if close_bracket != -1:
+                        param_type = 'optional'
+                
+                expected_params.append({
+                    'name': param_name,
+                    'number': param_num,
+                    'type': param_type
+                })
+        
+        # Sort parameters by number
+        expected_params.sort(key=lambda x: x['number'])
+        
+        # Count provided arguments
+        provided_count = len(provided_args)
+        expected_count = len(expected_params)
+        
+        # Basic validation - allow up to expected_count arguments
+        if provided_count > expected_count:
+            raise ValueError(
+                f"Too many arguments provided. Expected {expected_count}, got {provided_count} "
+                f"for environment '{env_name}'."
+            )
+        
+        # Build the substitution mapping
+        substitutions = {}
+        
+        # Check which parameters we have values for
+        for param in expected_params:
+            param_name = param['name']
+            
+            if param_name in provided_args:
+                # Use provided argument
+                substitutions[param_name] = provided_args[param_name]['value']
+            elif param['type'] == 'optional' and default_value is not None and provided_count == expected_count - 1:
+                # Use default value for optional parameter when exactly one argument is missing
+                substitutions[param_name] = default_value
+            else:
+                raise ValueError(
+                    f"No value available for parameter {param_name} in environment '{env_name}'"
+                )
+        
+        # Apply substitutions to both begin and end implementations
+        begin_result: str = begin_implementation
+        end_result: str = end_implementation
+        
+        for param_name, value in substitutions.items():
+            begin_result = begin_result.replace(param_name, value)
+            end_result = end_result.replace(param_name, value)
+        
+        return (begin_result, end_result)
