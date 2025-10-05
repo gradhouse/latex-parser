@@ -1127,13 +1127,14 @@ class Command:
         
         For \\newcommand{\\ps}[1]{\\begin{center}...}, this returns:
         {
+            'command_name': '\\ps',
             'syntax': '\\ps{#1}',
             'implementation': '\\begin{center}\\leavevmode \\hbox{\\epsfxsize=2.5in\\epsfbox{#1}}\\end{center}',
             'default': None  # or the actual default value if present
         }
         
         :param command_entry: Entry from get_document_defined_commands()
-        :return: Dictionary with syntax, implementation, and default keys
+        :return: Dictionary with command_name, syntax, implementation, and default keys
         :raises ValueError: If conversion is not possible
         """
         if not isinstance(command_entry, dict):
@@ -1190,6 +1191,7 @@ class Command:
                 raise
         
         return {
+            'command_name': cmd_name,
             'syntax': syntax,
             'implementation': implementation,
             'default': default
@@ -1273,3 +1275,146 @@ class Command:
             'end_implementation': end_implementation,
             'default': default
         }
+
+    @staticmethod
+    def _apply_command_definition(
+        command_definition: Dict[str, Optional[str]], 
+        parsed_arguments: Dict[str, Any]
+    ) -> str:
+        """
+        Apply parsed arguments to a command definition to generate the expanded command.
+        
+        Takes the output from _convert_command_definition_to_syntax and the output from
+        parse_arguments to generate the final expanded command string with parameters filled in.
+        
+        :param command_definition: Output from _convert_command_definition_to_syntax containing:
+            - 'command_name': str (e.g., '\\ps')
+            - 'syntax': str (e.g., '\\ps{#1}')
+            - 'implementation': str (e.g., '\\begin{center}...{#1}...\\end{center}')
+            - 'default': Optional[str] (default value for first optional parameter)
+        :param parsed_arguments: Output from parse_arguments containing:
+            - 'command_name': str
+            - 'complete_start': int
+            - 'complete_end': int
+            - 'arguments': Dict[str, Dict] where each argument has 'value', 'start', 'end', 'type'
+        :return: Expanded command string with parameters substituted
+        :raises ValueError: If insufficient arguments provided or parameter validation fails
+        
+        LaTeX Rules:
+        - If there are N expected parameters and N-1 provided, use default for first optional parameter
+        - If there are fewer than N-1 parameters provided, raise an exception
+        - Required parameters must be provided
+        
+        Example:
+            command_definition = {
+                'command_name': '\\greet',
+                'syntax': '\\greet[#1]{#2}',
+                'implementation': 'Hello #1, welcome #2',
+                'default': 'World'
+            }
+            parsed_arguments = {
+                'command_name': '\\greet',
+                'arguments': {'#2': {'value': 'John', 'type': 'required'}}
+            }
+            Result: 'Hello World, welcome John'
+        """
+        if not isinstance(command_definition, dict):
+            raise ValueError("Command definition must be a dictionary")
+        
+        if not isinstance(parsed_arguments, dict):
+            raise ValueError("Parsed arguments must be a dictionary")
+        
+        # Validate required fields in command_definition
+        required_fields = ['command_name', 'syntax', 'implementation']
+        for field in required_fields:
+            if field not in command_definition:
+                raise ValueError(f"Command definition missing required field: {field}")
+        
+        # Validate required fields in parsed_arguments
+        if 'arguments' not in parsed_arguments:
+            raise ValueError("Parsed arguments missing 'arguments' field")
+        
+        command_name = command_definition['command_name']
+        syntax = command_definition['syntax']
+        implementation = command_definition['implementation']
+        default_value = command_definition.get('default')
+        provided_args = parsed_arguments['arguments']
+        
+        # Validate that required string fields are not None
+        if not isinstance(command_name, str):
+            raise ValueError("Command name must be a string")
+        if not isinstance(syntax, str):
+            raise ValueError("Syntax must be a string")
+        if not isinstance(implementation, str):
+            raise ValueError("Implementation must be a string")
+        
+        # Parse the syntax to determine expected parameters
+        import re
+        parameter_pattern = r'#(\d+)'
+        expected_params = []
+        
+        # Find all parameters in the syntax
+        for match in re.finditer(parameter_pattern, syntax):
+            param_num = int(match.group(1))
+            param_name = f"#{param_num}"
+            
+            # Determine if parameter is optional (in []) or required (in {})
+            # Look at the character before the parameter in syntax
+            start_pos = match.start()
+            if start_pos > 0:
+                # Find the opening bracket/brace for this parameter
+                bracket_pos = syntax.rfind('[', 0, start_pos)
+                brace_pos = syntax.rfind('{', 0, start_pos)
+                
+                # Check which is closer and if it's properly closed after the parameter
+                param_type = 'required'  # default
+                if bracket_pos > brace_pos and bracket_pos != -1:
+                    # Check if there's a closing ] after this parameter
+                    close_bracket = syntax.find(']', match.end())
+                    if close_bracket != -1:
+                        param_type = 'optional'
+                
+                expected_params.append({
+                    'name': param_name,
+                    'number': param_num,
+                    'type': param_type
+                })
+        
+        # Sort parameters by number
+        expected_params.sort(key=lambda x: x['number'])
+        
+        # Count provided arguments
+        provided_count = len(provided_args)
+        expected_count = len(expected_params)
+        
+        # Basic validation - allow up to expected_count arguments
+        if provided_count > expected_count:
+            raise ValueError(
+                f"Too many arguments provided. Expected {expected_count}, got {provided_count} "
+                f"for command '{command_name}'."
+            )
+        
+        # Build the substitution mapping
+        substitutions = {}
+        
+        # Check which parameters we have values for
+        for param in expected_params:
+            param_name = param['name']
+            
+            if param_name in provided_args:
+                # Use provided argument
+                substitutions[param_name] = provided_args[param_name]['value']
+            elif param['type'] == 'optional' and default_value is not None and provided_count == expected_count - 1:
+                # Use default value for optional parameter when exactly one argument is missing
+                substitutions[param_name] = default_value
+            else:
+                raise ValueError(
+                    f"No value available for parameter {param_name} in command '{command_name}'"
+                )
+        
+        # Apply substitutions to the implementation
+        result: str = implementation
+        for param_name, value in substitutions.items():
+            result = result.replace(param_name, value)
+        
+        return result
