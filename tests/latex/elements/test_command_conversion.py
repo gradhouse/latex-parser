@@ -20,7 +20,11 @@ from tests.latex.fixtures.command_conversion_test_cases import (
     COMMAND_APPLICATION_ERROR_TESTS,
     COMMAND_APPLICATION_ADDITIONAL_ERROR_TESTS,
     COMMAND_APPLICATION_COVERAGE_TESTS,
-    COMMAND_APPLICATION_COVERAGE_SPECIFIC_TESTS
+    COMMAND_APPLICATION_COVERAGE_SPECIFIC_TESTS,
+    ENVIRONMENT_APPLICATION_BASIC_TESTS,
+    ENVIRONMENT_APPLICATION_EDGE_TESTS,
+    ENVIRONMENT_APPLICATION_ERROR_TESTS,
+    ENVIRONMENT_APPLICATION_COVERAGE_TESTS
 )
 
 
@@ -591,3 +595,117 @@ class TestCommandConversionInternalEdgeCases:
         
         result_bold = Command._apply_command_definition(bold_def, parsed_bold)
         assert result_bold == r'\textbf{important text}'
+
+
+class TestEnvironmentApplication:
+    """Test cases for Command._apply_environment_definition method."""
+
+    @pytest.mark.parametrize('test_case', ENVIRONMENT_APPLICATION_BASIC_TESTS)
+    def test_apply_environment_definition_basic(self, test_case: Dict):
+        """Test basic environment definition application scenarios."""
+        result = Command._apply_environment_definition(
+            test_case['environment_definition'], 
+            test_case['parsed_arguments']
+        )
+        
+        assert result == test_case['expected'], (
+            f"Failed for {test_case['description']}: "
+            f"expected {test_case['expected']}, got {result}"
+        )
+
+    @pytest.mark.parametrize('test_case', ENVIRONMENT_APPLICATION_EDGE_TESTS)
+    def test_apply_environment_definition_edge_cases(self, test_case: Dict):
+        """Test edge cases for environment definition application."""
+        result = Command._apply_environment_definition(
+            test_case['environment_definition'], 
+            test_case['parsed_arguments']
+        )
+        
+        assert result == test_case['expected'], (
+            f"Failed for {test_case['description']}: "
+            f"expected {test_case['expected']}, got {result}"
+        )
+
+    @pytest.mark.parametrize('test_case', ENVIRONMENT_APPLICATION_ERROR_TESTS)
+    def test_apply_environment_definition_error_handling(self, test_case: Dict):
+        """Test error handling for environment definition application."""
+        with pytest.raises(ValueError) as exc_info:
+            Command._apply_environment_definition(
+                test_case['environment_definition'], 
+                test_case['parsed_arguments']
+            )
+        
+        assert test_case['expected_error'] in str(exc_info.value), (
+            f"Failed for {test_case['description']}: "
+            f"expected error containing '{test_case['expected_error']}', "
+            f"got '{str(exc_info.value)}'"
+        )
+
+    @pytest.mark.parametrize('test_case', ENVIRONMENT_APPLICATION_COVERAGE_TESTS)
+    def test_apply_environment_definition_coverage(self, test_case: Dict):
+        """Test coverage cases for environment definition application."""
+        result = Command._apply_environment_definition(
+            test_case['environment_definition'], 
+            test_case['parsed_arguments']
+        )
+        
+        assert result == test_case['expected'], (
+            f"Failed for {test_case['description']}: "
+            f"expected {test_case['expected']}, got {result}"
+        )
+
+    def test_integration_with_environment_conversion(self):
+        """Test integration between environment conversion and application."""
+        # Create environment data in the format from get_document_defined_environments
+        environment_data = {
+            'arguments': {
+                'name': {'value': 'testenv'},
+                'begin_definition': {'value': r'\begin{center}\textbf{#1}: #2'},
+                'end_definition': {'value': r'\end{center}'},
+                'nargs': {'value': '2'},
+                'default': {'value': 'Default Title'}
+            }
+        }
+        
+        # Step 1: Convert to syntax format
+        syntax_def = Command._convert_environment_definition_to_syntax(environment_data)
+        
+        # Step 2: Apply with parsed arguments
+        parsed_args = {
+            'environment_name': 'testenv',
+            'arguments': {
+                '#2': {'value': 'Content text', 'type': 'required'}
+            }
+        }
+        
+        begin_str, end_str = Command._apply_environment_definition(syntax_def, parsed_args)
+        
+        # Verify results
+        assert begin_str == r'\begin{center}\textbf{Default Title}: Content text'
+        assert end_str == r'\end{center}'
+        
+    def test_integration_with_full_workflow(self):
+        """Test the complete workflow from LaTeX environment content to applied environments."""
+        # Use a simpler environment definition
+        content = r'\newenvironment{simple}[1]{Start: #1}{End}'
+        
+        # Get document defined environments
+        environments = Command.get_document_defined_environments(content)
+        assert len(environments) == 1
+        
+        # Convert to syntax definition
+        env_def = Command._convert_environment_definition_to_syntax(environments[0])
+        
+        # Test applying the environment 
+        env_usage = r'\begin{simple}{Test Value}'
+        env_syntax = env_def['syntax']
+        assert env_syntax is not None
+        
+        parsed_env = Command.parse_arguments(
+            env_usage, 'simple', 0, 14, env_syntax, True
+        )
+        assert parsed_env is not None
+        
+        begin_result, end_result = Command._apply_environment_definition(env_def, parsed_env)
+        assert begin_result == 'Start: Test Value'
+        assert end_result == 'End'

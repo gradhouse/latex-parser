@@ -882,3 +882,443 @@ COMMAND_APPLICATION_COVERAGE_SPECIFIC_TESTS = [
         'expected': 'Error: No value available for parameter #1 in command'
     }
 ]
+
+# Test cases for _apply_environment_definition method
+ENVIRONMENT_APPLICATION_BASIC_TESTS = [
+    {
+        'description': 'Simple environment without parameters',
+        'environment_definition': {
+            'syntax': r'\begin{simpleenv}',
+            'begin_implementation': r'\begin{center}',
+            'end_implementation': r'\end{center}',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'simpleenv',
+            'arguments': {}
+        },
+        'expected': (r'\begin{center}', r'\end{center}')
+    },
+    {
+        'description': 'Environment with single required parameter',
+        'environment_definition': {
+            'syntax': r'\begin{myenv}{#1}',
+            'begin_implementation': r'\begin{center}\textbf{#1}',
+            'end_implementation': r'\end{center}',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'myenv',
+            'arguments': {
+                '#1': {'value': 'Hello World', 'type': 'required'}
+            }
+        },
+        'expected': (r'\begin{center}\textbf{Hello World}', r'\end{center}')
+    },
+    {
+        'description': 'Environment with multiple parameters',
+        'environment_definition': {
+            'syntax': r'\begin{complexenv}{#1}{#2}',
+            'begin_implementation': r'\begin{#1}\large #2',
+            'end_implementation': r'\end{#1}',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'complexenv',
+            'arguments': {
+                '#1': {'value': 'quote', 'type': 'required'},
+                '#2': {'value': 'Important Text', 'type': 'required'}
+            }
+        },
+        'expected': (r'\begin{quote}\large Important Text', r'\end{quote}')
+    },
+    {
+        'description': 'Environment with optional parameter and default',
+        'environment_definition': {
+            'syntax': r'\begin{optenv}[#1]{#2}',
+            'begin_implementation': r'\section*{#1}\begin{itemize} #2',
+            'end_implementation': r'\end{itemize}',
+            'default': 'Default Title'
+        },
+        'parsed_arguments': {
+            'environment_name': 'optenv',
+            'arguments': {
+                '#2': {'value': 'List content', 'type': 'required'}
+            }
+        },
+        'expected': (r'\section*{Default Title}\begin{itemize} List content', r'\end{itemize}')
+    },
+    {
+        'description': 'Environment with provided optional parameter',
+        'environment_definition': {
+            'syntax': r'\begin{greetenv}[#1]{#2}',
+            'begin_implementation': r'Hello #1, welcome #2',
+            'end_implementation': r'Goodbye #1',
+            'default': 'World'
+        },
+        'parsed_arguments': {
+            'environment_name': 'greetenv',
+            'arguments': {
+                '#1': {'value': 'Friend', 'type': 'optional'},
+                '#2': {'value': 'to our community', 'type': 'required'}
+            }
+        },
+        'expected': ('Hello Friend, welcome to our community', 'Goodbye Friend')
+    }
+]
+
+ENVIRONMENT_APPLICATION_EDGE_TESTS = [
+    {
+        'description': 'Environment with complex LaTeX in implementation',
+        'environment_definition': {
+            'syntax': r'\begin{mathenv}[#1]{#2}',
+            'begin_implementation': r'\begin{equation}\label{#1} #2 =',
+            'end_implementation': r'\end{equation}',
+            'default': 'eq:default'
+        },
+        'parsed_arguments': {
+            'environment_name': 'mathenv',
+            'arguments': {
+                '#2': {'value': r'E = mc^2', 'type': 'required'}
+            }
+        },
+        'expected': (r'\begin{equation}\label{eq:default} E = mc^2 =', r'\end{equation}')
+    },
+    {
+        'description': 'Environment with parameters appearing multiple times',
+        'environment_definition': {
+            'syntax': r'\begin{repeatenv}{#1}',
+            'begin_implementation': r'Start #1, middle #1, prep #1',
+            'end_implementation': r'End #1, final #1',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'repeatenv',
+            'arguments': {
+                '#1': {'value': 'TEST', 'type': 'required'}
+            }
+        },
+        'expected': ('Start TEST, middle TEST, prep TEST', 'End TEST, final TEST')
+    },
+    {
+        'description': 'Environment with special characters in parameters',
+        'environment_definition': {
+            'syntax': r'\begin{specialenv}{#1}',
+            'begin_implementation': r'\texttt{#1}',
+            'end_implementation': r'',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'specialenv',
+            'arguments': {
+                '#1': {'value': '\\LaTeX & $math$', 'type': 'required'}
+            }
+        },
+        'expected': (r'\texttt{\LaTeX & $math$}', '')
+    },
+    {
+        'description': 'Environment with empty implementations',
+        'environment_definition': {
+            'syntax': r'\begin{emptyenv}',
+            'begin_implementation': '',
+            'end_implementation': '',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'emptyenv',
+            'arguments': {}
+        },
+        'expected': ('', '')
+    },
+    {
+        'description': 'Environment with maximum parameters (9)',
+        'environment_definition': {
+            'syntax': r'\begin{maxenv}{#1}{#2}{#3}{#4}{#5}{#6}{#7}{#8}{#9}',
+            'begin_implementation': r'#1#2#3#4#5#6#7#8#9',
+            'end_implementation': r'#9#8#7#6#5#4#3#2#1',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'maxenv',
+            'arguments': {
+                f'#{i}': {'value': str(i), 'type': 'required'} for i in range(1, 10)
+            }
+        },
+        'expected': ('123456789', '987654321')
+    }
+]
+
+ENVIRONMENT_APPLICATION_ERROR_TESTS = [
+    {
+        'description': 'Invalid environment definition - not a dictionary',
+        'environment_definition': 'not a dict',
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'Environment definition must be a dictionary'
+    },
+    {
+        'description': 'Invalid parsed arguments - not a dictionary',
+        'environment_definition': {
+            'syntax': r'\begin{test}',
+            'begin_implementation': 'test',
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': 'not a dict',
+        'expected_error': 'Parsed arguments must be a dictionary'
+    },
+    {
+        'description': 'Missing syntax field',
+        'environment_definition': {
+            'begin_implementation': 'test',
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'Environment definition missing required field: syntax'
+    },
+    {
+        'description': 'Missing begin_implementation field',
+        'environment_definition': {
+            'syntax': r'\begin{test}',
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'Environment definition missing required field: begin_implementation'
+    },
+    {
+        'description': 'Missing end_implementation field',
+        'environment_definition': {
+            'syntax': r'\begin{test}',
+            'begin_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'Environment definition missing required field: end_implementation'
+    },
+    {
+        'description': 'Missing arguments field in parsed_arguments',
+        'environment_definition': {
+            'syntax': r'\begin{test}',
+            'begin_implementation': 'test',
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test'
+        },
+        'expected_error': "Parsed arguments missing 'arguments' field"
+    },
+    {
+        'description': 'Syntax is not a string',
+        'environment_definition': {
+            'syntax': None,
+            'begin_implementation': 'test',
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'Syntax must be a string'
+    },
+    {
+        'description': 'Begin implementation is not a string',
+        'environment_definition': {
+            'syntax': r'\begin{test}',
+            'begin_implementation': None,
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'Begin implementation must be a string'
+    },
+    {
+        'description': 'End implementation is not a string',
+        'environment_definition': {
+            'syntax': r'\begin{test}',
+            'begin_implementation': 'test',
+            'end_implementation': None,
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'test',
+            'arguments': {}
+        },
+        'expected_error': 'End implementation must be a string'
+    },
+    {
+        'description': 'Too many arguments provided',
+        'environment_definition': {
+            'syntax': r'\begin{onearg}{#1}',
+            'begin_implementation': 'Value: #1',
+            'end_implementation': 'End',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'onearg',
+            'arguments': {
+                '#1': {'value': 'first', 'type': 'required'},
+                '#2': {'value': 'second', 'type': 'required'}
+            }
+        },
+        'expected_error': 'Too many arguments provided. Expected 1, got 2 for environment \'onearg\'.'
+    },
+    {
+        'description': 'Missing required parameter',
+        'environment_definition': {
+            'syntax': r'\begin{reqenv}{#1}',
+            'begin_implementation': 'Required: #1',
+            'end_implementation': 'End',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'reqenv',
+            'arguments': {}
+        },
+        'expected_error': "No value available for parameter #1 in environment 'reqenv'"
+    },
+    {
+        'description': 'Missing optional parameter with no default',
+        'environment_definition': {
+            'syntax': r'\begin{optenv}[#1]{#2}',
+            'begin_implementation': 'Opt: #1, Req: #2',
+            'end_implementation': 'End',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'optenv',
+            'arguments': {
+                '#2': {'value': 'required_val', 'type': 'required'}
+            }
+        },
+        'expected_error': "No value available for parameter #1 in environment 'optenv'"
+    }
+]
+
+ENVIRONMENT_APPLICATION_COVERAGE_TESTS = [
+    {
+        'description': 'Coverage test - extract environment name from complex syntax',
+        'environment_definition': {
+            'syntax': r'\begin{complex_env_name}[#1]{#2}',
+            'begin_implementation': 'Begin: #1, #2',
+            'end_implementation': 'End: #1',
+            'default': 'default_val'
+        },
+        'parsed_arguments': {
+            'environment_name': 'complex_env_name',
+            'arguments': {
+                '#2': {'value': 'test_value', 'type': 'required'}
+            }
+        },
+        'expected': ('Begin: default_val, test_value', 'End: default_val')
+    },
+    {
+        'description': 'Coverage test - malformed syntax without environment name',
+        'environment_definition': {
+            'syntax': r'malformed_syntax',  # No \begin{} pattern
+            'begin_implementation': 'test',
+            'end_implementation': 'test',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'unknown',
+            'arguments': {}
+        },
+        'expected': ('test', 'test')  # Should still work, env_name used for error messages only
+    },
+    {
+        'description': 'Coverage test - optional parameter with exactly one missing argument',
+        'environment_definition': {
+            'syntax': r'\begin{opttest}[#1]{#2}',
+            'begin_implementation': 'Start #1: #2',
+            'end_implementation': 'End #1',
+            'default': 'DefaultOpt'
+        },
+        'parsed_arguments': {
+            'environment_name': 'opttest',
+            'arguments': {
+                '#2': {'value': 'RequiredValue', 'type': 'required'}
+            }
+        },
+        'expected': ('Start DefaultOpt: RequiredValue', 'End DefaultOpt')
+    },
+    {
+        'description': 'Coverage test - required parameter type detection in bracket analysis',
+        'environment_definition': {
+            'syntax': r'\begin{brackettest}{#1}[#2]',  # Required then optional
+            'begin_implementation': 'Req: #1, Opt: #2',
+            'end_implementation': 'End',
+            'default': 'OptDefault'
+        },
+        'parsed_arguments': {
+            'environment_name': 'brackettest',
+            'arguments': {
+                '#1': {'value': 'ReqValue', 'type': 'required'}
+            }
+        },
+        'expected': ('Req: ReqValue, Opt: OptDefault', 'End')
+    },
+    {
+        'description': 'Coverage test - parameter without surrounding brackets',
+        'environment_definition': {
+            'syntax': r'\begin{nobracket}#1',  # Parameter without brackets
+            'begin_implementation': 'Value: #1',
+            'end_implementation': 'End',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'nobracket',
+            'arguments': {
+                '#1': {'value': 'TestValue', 'type': 'required'}
+            }
+        },
+        'expected': ('Value: TestValue', 'End')
+    },
+    {
+        'description': 'Coverage test - parameter at start position (start_pos = 0)',
+        'environment_definition': {
+            'syntax': r'#1\begin{startparam}',  # Parameter at very beginning
+            'begin_implementation': 'Start: #1',
+            'end_implementation': 'End',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'startparam',
+            'arguments': {}  # No arguments since parameter at start_pos=0 won't be processed
+        },
+        'expected': ('Start: #1', 'End')  # Parameter won't be substituted
+    },
+    {
+        'description': 'Coverage test - unclosed bracket (no closing ] found)',
+        'environment_definition': {
+            'syntax': r'\begin{unclosed}[#1',  # Opening bracket but no closing bracket
+            'begin_implementation': 'Value: #1',
+            'end_implementation': 'End',
+            'default': None
+        },
+        'parsed_arguments': {
+            'environment_name': 'unclosed',
+            'arguments': {
+                '#1': {'value': 'TestValue', 'type': 'required'}
+            }
+        },
+        'expected': ('Value: TestValue', 'End')
+    }
+]
